@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,11 @@ namespace DataAccess.Contexts;
 public class TobetoContext : DbContext
 {
     protected IConfiguration Configuration { get; set; }
+
+    public DbSet<Course> Courses { get; set; }
+
+
+
     public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
     {
         Configuration = configuration;
