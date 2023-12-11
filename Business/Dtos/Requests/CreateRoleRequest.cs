@@ -8,7 +8,7 @@ namespace Business.Dtos.Requests
 {
     public class CreateRoleRequest
     {
-        public int Name { get; set; }
+        public string Name { get; set; }
 
     }
 }
