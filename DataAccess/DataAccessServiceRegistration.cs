@@ -14,7 +14,7 @@ public static class DataAccessServiceRegistration
 {
     public static IServiceCollection AddDataAccessServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<TobetoContext>(options => options.UseSqlServer(configuration.GetConnectionString("ETrade")));
+        services.AddDbContext<TobetoContext>(options => options.UseSqlServer(configuration.GetConnectionString("Tobeto")));
         return services;
     }
 }
