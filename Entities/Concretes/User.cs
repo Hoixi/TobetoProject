@@ -8,5 +8,6 @@ namespace Entities.Concretes
 {
     public class User
     {
+
     }
 }
