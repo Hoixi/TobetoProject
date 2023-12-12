@@ -16,6 +16,7 @@ public static class BusinessServiceRegistration
     {
         services.AddScoped<IRoleService,RoleManager>();
         services.AddScoped<ICourseService,CourseManager>();
+        services.AddScoped<IUserService, UserManager>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }
