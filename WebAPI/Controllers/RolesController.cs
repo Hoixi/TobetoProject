@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
         [HttpGet("Get")]
         public async Task<IActionResult> Get(int Id)
         {
-            var result = await _roleService.Get(Id);
+            var result = await _roleService.GetRoleById(Id);
             return Ok(result);
         }
 
