@@ -37,7 +37,7 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
-        public Task<CreatedRoleResponse> Get(int id)
+        public Task<CreatedRoleResponse> GetRoleById(int id)
         {
             throw new NotImplementedException();
         }
