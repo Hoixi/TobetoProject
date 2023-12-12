@@ -22,5 +22,33 @@ namespace WebAPI.Controllers
             var result = await _roleService.Add(createRoleRequest);
             return Ok(result);
         }
+
+        [HttpDelete("Delete")]
+        public async Task<IActionResult> Delete(int Id, bool permanent)
+        {
+            var result = await _roleService.Delete(Id, permanent);
+            return Ok(result);
+        }
+
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            var result = await _roleService.GetAll();
+            return Ok(result);
+        }
+
+        [HttpGet("Get")]
+        public async Task<IActionResult> Get(int Id)
+        {
+            var result = await _roleService.Get(Id);
+            return Ok(result);
+        }
+
+        [HttpPost("Update")]
+        public async Task<IActionResult> Update([FromBody]UpdateRoleRequest updateRoleRequest)
+        {
+            var result = await _roleService.Update(updateRoleRequest);
+            return Ok(result);
+        }
     }
 }

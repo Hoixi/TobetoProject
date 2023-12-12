@@ -13,8 +13,8 @@ namespace Business.Abstracts;
 public interface IRoleService
 {
     Task<CreatedRoleResponse> Add(CreateRoleRequest createRoleRequest);
-    Task<CreatedRoleResponse> Update(Role role);
-    Task<CreatedRoleResponse> Delete(Role role);
+    Task<UpdatedRoleResponse> Update(UpdateRoleRequest updateRoleRequest);
+    Task<Role> Delete(int Id, bool permanent);
 
     Task<IPaginate<GetListRoleResponse>> GetAll();
     Task<CreatedRoleResponse> Get(int id);

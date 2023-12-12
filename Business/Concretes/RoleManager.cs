@@ -32,24 +32,36 @@ namespace Business.Concretes
             return createdRoleResponse;
         }
 
-        public Task<CreatedRoleResponse> Delete(Role role)
+        public async Task<Role> Delete(int Id,bool permanent)
         {
-            throw new NotImplementedException();
+            var data = await _roleDal.GetAsync(i => i.Id == Id);
+            var result = await _roleDal.DeleteAsync(data,permanent);
+            return result;
         }
 
-        public Task<CreatedRoleResponse> Get(int id)
+        public async Task<CreatedRoleResponse> Get(int id)
         {
-            throw new NotImplementedException();
+            var data = await _roleDal.GetAsync(i => i.Id == id);
+            var result = _mapper.Map<CreatedRoleResponse>(data);
+            return result;
         }
 
-        public Task<IPaginate<GetListRoleResponse>> GetAll()
+        public async Task<IPaginate<GetListRoleResponse>> GetAll()
         {
-            throw new NotImplementedException();
+            var data = await _roleDal.GetListAsync();
+            var result = _mapper.Map<Paginate<GetListRoleResponse>>(data);
+            return result;
         }
 
-        public Task<CreatedRoleResponse> Update(Role role)
+        public async Task<UpdatedRoleResponse> Update(UpdateRoleRequest updateRoleRequest)
         {
-            throw new NotImplementedException();
+            var data = await _roleDal.GetAsync(i => i.Id == updateRoleRequest.Id);
+            _mapper.Map(updateRoleRequest, data);
+            data.UpdatedDate = DateTime.Now;
+            await _roleDal.UpdateAsync(data);
+            var result = _mapper.Map<UpdatedRoleResponse>(data);
+            return result;
+
         }
     }
 }

@@ -23,7 +23,8 @@ namespace Business.Profiles
             CreateMap<Role, GetListRoleResponse>().ReverseMap();
             CreateMap<Paginate<Role>, Paginate<GetListRoleResponse>>();
 
-
+            CreateMap<UpdateRoleRequest,Role >().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
+            CreateMap<Role,UpdatedRoleResponse>();
         }
 
 
