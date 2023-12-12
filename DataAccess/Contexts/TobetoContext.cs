@@ -15,6 +15,7 @@ public class TobetoContext : DbContext
     protected IConfiguration Configuration { get; set; }
 
     public DbSet<Course> Courses { get; set; }
+    public DbSet<Role> Roles { get; set; }
 
 
 

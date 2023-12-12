@@ -1,7 +1,9 @@
-﻿using Business.Abstracts;
+﻿using AutoMapper;
+using Business.Abstracts;
 using Business.Dtos.Requests;
 using Business.Dtos.Responses;
 using Core.DataAccess.Paging;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -13,9 +15,21 @@ namespace Business.Concretes
 {
     public class RoleManager : IRoleService
     {
-        public Task<CreatedRoleResponse> Add(CreateRoleRequest createRoleRequest)
+        IRoleDal _roleDal;
+        IMapper _mapper;
+
+        public RoleManager(IRoleDal roleDal,IMapper mapper)
         {
-            throw new NotImplementedException();
+            _roleDal = roleDal;
+            _mapper = mapper;
+        }
+
+        public async Task<CreatedRoleResponse> Add(CreateRoleRequest createRoleRequest)
+        {
+            Role role = _mapper.Map<Role>(createRoleRequest);
+            Role createdRole = await _roleDal.AddAsync(role);
+            CreatedRoleResponse createdRoleResponse = _mapper.Map<CreatedRoleResponse>(createdRole);
+            return createdRoleResponse;
         }
 
         public Task<CreatedRoleResponse> Delete(Role role)
