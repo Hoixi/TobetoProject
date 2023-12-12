@@ -9,5 +9,6 @@ namespace Entities.Concretes
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EMail { get; set; }
+        public List<Instructor> Instructors { get; set; }
     }
 }

@@ -24,7 +24,8 @@ namespace Business.Profiles
             CreateMap<Instructor, UpdatedInstructorResponse>();
 
             CreateMap<Instructor, GetInstructorListResponse>()
-                .ForMember(destinationMember: p => p.CourseName, memberOptions: opt => opt.MapFrom(p => p.Course)).ReverseMap();
+                .ForMember(destinationMember: p => p.CourseName, memberOptions: opt => opt.MapFrom(p => p.Course))
+                .ForMember(destinationMember: p => p.FirstName, memberOptions: opt => opt.MapFrom(p => p.User));
             CreateMap<Paginate<Instructor>, Paginate<GetInstructorListResponse>>().ReverseMap();
 
         }

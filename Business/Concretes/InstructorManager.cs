@@ -55,7 +55,7 @@ namespace Business.Concretes
         public async Task<IPaginate<GetInstructorListResponse>> GetListAsync(PageRequest pageRequest)
         {
             var data = await _instructorDal.GetListAsync(
-                include: p => p.Include(p => p.User),
+                include: p => p.Include(p => p.User),               
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
 
