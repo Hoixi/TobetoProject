@@ -18,6 +18,8 @@ public static class BusinessServiceRegistration
         services.AddScoped<ICourseService,CourseManager>();
         services.AddScoped<IUserService, UserManager>();
         services.AddScoped<IClassroomService, ClassroomManager>();
+        services.AddScoped<IImageService, ImageManager>();
+        services.AddScoped<IInstructorService, InstructorManager>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }
