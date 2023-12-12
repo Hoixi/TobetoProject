@@ -20,5 +20,6 @@ public class ClassroomController : ControllerBase
     {
         var result = await _classroomService.Add(createClassroomRequest);
         return Ok(result);
+
     }
 }
