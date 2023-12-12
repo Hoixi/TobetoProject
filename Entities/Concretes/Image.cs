@@ -1,11 +1,11 @@
 ﻿using System;
+using Core.Entities;
+
 namespace Entities.Concretes
 {
-	public class Image
+	public class Image:Entity<int>
 	{
-		public Image()
-		{
-		}
+		public string Path { get; set; }
 	}
 }
 
