@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses
+namespace Business.Dtos.Requests.RoleRequests
 {
-    public class GetCourseListResponse
+    public class UpdateRoleRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }

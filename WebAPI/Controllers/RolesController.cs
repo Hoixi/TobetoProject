@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Business.Abstracts;
-using Business.Dtos.Requests;
+using Business.Dtos.Requests.RoleRequests;
 
 namespace WebAPI.Controllers
 {

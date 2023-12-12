@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests;
-using Business.Dtos.Responses;
+using Business.Dtos.Requests.RoleRequests;
+using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;

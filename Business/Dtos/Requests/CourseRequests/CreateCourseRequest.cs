@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Requests
+namespace Business.Dtos.Requests.CourseRequests
 {
-    public class CreateCourseRequest 
+    public class CreateCourseRequest
     {
         public int Img_Id { get; set; }
         public string Name { get; set; }

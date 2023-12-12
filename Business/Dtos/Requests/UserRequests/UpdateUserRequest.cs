@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Requests
+namespace Business.Dtos.Requests.UserRequests
 {
-    public class CreateUserRequest
+    public class UpdateUserRequest
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

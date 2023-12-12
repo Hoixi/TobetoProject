@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses
+namespace Business.Dtos.Responses.UserResponses
 {
-    public class CreateUserResponse
+    public class GetListUserResponse
     {
         public int Id { get; set; }
         public int RoleId { get; set; }
