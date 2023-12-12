@@ -39,7 +39,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("GetCourseById")]
+        [HttpGet("GetUserById")]
         public async Task<IActionResult> Get(int Id)
         {
             var result = await _userService.GetUserById(Id);
