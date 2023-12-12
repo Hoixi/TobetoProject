@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
-        [HttpGet("Get")]
+        [HttpGet("GetRoleById")]
         public async Task<IActionResult> Get(int Id)
         {
             var result = await _roleService.GetRoleById(Id);
