@@ -42,6 +42,11 @@ namespace Business.Concretes
             throw new NotImplementedException();
         }
 
+        public Task<CreateUserResponse> GetUserById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<UpdateUserResponse> Update(UpdateUserRequest updateUserRequest)
         {
             throw new NotImplementedException();

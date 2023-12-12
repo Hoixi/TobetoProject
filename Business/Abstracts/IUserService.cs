@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.UserRequests;
+using Business.Dtos.Responses.RoleResponses;
 using Business.Dtos.Responses.UserResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -16,5 +17,6 @@ namespace Business.Abstracts
         Task<UpdateUserResponse> Update(UpdateUserRequest updateUserRequest);
         Task<DeleteUserResponse> Delete(DeleteUserRequest deleteUserRequest);
         Task<IPaginate<GetListUserResponse>> GetAll();
+        Task<CreateUserResponse> GetUserById(int id);
     }
 }
