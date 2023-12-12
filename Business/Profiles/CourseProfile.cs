@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Business.Dtos.Requests.CourseRequests;
+using Business.Dtos.Requests.RoleRequests;
 using Business.Dtos.Responses.CourseResponses;
+using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
 using System;
@@ -20,6 +22,9 @@ namespace Business.Profiles
 
             CreateMap<Course, GetCourseListResponse>().ReverseMap();
             CreateMap<Paginate<Course>, Paginate<GetCourseListResponse>>();
+
+            CreateMap<UpdateCourseRequest, Course>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
+            CreateMap<Course, UpdatedCourseResponse>();
 
         }
     }

@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.CourseRequests;
+using Business.Dtos.Requests.RoleRequests;
 using Business.Dtos.Responses.CourseResponses;
+using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -31,24 +34,36 @@ namespace Business.Concretes
             return createdCourseResponse;
         }
 
-        public Task<CreatedCourseResponse> Delete(Course course)
+        public async Task<Course> Delete(int Id, bool permanent)
         {
-            throw new NotImplementedException();
+            var data = await _courseDal.GetAsync(i => i.Id == Id);
+            var result = await _courseDal.DeleteAsync(data, permanent);
+            return result;
         }
 
-        public Task<IPaginate<GetCourseListResponse>> GetAll()
+        public async Task<IPaginate<GetCourseListResponse>> GetAll()
         {
-            throw new NotImplementedException();
+            var data = await _courseDal.GetListAsync();
+            var result = _mapper.Map<Paginate<GetCourseListResponse>>(data);
+            return result;
         }
 
-        public Task<CreatedCourseResponse> GetCourseById(int id)
+        public async Task<CreatedCourseResponse> GetCourseById(int id)
         {
-            throw new NotImplementedException();
+            var data = await _courseDal.GetAsync(i => i.Id == id);
+            var result = _mapper.Map<CreatedCourseResponse>(data);
+            return result;
         }
 
-        public Task<CreatedCourseResponse> Update(Course course)
+        public async Task<UpdatedCourseResponse> Update(UpdateCourseRequest updateCourseRequest)
         {
-            throw new NotImplementedException();
+            var data = await _courseDal.GetAsync(i => i.Id == updateCourseRequest.Id);
+            _mapper.Map(updateCourseRequest, data);
+            data.UpdatedDate = DateTime.Now;
+            await _courseDal.UpdateAsync(data);
+            var result = _mapper.Map<UpdatedCourseResponse>(data);
+            return result;
+
         }
     }
 }

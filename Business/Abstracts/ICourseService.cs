@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.CourseRequests;
+using Business.Dtos.Requests.RoleRequests;
 using Business.Dtos.Responses.CourseResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -13,8 +14,8 @@ namespace Business.Abstracts
     public interface ICourseService
     {
         Task<CreatedCourseResponse> Add(CreateCourseRequest createCourseRequest);
-        Task<CreatedCourseResponse> Update(Course course);
-        Task<CreatedCourseResponse> Delete(Course course);
+        Task<UpdatedCourseResponse> Update(UpdateCourseRequest updateCourseRequest);
+        Task<Course> Delete(int Id, bool permanent);
 
         Task<IPaginate<GetCourseListResponse>> GetAll();
         Task<CreatedCourseResponse> GetCourseById(int id);
