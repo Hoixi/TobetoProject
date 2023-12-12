@@ -9,10 +9,9 @@ namespace Business.Abstracts
     public interface IClassroomService
     {
         Task<CreatedClassroomResponse> Add(CreateClassroomRequest createClassroomRequest);
-        Task<CreatedClassroomResponse> Update(Classroom classRoom);
-        Task<CreatedClassroomResponse> Delete(Classroom classRoom);
-
+        Task<UpdatedClassroomResponse> Update(UpdateClassroomRequest updateClassroomRequest);
+        Task<Classroom> Delete(Classroom classroom);
         Task<IPaginate<GetClassroomListResponse>> GetAll();
-        Task<CreatedClassroomResponse> GetClassById(int id);
+        Task<CreatedClassroomResponse> GetClassroomById(int id);
     }
 }

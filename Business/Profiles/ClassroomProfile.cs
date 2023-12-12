@@ -20,8 +20,14 @@ public class ClassroomProfile : Profile
     {
         CreateMap<CreateClassroomRequest, Classroom>();
         CreateMap<Classroom, CreatedClassroomResponse>();
+
         CreateMap<Classroom, GetClassroomListResponse>().ReverseMap();
         CreateMap<Paginate<Classroom>, Paginate<GetClassroomListResponse>>();
+
+        CreateMap<UpdateClassroomRequest, Classroom>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
+        CreateMap<Classroom, UpdatedClassroomResponse>();
+
+
 
     }
 }

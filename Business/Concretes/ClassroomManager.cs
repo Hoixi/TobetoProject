@@ -29,24 +29,38 @@ public class ClassroomManager : IClassroomService
         return createClassroomResponse;
     }
 
-    public Task<CreatedClassroomResponse> Delete(Classroom classRoom)
+    public async Task<Classroom> Delete(Classroom classroom)
     {
-        throw new NotImplementedException();
+        var data = await _classroomDal.GetAsync(c => c.Id == classroom.Id);
+        var result=await _classroomDal.DeleteAsync(data,true);
+        return result;
+
     }
 
-    public Task<IPaginate<GetClassroomListResponse>> GetAll()
+    public async Task<IPaginate<GetClassroomListResponse>> GetAll()
     {
-        throw new NotImplementedException();
+        var data= await _classroomDal.GetListAsync();
+        var result = _mapper.Map<Paginate<GetClassroomListResponse>>(data);
+        return result;
     }
 
-    public Task<CreatedClassroomResponse> GetClassById(int id)
+    public async Task<CreatedClassroomResponse> GetClassroomById(int id)
     {
-        throw new NotImplementedException();
+        var data = await _classroomDal.GetAsync(c=>c.Id==id);
+        var result = _mapper.Map<CreatedClassroomResponse>(data);
+        return result;
     }
 
-    public Task<CreatedClassroomResponse> Update(Classroom classRoom)
+    public async Task<UpdatedClassroomResponse> Update(UpdateClassroomRequest updateClassroomRequest)
     {
-        throw new NotImplementedException();
+        var data=await _classroomDal.GetAsync(c=>c.Id == updateClassroomRequest.Id);
+        _mapper.Map(updateClassroomRequest, data);
+        data.UpdatedDate= DateTime.Now;
+        await _classroomDal.UpdateAsync(data);
+        var result= _mapper.Map<UpdatedClassroomResponse>(data);
+        return result;
+
+
     }
 }
 
