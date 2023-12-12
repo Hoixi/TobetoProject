@@ -18,7 +18,7 @@ public class TobetoContext : DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<User> Users { get; set; }
     public DbSet<Classroom> Classrooms { get; set; }
-
+    public DbSet<Image> Images { get; set; }
 
 
     public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
