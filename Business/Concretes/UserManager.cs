@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
+using Business.Dtos.Requests.CourseRequests;
 using Business.Dtos.Requests.UserRequests;
+using Business.Dtos.Responses.CourseResponses;
 using Business.Dtos.Responses.UserResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -32,24 +35,35 @@ namespace Business.Concretes
             return createUserResponse;
         }
 
-        public Task<DeleteUserResponse> Delete(DeleteUserRequest deleteUserRequest)
+        public async Task<User> Delete(int Id, bool permanent)
         {
-            throw new NotImplementedException();
+            var data = await _userDal.GetAsync(i => i.Id == Id);
+            var result = await _userDal.DeleteAsync(data, permanent);
+            return result;
         }
 
-        public Task<IPaginate<GetListUserResponse>> GetAll()
+        public async Task<IPaginate<GetListUserResponse>> GetAll()
         {
-            throw new NotImplementedException();
+            var data = await _userDal.GetListAsync();
+            var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
+            return result;
         }
 
-        public Task<CreateUserResponse> GetUserById(int id)
+        public async Task<CreateUserResponse> GetUserById(int id)
         {
-            throw new NotImplementedException();
+            var data = await _userDal.GetAsync(i => i.Id == id);
+            var result = _mapper.Map<CreateUserResponse>(data);
+            return result;
         }
 
-        public Task<UpdateUserResponse> Update(UpdateUserRequest updateUserRequest)
+        public async Task<UpdateUserResponse> Update(UpdateUserRequest updateUserRequest)
         {
-            throw new NotImplementedException();
+            var data = await _userDal.GetAsync(i => i.Id == updateUserRequest.Id);
+            _mapper.Map(updateUserRequest, data);
+            data.UpdatedDate = DateTime.Now;
+            await _userDal.UpdateAsync(data);
+            var result = _mapper.Map<UpdateUserResponse>(data);
+            return result;
         }
     }
 }
