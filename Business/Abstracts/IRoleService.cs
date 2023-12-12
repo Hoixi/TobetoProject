@@ -15,7 +15,6 @@ public interface IRoleService
     Task<CreatedRoleResponse> Add(CreateRoleRequest createRoleRequest);
     Task<UpdatedRoleResponse> Update(UpdateRoleRequest updateRoleRequest);
     Task<Role> Delete(int Id, bool permanent);
-
     Task<IPaginate<GetListRoleResponse>> GetAll();
     Task<CreatedRoleResponse> GetRoleById(int id);
 }
