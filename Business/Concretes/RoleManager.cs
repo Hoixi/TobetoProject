@@ -39,7 +39,7 @@ namespace Business.Concretes
             return result;
         }
 
-        public Task<CreatedRoleResponse> GetRoleById(int id)
+        public async Task<CreatedRoleResponse> GetRoleById(int id)
         {
             var data = await _roleDal.GetAsync(i => i.Id == id);
             var result = _mapper.Map<CreatedRoleResponse>(data);
