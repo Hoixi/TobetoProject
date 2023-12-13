@@ -9,7 +9,7 @@ namespace Business.Dtos.Requests.ImageRequests
     public class UpdateImageRequest
     {
         public int Id { get; set; }
-
+        public string ImageName { get; set; }
         public string Path { get; set; }
 
     }

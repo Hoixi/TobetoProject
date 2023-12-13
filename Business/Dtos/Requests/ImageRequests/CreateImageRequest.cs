@@ -8,6 +8,7 @@ namespace Business.Dtos.Requests.ImageRequests
 {
     public class CreateImageRequest
     {
+        public string ImageName { get; set; }
         public string Path { get; set; }
     }
 }
