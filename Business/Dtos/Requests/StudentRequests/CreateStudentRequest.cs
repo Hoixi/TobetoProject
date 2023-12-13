@@ -9,5 +9,5 @@ namespace Business.Dtos.Requests.StudentRequests;
 public class CreateStudentRequest
 {
     public int UserId { get; set; }
-    public int ClassId { get; set; }
+    public int ClassroomId { get; set; }
 }
