@@ -6,4 +6,5 @@ public class Classroom : Entity<int>
 {   
     public string Name { get; set; }
     public string Group { get; set; }
+    public List<Student> Student { get; set; }
 }

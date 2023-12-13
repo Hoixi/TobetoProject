@@ -10,5 +10,6 @@ namespace Entities.Concretes
         public string LastName { get; set; }
         public string EMail { get; set; }
         public List<Instructor> Instructors { get; set; }
+        public List<Student> Student { get; set; }
     }
 }
