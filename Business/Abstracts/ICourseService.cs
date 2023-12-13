@@ -16,7 +16,7 @@ namespace Business.Abstracts
         Task<CreatedCourseResponse> Add(CreateCourseRequest createCourseRequest);
         Task<UpdatedCourseResponse> Update(UpdateCourseRequest updateCourseRequest);
         Task<Course> Delete(int Id, bool permanent);
-        Task<IPaginate<GetCourseListResponse>> GetAll();
+        Task<IPaginate<GetCourseListResponse>> GetAll(PageRequest pageRequest);
         Task<CreatedCourseResponse> GetCourseById(int id);
     }
 }

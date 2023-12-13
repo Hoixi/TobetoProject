@@ -9,6 +9,7 @@ namespace Business.Dtos.Responses.CourseResponses
     public class CreatedCourseResponse
     {
         public int Id { get; set; }
+        public int ImageId { get; set; }
         public string Name { get; set; }
     }
 }

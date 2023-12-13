@@ -9,7 +9,7 @@ namespace Business.Dtos.Requests.CourseRequests
 {
     public class CreateCourseRequest
     {
-        public int Img_Id { get; set; }
+        public int ImageId { get; set; }
         public string Name { get; set; }
         public DateTime StartedDate { get; set; }
 

@@ -3,11 +3,13 @@ using Business.Abstracts;
 using Business.Dtos.Requests.CourseRequests;
 using Business.Dtos.Requests.RoleRequests;
 using Business.Dtos.Responses.CourseResponses;
+using Business.Dtos.Responses.InstructorResponse;
 using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,11 +43,21 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<IPaginate<GetCourseListResponse>> GetAll()
+        public async Task<IPaginate<GetCourseListResponse>> GetAll(PageRequest pageRequest)
         {
-            var data = await _courseDal.GetListAsync();
+            //    var data = await _courseDal.GetListAsync();
+            //    var result = _mapper.Map<Paginate<GetCourseListResponse>>(data);
+            //    return result;
+
+            var data = await _courseDal.GetListAsync(
+                include: p => p.Include(p => p.Image),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+                );
+
             var result = _mapper.Map<Paginate<GetCourseListResponse>>(data);
             return result;
+
         }
 
         public async Task<CreatedCourseResponse> GetCourseById(int id)
