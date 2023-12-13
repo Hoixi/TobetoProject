@@ -7,8 +7,9 @@ namespace Entities.Concretes
         public int ImageId { get; set; }
         public string Name { get; set; }
         public  DateTime StartedDate { get; set; }
-        public List<Instructor> Instructors { get; set; }
         public Image Image { get; set; }
+        public List<Instructor> Instructors { get; set; }
+        
         
     }
 }

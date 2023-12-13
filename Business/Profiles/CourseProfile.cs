@@ -29,7 +29,7 @@ namespace Business.Profiles
 
             CreateMap<Course, GetCourseListResponse>()
                 .ForMember(destinationMember: p => p.Path, memberOptions: opt => opt.MapFrom(p => p.Image.Path));
-            CreateMap<Paginate<Course>, Paginate<GetInstructorListResponse>>().ReverseMap();
+            CreateMap<Paginate<Course>, Paginate<GetCourseListResponse>>().ReverseMap();
 
 
 
