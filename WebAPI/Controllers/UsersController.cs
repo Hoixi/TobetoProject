@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.CourseRequests;
 using Business.Dtos.Requests.UserRequests;
+using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -33,9 +34,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery]PageRequest pageRequest)
         {
-            var result = await _userService.GetAll();
+            var result = await _userService.GetAll(pageRequest);
             return Ok(result);
         }
 

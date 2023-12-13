@@ -1,5 +1,6 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomRequests;
+using Core.DataAccess.Paging;
 using Entities.Concretes;
 using Microsoft.AspNetCore.Mvc;
 
@@ -45,9 +46,9 @@ public class ClassroomsController : ControllerBase
     }
 
     [HttpGet("getAll")]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery]PageRequest pageRequest)
     {
-        var result=await _classroomService.GetAll();
+        var result=await _classroomService.GetAll(pageRequest);
         return Ok(result);
     }
 }

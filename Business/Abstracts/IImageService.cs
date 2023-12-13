@@ -17,7 +17,7 @@ namespace Business.Abstracts
         Task<CreatedImageResponse> Add(CreateImageRequest createImageRequest);
         Task<UpdatedImageResponse> Update(UpdateImageRequest updateImageRequest);
         Task<Image> Delete(int Id, bool permanent);
-        Task<IPaginate<GetImageListResponse>> GetAll();
+        Task<IPaginate<GetImageListResponse>> GetAll(PageRequest pageRequest);
         Task<CreatedImageResponse> GetImageById(int id);
 
 

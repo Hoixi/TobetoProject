@@ -32,13 +32,13 @@ namespace WebAPI.Controllers
             authModel.Instructor = await _instructorService.GetInstructorById(Id);
             authModel.User = await _userService.GetUserById(authModel.Instructor.UserId);
             authModel.Course = await _courseService.GetCourseById(authModel.Instructor.CourseId);
-            var result = await _classroomService.GetAll();
-            List<GetClassroomListResponse> list = new List<GetClassroomListResponse>();
-            foreach (var item in result.Items)
-            {
-                list.Add(item);
-            }
-            authModel.Classroom = list;
+            //var result = await _classroomService.GetAll();
+            //List<GetClassroomListResponse> list = new List<GetClassroomListResponse>();
+            //foreach (var item in result.Items)
+            //{
+            //    list.Add(item);
+            //}
+            //authModel.Classroom = list;
             return Ok(authModel);
         }
     }

@@ -46,9 +46,12 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<IPaginate<GetListRoleResponse>> GetAll()
+        public async Task<IPaginate<GetListRoleResponse>> GetAll(PageRequest pageRequest)
         {
-            var data = await _roleDal.GetListAsync();
+            var data = await _roleDal.GetListAsync(
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+                );
             var result = _mapper.Map<Paginate<GetListRoleResponse>>(data);
             return result;
         }

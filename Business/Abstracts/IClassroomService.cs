@@ -11,7 +11,7 @@ namespace Business.Abstracts
         Task<CreatedClassroomResponse> Add(CreateClassroomRequest createClassroomRequest);
         Task<UpdatedClassroomResponse> Update(UpdateClassroomRequest updateClassroomRequest);
         Task<Classroom> Delete(Classroom classroom);
-        Task<IPaginate<GetClassroomListResponse>> GetAll();
+        Task<IPaginate<GetClassroomListResponse>> GetAll(PageRequest pageRequest);
         Task<CreatedClassroomResponse> GetClassroomById(int id);
     }
 }

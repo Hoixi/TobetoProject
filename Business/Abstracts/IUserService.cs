@@ -16,7 +16,7 @@ namespace Business.Abstracts
         Task<CreateUserResponse> Add(CreateUserRequest createUserRequest);
         Task<UpdateUserResponse> Update(UpdateUserRequest updateUserRequest);
         Task<User> Delete(int Id, bool permanent);
-        Task<IPaginate<GetListUserResponse>> GetAll();
+        Task<IPaginate<GetListUserResponse>> GetAll(PageRequest pageRequest);
         Task<CreateUserResponse> GetUserById(int id);
     }
 }

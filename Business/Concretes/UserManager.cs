@@ -42,9 +42,11 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<IPaginate<GetListUserResponse>> GetAll()
+        public async Task<IPaginate<GetListUserResponse>> GetAll(PageRequest pageRequest)
         {
-            var data = await _userDal.GetListAsync();
+            var data = await _userDal.GetListAsync(
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize);
             var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
             return result;
         }

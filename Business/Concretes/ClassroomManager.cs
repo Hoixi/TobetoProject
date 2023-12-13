@@ -32,32 +32,35 @@ public class ClassroomManager : IClassroomService
     public async Task<Classroom> Delete(Classroom classroom)
     {
         var data = await _classroomDal.GetAsync(c => c.Id == classroom.Id);
-        var result=await _classroomDal.DeleteAsync(data,true);
+        var result = await _classroomDal.DeleteAsync(data, true);
         return result;
 
     }
 
-    public async Task<IPaginate<GetClassroomListResponse>> GetAll()
+    public async Task<IPaginate<GetClassroomListResponse>> GetAll(PageRequest pageRequest)
     {
-        var data= await _classroomDal.GetListAsync();
+        var data = await _classroomDal.GetListAsync(
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize);
+
         var result = _mapper.Map<Paginate<GetClassroomListResponse>>(data);
         return result;
     }
 
     public async Task<CreatedClassroomResponse> GetClassroomById(int id)
     {
-        var data = await _classroomDal.GetAsync(c=>c.Id==id);
+        var data = await _classroomDal.GetAsync(c => c.Id == id);
         var result = _mapper.Map<CreatedClassroomResponse>(data);
         return result;
     }
 
     public async Task<UpdatedClassroomResponse> Update(UpdateClassroomRequest updateClassroomRequest)
     {
-        var data=await _classroomDal.GetAsync(c=>c.Id == updateClassroomRequest.Id);
+        var data = await _classroomDal.GetAsync(c => c.Id == updateClassroomRequest.Id);
         _mapper.Map(updateClassroomRequest, data);
-        data.UpdatedDate= DateTime.Now;
+        data.UpdatedDate = DateTime.Now;
         await _classroomDal.UpdateAsync(data);
-        var result= _mapper.Map<UpdatedClassroomResponse>(data);
+        var result = _mapper.Map<UpdatedClassroomResponse>(data);
         return result;
 
 

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Business.Abstracts;
 using Business.Dtos.Requests.RoleRequests;
+using Core.DataAccess.Paging;
 
 namespace WebAPI.Controllers
 {
@@ -31,9 +32,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] PageRequest pageRequest)
         {
-            var result = await _roleService.GetAll();
+            var result = await _roleService.GetAll(pageRequest);
             return Ok(result);
         }
 
