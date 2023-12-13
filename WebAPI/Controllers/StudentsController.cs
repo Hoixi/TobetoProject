@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("GetAll")]
-        public async Task<IActionResult> GetAll([FromBody]PageRequest pageRequest)
+        public async Task<IActionResult> GetAll([FromQuery]PageRequest pageRequest)
         {
             var result = await _studentService.GetListAsync(pageRequest);
             return Ok(result);
