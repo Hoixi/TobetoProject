@@ -20,6 +20,7 @@ public class TobetoContext : DbContext
     public DbSet<Classroom> Classrooms { get; set; }
     public DbSet<Image> Images { get; set; }
     public DbSet<Instructor> Instructors { get; set; }
+    public DbSet<Student> Students { get; set; }
 
 
     public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
