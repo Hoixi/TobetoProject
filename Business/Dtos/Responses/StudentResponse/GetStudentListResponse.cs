@@ -12,5 +12,5 @@ public class GetStudentListResponse
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string ClassName { get; set; }
-    public string ClassGroup { get; set; }
+    public string GroupName { get; set; }
 }

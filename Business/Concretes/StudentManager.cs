@@ -55,7 +55,8 @@ public class StudentManager : IStudentService
         var data = await _studentDal.GetListAsync(
                 include: p => p
                 .Include(p => p.Classroom)
-                .Include(p => p.User),
+                .Include(p => p.User)
+                .Include(p => p.Classroom.Group),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                 );

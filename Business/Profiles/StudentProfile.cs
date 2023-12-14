@@ -26,7 +26,7 @@ public class StudentProfile : Profile
         CreateMap<Student, GetStudentListResponse>()
             .ForMember(destinationMember: p => p.FirstName, memberOptions: opt => opt.MapFrom(p => p.User.FirstName))
             .ForMember(destinationMember: p => p.LastName, memberOptions: opt => opt.MapFrom(p => p.User.LastName))
-            .ForMember(destinationMember: p => p.ClassGroup, memberOptions: opt => opt.MapFrom(p => p.Classroom.Group))
+            .ForMember(destinationMember: p => p.GroupName, memberOptions: opt => opt.MapFrom(p => p.Classroom.Group.GroupName))
             .ForMember(destinationMember: p => p.ClassName, memberOptions: opt => opt.MapFrom(p => p.Classroom.Name));
         CreateMap<Paginate<Student>, Paginate<GetStudentListResponse>>().ReverseMap();
     }

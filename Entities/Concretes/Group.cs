@@ -10,5 +10,7 @@ namespace Entities.Concretes
     public class Group : Entity<int>
     {
         public string GroupName { get; set; }
+
+        public List<Classroom> Classroom { get; set; }
     }
 }
