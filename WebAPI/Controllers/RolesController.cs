@@ -46,7 +46,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Update")]
-        public async Task<IActionResult> Update([FromBody]UpdateRoleRequest updateRoleRequest)
+        public async Task<IActionResult> Update([FromQuery] UpdateRoleRequest updateRoleRequest)
         {
             var result = await _roleService.Update(updateRoleRequest);
             return Ok(result);

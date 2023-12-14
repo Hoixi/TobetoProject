@@ -47,7 +47,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Update")]
-        public async Task<IActionResult> Update([FromBody] UpdateImageRequest updateImageRequest)
+        public async Task<IActionResult> Update([FromQuery] UpdateImageRequest updateImageRequest)
         {
             var result = await _imageService.Update(updateImageRequest);
             return Ok(result);

@@ -21,6 +21,7 @@ public static class BusinessServiceRegistration
         services.AddScoped<IImageService, ImageManager>();
         services.AddScoped<IInstructorService, InstructorManager>();
         services.AddScoped<IStudentService, StudentManager>();
+        services.AddScoped<IGroupService, GroupManager>();
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }

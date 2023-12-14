@@ -32,7 +32,7 @@ public class ClassroomsController : ControllerBase
     }
 
     [HttpPost("update")]
-    public async Task<IActionResult> Update([FromBody] UpdateClassroomRequest updateClassroomRequest)
+    public async Task<IActionResult> Update([FromQuery] UpdateClassroomRequest updateClassroomRequest)
     {
         var result= await _classroomService.Update(updateClassroomRequest);
         return Ok(result);

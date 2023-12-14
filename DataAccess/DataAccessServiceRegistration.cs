@@ -24,6 +24,7 @@ public static class DataAccessServiceRegistration
         services.AddScoped<IImageDal, EfImageDal>();
         services.AddScoped<IInstructorDal, EfInstructorDal>();
         services.AddScoped<IStudentDal, EfStudentDal>();
+        services.AddScoped<IGroupDal, EfGroupDal>();
         return services;
     }
 }

@@ -45,7 +45,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Update")]
-        public async Task<IActionResult> Update([FromBody] UpdateStudentRequest updateStudentRequest)
+        public async Task<IActionResult> Update([FromQuery] UpdateStudentRequest updateStudentRequest)
         {
             var result = await _studentService.Update(updateStudentRequest);
             return Ok(result);
