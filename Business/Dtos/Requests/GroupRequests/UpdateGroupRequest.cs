@@ -9,6 +9,6 @@ namespace Business.Dtos.Requests.GroupRequests
     public class UpdateGroupRequest
     {
         public int Id { get; set; }
-        public string GroupName { get; set; }
+        public string Name { get; set; }
     }
 }

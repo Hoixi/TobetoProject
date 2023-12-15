@@ -9,7 +9,7 @@ namespace Business.Dtos.Responses.ImageResponse
     public class UpdatedImageResponse
     {
         public int Id { get; set; }
-        public string ImageName { get; set; }
+        public string Name { get; set; }
         public string Path { get; set; }
         public DateTime UpdatedDate { get; set; }
 

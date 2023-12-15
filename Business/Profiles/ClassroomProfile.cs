@@ -22,7 +22,7 @@ public class ClassroomProfile : Profile
         CreateMap<Classroom, CreatedClassroomResponse>();
 
         CreateMap<Classroom, GetClassroomListResponse>()
-            .ForMember(destinationMember: p => p.GroupName, memberOptions: opt => opt.MapFrom(p => p.Group.GroupName));
+            .ForMember(destinationMember: p => p.GroupName, memberOptions: opt => opt.MapFrom(p => p.Group.Name));
         CreateMap<Paginate<Classroom>, Paginate<GetClassroomListResponse>>(); 
 
         CreateMap<UpdateClassroomRequest, Classroom>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());

@@ -8,6 +8,6 @@ namespace Business.Dtos.Requests.GroupRequests
 {
     public class CreateGroupRequest
     {
-        public string GroupName { get; set; }
+        public string Name { get; set; }
     }
 }
