@@ -22,6 +22,7 @@ public class TobetoContext : DbContext
     public DbSet<Instructor> Instructors { get; set; }
     public DbSet<Student> Students { get; set; }
     public DbSet<Group> Groups { get; set; }
+    public DbSet<ClassroomStudent> ClassroomStudents { get; set; }
 
 
     public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
