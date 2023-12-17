@@ -40,8 +40,9 @@ public class TobetoContext : DbContext
     public DbSet<UserLanguage> UserLanguages { get; set; }
     public DbSet<UserSkill> UserSkills { get; set; }
     public DbSet<UserSocialMedia> UserSocialMedias { get; set; }
-    
-    
+    public DbSet<İmage> İmages { get; set; }
+
+
 
 
     public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
