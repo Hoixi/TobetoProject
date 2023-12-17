@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Entities.Concretes
 {
-    public class İmage:Entity<int>
+    public class EducationDegree:Entity<int>
     {
         public string Name { get; set; }
-        public string Path { get; set; }
     }
 }

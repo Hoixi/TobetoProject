@@ -25,7 +25,7 @@ public class TobetoContext : DbContext
     public DbSet<Country> Countries { get; set; }
     public DbSet<Course> Courses { get; set; }
     public DbSet<Education> Educations { get; set; }
-    public DbSet<EducationsDegree> EducationsDegree { get; set; }
+    public DbSet<EducationDegree> EducationsDegree { get; set; }
     public DbSet<Experience> Experiences { get; set; }
     public DbSet<Group> Groups { get; set; }
     public DbSet<Instructor> Instructors { get; set; }
@@ -40,7 +40,7 @@ public class TobetoContext : DbContext
     public DbSet<UserLanguage> UserLanguages { get; set; }
     public DbSet<UserSkill> UserSkills { get; set; }
     public DbSet<UserSocialMedia> UserSocialMedias { get; set; }
-    public DbSet<İmage> İmages { get; set; }
+    public DbSet<Image> Images { get; set; }
 
 
 
