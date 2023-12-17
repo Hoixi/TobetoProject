@@ -14,16 +14,29 @@ public class TobetoContext : DbContext
 {
     protected IConfiguration Configuration { get; set; }
 
-    public DbSet<Course> Courses { get; set; }
-    //public DbSet<Role> Roles { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Classroom> Classrooms { get; set; }
-    public DbSet<Image> Images { get; set; }
-    public DbSet<Instructor> Instructors { get; set; }
-    public DbSet<Student> Students { get; set; }
-    public DbSet<Group> Groups { get; set; }
+    public DbSet<Address> Addresses{ get; set; }
+    public DbSet<Certificate> Certificates{ get; set; }
+    public DbSet<City> Cities{ get; set; }
+    public DbSet<Classroom> Classrooms{ get; set; }
+    public DbSet<ClassroomGroup> ClassroomGroups{ get; set; }
+    public DbSet<ClassroomGroupCourse> ClassroomGroupCourses{ get; set; }
+    public DbSet<ClassroomInstructor> ClassroomInstructors { get; set; }
     public DbSet<ClassroomStudent> ClassroomStudents { get; set; }
-    public DbSet<ClassroomGroupCourse> ClassroomGroupCourses { get; set; }
+    public DbSet<Course> Courses { get; set; }
+    public DbSet<Education> Educations { get; set; }
+    public DbSet<EducationsDegree> EducationsDegree { get; set; }
+    public DbSet<Experience> Experiences { get; set; }
+    public DbSet<Group> Groups { get; set; }
+    public DbSet<Instructor> Instructors { get; set; }
+    public DbSet<Language> Languages { get; set; }
+    public DbSet<LanguageLevel> LanguageLevels { get; set; }
+    public DbSet<Skill> Skills { get; set; }
+    public DbSet<SocialMedia> SocialMedias { get; set; }
+    public DbSet<Student> Students { get; set; }
+    public DbSet<User> Users { get; set; }
+    public DbSet<UserCertificate> UserCertificates { get; set; }
+    
+    
 
 
     public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
