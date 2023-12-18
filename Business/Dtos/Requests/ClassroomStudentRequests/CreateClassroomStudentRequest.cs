@@ -8,5 +8,7 @@ namespace Business.Dtos.Requests.ClassroomStudentRequests
 {
     public class CreateClassroomStudentRequest
     {
+        public int ClassroomGroupId { get; set; }
+        public int StudentId { get; set; }
     }
 }

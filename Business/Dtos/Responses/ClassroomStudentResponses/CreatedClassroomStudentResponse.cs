@@ -8,5 +8,8 @@ namespace Business.Dtos.Responses.ClassroomStudentResponses
 {
     public class CreatedClassroomStudentResponse
     {
+        public int Id { get; set; }
+        public int ClassroomGroupId { get; set; }
+        public int StudentId { get; set; }
     }
 }

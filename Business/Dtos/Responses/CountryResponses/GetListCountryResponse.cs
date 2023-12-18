@@ -8,5 +8,7 @@ namespace Business.Dtos.Responses.CountryResponses
 {
     public class GetListCountryResponse
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

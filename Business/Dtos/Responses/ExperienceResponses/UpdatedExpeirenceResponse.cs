@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses.EducationResponses
+namespace Business.Dtos.Responses.ExperienceResponses
 {
-    public class UpdatedEducationResponse
+    public class UpdatedExpeirenceResponse
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public int EducationDegreeId { get; set; }
-        public string SchoolName { get; set; }
-        public string Department { get; set; }
+        public int CityId { get; set; }
+        public string CompanyName { get; set; }
+        public string Position { get; set; }
+        public string Sector { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public DateTime UpdateDate { get; set; }

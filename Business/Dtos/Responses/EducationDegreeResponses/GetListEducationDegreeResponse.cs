@@ -8,5 +8,7 @@ namespace Business.Dtos.Responses.EducationDegreeResponses
 {
     public class GetListEducationDegreeResponse
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

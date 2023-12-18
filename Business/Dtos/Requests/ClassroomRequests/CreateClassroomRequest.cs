@@ -8,5 +8,6 @@ namespace Business.Dtos.Requests.ClassroomRequests
 {
     public class CreateClassroomRequest
     {
+        public string Name { get; set; }
     }
 }

@@ -8,7 +8,8 @@ namespace Business.Dtos.Responses.ClassroomResponses
 {
     public class UpdatedClassroomResponse
     {
-
-
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

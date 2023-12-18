@@ -8,5 +8,8 @@ namespace Business.Dtos.Requests.CourseRequests
 {
     public class UpdateCourseRequest
     {
+        public int Id { get; set; }
+        public string ImageId { get; set; }
+        public string Name { get; set; }
     }
 }

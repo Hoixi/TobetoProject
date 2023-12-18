@@ -8,5 +8,9 @@ namespace Business.Dtos.Responses.CertificateResponses
 {
     public class CreatedCertificateResponse
     {
+        public int Id { get; set; }
+        public int UserId { get; set; }
+        public string Path { get; set; }
+        public string FileName { get; set; }
     }
 }

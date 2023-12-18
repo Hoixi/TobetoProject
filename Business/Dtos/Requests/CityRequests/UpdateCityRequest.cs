@@ -8,5 +8,7 @@ namespace Business.Dtos.Requests.CityRequests
 {
     public class UpdateCityRequest
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

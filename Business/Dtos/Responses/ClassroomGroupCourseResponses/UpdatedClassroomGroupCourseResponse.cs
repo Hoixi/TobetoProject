@@ -8,5 +8,9 @@ namespace Business.Dtos.Responses.ClassroomGroupCourseResponses
 {
     public class UpdatedClassroomGroupCourseResponse
     {
+        public int Id { get; set; }
+        public int ClassroomGroupId { get; set; }
+        public int CourseId { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

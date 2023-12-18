@@ -8,5 +8,7 @@ namespace Business.Dtos.Requests.EducationDegreeRequests
 {
     public class UpdateEducationDegreeeRequest
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }

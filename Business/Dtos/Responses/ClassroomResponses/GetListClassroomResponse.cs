@@ -8,5 +8,7 @@ namespace Business.Dtos.Responses.ClassroomResponses
 {
     public class GetListClassroomResponse
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
