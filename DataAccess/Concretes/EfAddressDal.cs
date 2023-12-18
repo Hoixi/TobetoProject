@@ -5,9 +5,11 @@ using Entities.Concretes;
 
 namespace DataAccess.Concretes;
 
-public class EfStudentDal : EfRepositoryBase<Student, int, TobetoContext>, IStudentDal
+public class EfAddressDal : EfRepositoryBase<Address, int, TobetoContext>, IAddressDal
 {
-    public EfStudentDal(TobetoContext context) : base(context)
+    public EfAddressDal(TobetoContext context) : base(context)
     {
+
+
     }
 }
