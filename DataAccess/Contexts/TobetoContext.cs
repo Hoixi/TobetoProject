@@ -36,7 +36,6 @@ public class TobetoContext : DbContext
     public DbSet<Student> Students { get; set; }
     public DbSet<Town> Towns { get; set; }
     public DbSet<User> Users { get; set; }
-    public DbSet<UserCertificate> UserCertificates { get; set; }
     public DbSet<UserLanguage> UserLanguages { get; set; }
     public DbSet<UserSkill> UserSkills { get; set; }
     public DbSet<UserSocialMedia> UserSocialMedias { get; set; }
