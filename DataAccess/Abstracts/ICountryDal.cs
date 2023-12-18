@@ -3,6 +3,6 @@ using Entities.Concretes;
 
 namespace DataAccess.Abstracts;
 
-public interface IClassroomDal : IRepository<Classroom,int>,IAsyncRepository<Classroom, int>
+public interface ICountryDal : IRepository<Country, int>, IAsyncRepository<Country, int>
 {
 }
