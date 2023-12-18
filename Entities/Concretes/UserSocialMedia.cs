@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entities.Concretes
 {
-    public class UserSocialMedia:Entity<int>
+    public class UserSocialMedia : Entity<int>
     {
-        public int Id { get; set; }
+
         public int UserId { get; set; }
         public int SocialMediaId { get; set; }
         public string Url { get; set; }
