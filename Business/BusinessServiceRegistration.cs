@@ -1,6 +1,4 @@
-﻿using Business.Abstracts;
-using Business.Concretes;
-using Core.Business.Rules;
+﻿using Core.Business.Rules;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
