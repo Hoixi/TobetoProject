@@ -18,13 +18,14 @@ public static class DataAccessServiceRegistration
     {
         services.AddDbContext<TobetoContext>(options => options.UseSqlServer(configuration.GetConnectionString("Tobeto")));
         services.AddScoped<ICourseDal, EfCourseDal>();
+        services.AddScoped<IRoleDal, EfRoleDal>();
         services.AddScoped<IUserDal, EfUserDal>();
         services.AddScoped<IClassroomDal, EfClassroomDal>();
         services.AddScoped<IImageDal, EfImageDal>();
         services.AddScoped<IInstructorDal, EfInstructorDal>();
         services.AddScoped<IStudentDal, EfStudentDal>();
         services.AddScoped<IGroupDal, EfGroupDal>();
-        services.AddScoped<IClassroomGroupCourseDal, EfClassroomGroupCourse>();
+        services.AddScoped<IClassroomGroupCourseDal, EfClassroomGroupCourseDal>();
 
         return services;
     }
