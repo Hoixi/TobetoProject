@@ -2,20 +2,14 @@
 using DataAccess.Abstracts;
 using DataAccess.Contexts;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccess.Concretes
+namespace DataAccess.Concretes;
+
+public class EfClassroomGroupCourseDal : EfRepositoryBase<ClassroomGroupCourse, int, TobetoContext>, IClassroomGroupCourseDal
 {
-    public class EfClassroomGroupCourseDal : EfRepositoryBase<ClassroomGroupCourse, int, TobetoContext>, IClassroomGroupCourseDal
+    public EfClassroomGroupCourseDal(TobetoContext context) : base(context)
     {
-        public EfClassroomGroupCourseDal(TobetoContext context) : base(context)
-        {
 
 
-        }
     }
 }
