@@ -6,6 +6,7 @@ namespace DataAccess.Abstracts
 {
     public interface IImageDal : IRepository<Image, int>, IAsyncRepository<Image, int>
     {
+
 	}
 }
 

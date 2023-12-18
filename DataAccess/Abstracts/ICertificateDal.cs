@@ -5,4 +5,5 @@ namespace DataAccess.Abstracts;
 
 public interface ICertificateDal : IRepository<Certificate, int>, IAsyncRepository<Certificate, int>
 {
+
 }

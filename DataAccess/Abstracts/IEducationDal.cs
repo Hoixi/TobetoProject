@@ -5,4 +5,5 @@ namespace DataAccess.Abstracts;
 
 public interface IEducationDal : IRepository<Education, int>, IAsyncRepository<Education, int>
 {
+
 }

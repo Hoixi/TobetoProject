@@ -5,4 +5,5 @@ namespace DataAccess.Abstracts;
 
 public interface ICountryDal : IRepository<Country, int>, IAsyncRepository<Country, int>
 {
+
 }

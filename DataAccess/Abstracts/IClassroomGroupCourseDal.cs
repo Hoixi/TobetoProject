@@ -5,4 +5,5 @@ namespace DataAccess.Abstracts;
 
 public interface IClassroomGroupCourseDal:IRepository<ClassroomGroupCourse, int>, IAsyncRepository<ClassroomGroupCourse, int>
 {
+
 }

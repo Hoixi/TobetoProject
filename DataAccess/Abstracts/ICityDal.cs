@@ -5,4 +5,5 @@ namespace DataAccess.Abstracts;
 
 public interface ICityDal : IRepository<City, int>, IAsyncRepository<City, int>
 {
+
 }

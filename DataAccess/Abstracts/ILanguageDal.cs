@@ -10,5 +10,6 @@ namespace DataAccess.Abstracts
 {
     public interface ILanguageDal : IRepository<Language, int>, IAsyncRepository<Language, int>
     {
+
     }
 }

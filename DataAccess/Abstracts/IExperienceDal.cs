@@ -5,4 +5,5 @@ namespace DataAccess.Abstracts;
 
 public interface IExperienceDal : IRepository<Experience, int>, IAsyncRepository<Experience, int>
 {
+
 }
