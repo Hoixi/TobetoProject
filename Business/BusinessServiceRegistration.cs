@@ -16,13 +16,7 @@ public static class BusinessServiceRegistration
     public static IServiceCollection AddBusinessServices(this IServiceCollection services)
     {
         //services.AddScoped<IRoleService,RoleManager>();
-        services.AddScoped<ICourseService,CourseManager>();
-        services.AddScoped<IUserService, UserManager>();
-        services.AddScoped<IClassroomService, ClassroomManager>();
-        services.AddScoped<IImageService, ImageManager>();
-        services.AddScoped<IInstructorService, InstructorManager>();
-        services.AddScoped<IStudentService, StudentManager>();
-        services.AddScoped<IGroupService, GroupManager>();
+
         //services.AddScoped<IClassroomGroupCourseService, ClasroomGroupCourseManager>();
 
 
