@@ -11,5 +11,6 @@ namespace Entities.Concretes
     {
         public int UserId { get; set; }
         public int SocialMediaId { get; set; }
+        public string Url { get; set; }
     }
 }
