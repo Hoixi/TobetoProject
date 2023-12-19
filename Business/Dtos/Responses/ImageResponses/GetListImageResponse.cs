@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses.CategoryResponses
+namespace Business.Dtos.Responses.ImageResponses
 {
-    public class UpdatedCategoryResponses
+    public class GetListImageResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateTime UpdateDate { get; set; }
+        public string Path { get; set; }
     }
 }

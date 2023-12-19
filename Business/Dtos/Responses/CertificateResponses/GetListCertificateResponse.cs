@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Responses.CertificateResponses
 {
-    public class GetListCerficateResponse
+    public class GetListCertificateResponse
     {
         public int Id { get; set; }
         public int UserId { get; set; }

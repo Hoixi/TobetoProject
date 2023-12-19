@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses.CourseSubTypeResponses
+namespace Business.Dtos.Responses.CategoryResponses
 {
-    public class CreatedSubTypeResponse
+    public class UpdatedCategoryResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }
+        public DateTime UpdateDate { get; set; }
     }
 }

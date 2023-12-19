@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses.ImageResponses
+namespace Business.Dtos.Responses.CourseSubTypeResponses
 {
-    public class GetLİstImageResponse
+    public class GetListCourseSubTypeResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Path { get; set; }
     }
 }

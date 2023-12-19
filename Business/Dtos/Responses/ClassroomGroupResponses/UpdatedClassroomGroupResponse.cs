@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Responses.ClassroomGroupResponses
 {
-    public class UpdateClassroomGroupResponse
+    public class UpdatedClassroomGroupResponse
     {
         public int Id { get; set; }
         public int ClassroomId { get; set; }

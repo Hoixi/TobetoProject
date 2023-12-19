@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Responses.ExperienceResponses
 {
-    public class GetListExpeirenceResponse
+    public class CreatedExperienceResponse
     {
         public int Id { get; set; }
         public int UserId { get; set; }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Requests.EducationDegreeRequests
 {
-    public class UpdateEducationDegreeeRequest
+    public class UpdateEducationDegreeRequest
     {
         public int Id { get; set; }
         public string Name { get; set; }
