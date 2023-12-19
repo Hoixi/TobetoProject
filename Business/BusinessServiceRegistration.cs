@@ -1,11 +1,10 @@
-﻿using Core.Business.Rules;
+﻿using Business.Abstracts;
+using Business.Concretes;
+using Core.Business.Rules;
+using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business;
 
@@ -13,9 +12,44 @@ public static class BusinessServiceRegistration
 {
     public static IServiceCollection AddBusinessServices(this IServiceCollection services)
     {
-        //services.AddScoped<IRoleService,RoleManager>();
-
-        //services.AddScoped<IClassroomGroupCourseService, ClasroomGroupCourseManager>();
+        services.AddScoped<IAddressService, AddressManager>();
+        services.AddScoped<IAnnouncementService, AnnouncementManager>();
+        services.AddScoped<ICategoryService, CategoryManager>();
+        services.AddScoped<ICertificateService, CertificateManager>();
+        services.AddScoped<ICityService, CityManager>();
+        services.AddScoped<IClassroomService, ClassroomManager>();
+        services.AddScoped<IClassroomGroupCourseService, ClassroomGroupCourseManager>();
+        services.AddScoped<IClassroomGroupService, ClassroomGroupManager>();
+        services.AddScoped<IClassroomInstructorService, ClassroomInstructorManager>();
+        services.AddScoped<IClassroomStudentService, ClassroomStudentManager>();
+        services.AddScoped<ICompanyService, CompanyManager>();
+        services.AddScoped<ICountryService, CountryManager>();
+        services.AddScoped<ICourseCategoryService, CourseCategoryManager>();
+        services.AddScoped<ICourseCompanyService, CourseCompanyManager>();
+        services.AddScoped<ICourseService, CourseManager>();
+        services.AddScoped<ICourseSubTypeService, CourseSubTypeManager>();
+        services.AddScoped<IEducationService, EducationManager>();
+        services.AddScoped<IEducationDegreeService, EducationDegreeManager>();
+        services.AddScoped<IExperienceService, ExperienceManager>();
+        services.AddScoped<IGroupService, GroupManager>();
+        services.AddScoped<IImageService, ImageManager>();
+        services.AddScoped<IInstructorService, InstructorManager>();
+        services.AddScoped<ILanguageService, LanguageManager>();
+        services.AddScoped<ILanguageLevelService, LanguageLevelManager>();
+        services.AddScoped<IProgrammingLanguageService, ProgrammingLanguageManager>();
+        services.AddScoped<ISchoolNameService, SchoolNameManager>();
+        services.AddScoped<ISkillService, SkillManager>();
+        services.AddScoped<ISocialMediaService, SocialMediaManager>();
+        services.AddScoped<IStudentService, StudentManager>();
+        services.AddScoped<ISurveyService, SurveyManager>();
+        services.AddScoped<ITownService, TownManager>();
+        services.AddScoped<IUserAnnouncementService, UserAnnouncementManager>();
+        services.AddScoped<IUserCertificateService, UserCertificateManager>();
+        services.AddScoped<IUserService, UserManager>();
+        services.AddScoped<IUserLanguageService, UserLanguageManager>();
+        services.AddScoped<IUserSkillService, UserSkillManager>();
+        services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
+        services.AddScoped<IUserSurveyService, UserSurveyManager>();
 
 
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
