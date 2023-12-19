@@ -22,7 +22,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        public async Task<CreatedSchoolNameResponse> Add(CreateSchoolNameRequest createSchoolNameRequest)
+        public async Task<CreatedSchoolNameResponse> AddAsync(CreateSchoolNameRequest createSchoolNameRequest)
         {
             SchoolName schoolName = _mapper.Map<SchoolName>(createSchoolNameRequest);
             SchoolName createdSchoolName = await _schoolNameDal.AddAsync(schoolName);
@@ -31,14 +31,14 @@ namespace Business.Concretes
 
         }
 
-        public async Task<SchoolName> Delete(int id)
+        public async Task<SchoolName> DeleteAsync(int id)
         {
             var data = await _schoolNameDal.GetAsync(i => i.Id == id);
             var result = await _schoolNameDal.DeleteAsync(data);
             return result;
         }
 
-        public async Task<IPaginate<GetListSchoolNameResponse>> GetAll(PageRequest pageRequest)
+        public async Task<IPaginate<GetListSchoolNameResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _schoolNameDal.GetListAsync(
                 index: pageRequest.PageIndex,
@@ -48,7 +48,7 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<UpdatedSchoolNameResponse> Update(UpdateSchoolNameRequest updateSchoolNameRequest)
+        public async Task<UpdatedSchoolNameResponse> UpdateAsync(UpdateSchoolNameRequest updateSchoolNameRequest)
         {
             var data = await _schoolNameDal.GetAsync(i => i.Id == updateSchoolNameRequest.Id);
             _mapper.Map(updateSchoolNameRequest, data);

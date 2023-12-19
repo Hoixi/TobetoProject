@@ -27,7 +27,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        public async Task<CreatedSkillResponse> Add(CreateSkillRequest createSkillRequest)
+        public async Task<CreatedSkillResponse> AddAsync(CreateSkillRequest createSkillRequest)
         {
             Skill skill = _mapper.Map<Skill>(createSkillRequest);
             Skill createdSkill= await _skillDal.AddAsync(skill);
@@ -35,14 +35,14 @@ namespace Business.Concretes
             return createdSkillResponse;
         }
 
-        public async Task<Skill> Delete(int id)
+        public async Task<Skill> DeleteAsync(int id)
         {
             var data = await _skillDal.GetAsync(i => i.Id == id);
             var result = await _skillDal.DeleteAsync(data);
             return result;
         }
 
-        public async Task<IPaginate<GetListSkillResponse>> GetAll(PageRequest pageRequest)
+        public async Task<IPaginate<GetListSkillResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _skillDal.GetListAsync(
                 index: pageRequest.PageIndex,
@@ -52,7 +52,7 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<UpdatedSkillResponse> Update(UpdateSkillRequest updateSkillRequest)
+        public async Task<UpdatedSkillResponse> UpdateAsync(UpdateSkillRequest updateSkillRequest)
         {
             var data = await _skillDal.GetAsync(i => i.Id == updateSkillRequest.Id);
             _mapper.Map(updateSkillRequest, data);
