@@ -12,10 +12,10 @@ namespace Business.Abstracts
 {
     public interface IUserSurveyService
     {
-        Task<CreatedUserSurveyResponse> Add(CreateUserSurveyRequest createUserSurveyRequest);
-        Task<UpdatedUserSurveyResponse> Update(UpdateUserSurveyRequest updateUserSurveyRequest);
-        Task<UserSurvey> Delete(int id);
-        Task<IPaginate<GetListUserSurveyResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedUserSurveyResponse> AddAsync(CreateUserSurveyRequest createUserSurveyRequest);
+        Task<UpdatedUserSurveyResponse> UpdateAsync(UpdateUserSurveyRequest updateUserSurveyRequest);
+        Task<UserSurvey> DeleteAsync(int id);
+        Task<IPaginate<GetListUserSurveyResponse>> GetAllAsync(PageRequest pageRequest);
 
     }
 }

@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface IUserSkillService
     {
-        Task<CreatedUserSkillResponse> Add(CreateUserSkillRequest createUserSkillRequest);
-        Task<UpdatedUserSkillResponse> Update(UpdateUserSkillRequest updateUserSkillRequest);
-        Task<UserSkill> Delete(int id);
-        Task<IPaginate<GetListUserSkillResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedUserSkillResponse> AddAsync(CreateUserSkillRequest createUserSkillRequest);
+        Task<UpdatedUserSkillResponse> UpdateAsync(UpdateUserSkillRequest updateUserSkillRequest);
+        Task<UserSkill> DeleteAsync(int id);
+        Task<IPaginate<GetListUserSkillResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

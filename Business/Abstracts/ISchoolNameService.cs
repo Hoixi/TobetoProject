@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface ISchoolNameService
     {
-        Task<CreatedSchoolNameResponse> Add(CreateSchoolNameRequest createSchoolNameRequest);
-        Task<UpdatedSchoolNameResponse> Update(UpdateSchoolNameRequest updateSchoolNameRequest);
-        Task<SchoolName> Delete(int id);
-        Task<IPaginate<GetListSchoolNameResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedSchoolNameResponse> AddAsync(CreateSchoolNameRequest createSchoolNameRequest);
+        Task<UpdatedSchoolNameResponse> UpdateAsync(UpdateSchoolNameRequest updateSchoolNameRequest);
+        Task<SchoolName> DeleteAsync(int id);
+        Task<IPaginate<GetListSchoolNameResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

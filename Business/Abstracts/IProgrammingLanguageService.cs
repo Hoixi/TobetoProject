@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface IProgrammingLanguageService
     {
-        Task<CreatedProgrammingLanguageResponse> Add(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
-        Task<UpdatedProgrammingLanguageResponse> Update(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
-        Task<ProgrammingLanguage> Delete(int id);
-        Task<IPaginate<GetListProgrammingLanguageResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedProgrammingLanguageResponse> AddAsync(CreateProgrammingLanguageRequest createProgrammingLanguageRequest);
+        Task<UpdatedProgrammingLanguageResponse> UpdateAsync(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
+        Task<ProgrammingLanguage> DeleteAsync(int id);
+        Task<IPaginate<GetListProgrammingLanguageResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

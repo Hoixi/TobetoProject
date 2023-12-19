@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface IUserService
     {
-        Task<CreatedUserResponse> Add(CreateUserRequest createUserRequest);
-        Task<UpdatedUserResponse> Update(UpdateUserRequest updateUserRequest);
-        Task<User> Delete(int id);
-        Task<IPaginate<GetListUserResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest);
+        Task<UpdatedUserResponse> UpdateAsync(UpdateUserRequest updateUserRequest);
+        Task<User> DeleteAsync(int id);
+        Task<IPaginate<GetListUserResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

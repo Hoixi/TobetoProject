@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface IUserAnnouncementService
     {
-        Task<CreatedUserAnnouncementResponse> Add(CreateUserAnnouncementRequest createUserAnnouncementRequest);
-        Task<UpdatedUserAnnouncementResponse> Update(UpdateUserAnnouncementRequest updateUserAnnouncementRequest);
-        Task<UserAnnouncement> Delete(int id);
-        Task<IPaginate<GetListUserAnnouncementResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedUserAnnouncementResponse> AddAsync(CreateUserAnnouncementRequest createUserAnnouncementRequest);
+        Task<UpdatedUserAnnouncementResponse> UpdateAsync(UpdateUserAnnouncementRequest updateUserAnnouncementRequest);
+        Task<UserAnnouncement> DeleteAsync(int id);
+        Task<IPaginate<GetListUserAnnouncementResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface ITownService
     {
-        Task<CreatedTownResponse> Add(CreateTownRequest createTownRequest);
-        Task<UpdatedTownResponse> Update(UpdateTownRequest updateTownRequest);
-        Task<Town> Delete(int id);
-        Task<IPaginate<GetListTownResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedTownResponse> AddAsync(CreateTownRequest createTownRequest);
+        Task<UpdatedTownResponse> UpdateAsync(UpdateTownRequest updateTownRequest);
+        Task<Town> DeleteAsync(int id);
+        Task<IPaginate<GetListTownResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

@@ -1,9 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomRequests;
-using Business.Dtos.Requests.RoleRequests;
 using Business.Dtos.Responses.ClassroomResponses;
-using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -11,12 +9,12 @@ using Entities.Concretes;
 namespace Business.Concretes;
 
 
-public class RoleManager : IClassroomService
+public class ClassroomManager : IClassroomService
     {
         IClassroomDal _classroomDal;
         IMapper _mapper;
 
-        public RoleManager(IClassroomDal classroomDal, IMapper mapper)
+        public ClassroomManager(IClassroomDal classroomDal, IMapper mapper)
         {
             _classroomDal = classroomDal;
             _mapper = mapper;
@@ -24,45 +22,40 @@ public class RoleManager : IClassroomService
 
         public async Task<CreatedClassroomResponse> AddAsync(CreateClassroomRequest createClassroomRequest)
         {
-        Classroom classroom = _mapper.Map<Role>(createRoleRequest);
-            Role createdRole = await _roleDal.AddAsync(role);
-            CreatedRoleResponse createdRoleResponse = _mapper.Map<CreatedRoleResponse>(createdRole);
-            return createdRoleResponse;
+        Classroom classroom = _mapper.Map<Classroom>(createClassroomRequest);
+        Classroom createdClassroom = await _classroomDal.AddAsync(classroom);
+        CreatedClassroomResponse createdClassroomResponse = _mapper.Map<CreatedClassroomResponse>(createdClassroom);
+            return createdClassroomResponse;
         }
 
-        public async Task<Role> Delete(int Id, bool permanent)
+        public async Task<Classroom> DeleteAsync(int Id)
         {
-            var data = await _roleDal.GetAsync(i => i.Id == Id);
-            var result = await _roleDal.DeleteAsync(data, permanent);
+            var data = await _classroomDal.GetAsync(i => i.Id == Id);
+            var result = await _classroomDal.DeleteAsync(data);
             return result;
         }
-
-        public async Task<CreatedRoleResponse> GetRoleById(int id)
+   
+        public async Task<IPaginate<GetListClassroomResponse>> GetAllAsync(PageRequest pageRequest)
         {
-            var data = await _roleDal.GetAsync(i => i.Id == id);
-            var result = _mapper.Map<CreatedRoleResponse>(data);
-            return result;
-        }
-
-        public async Task<IPaginate<GetListRoleResponse>> GetAll(PageRequest pageRequest)
-        {
-            var data = await _roleDal.GetListAsync(
+            var data = await _classroomDal.GetListAsync(
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                 );
-            var result = _mapper.Map<Paginate<GetListRoleResponse>>(data);
+            var result = _mapper.Map<Paginate<GetListClassroomResponse>>(data);
             return result;
         }
 
-        public async Task<UpdatedRoleResponse> Update(UpdateRoleRequest updateRoleRequest)
+        public async Task<UpdatedClassroomResponse> UpdateAsync(UpdateClassroomRequest updateClassroomRequest)
         {
-            var data = await _roleDal.GetAsync(i => i.Id == updateRoleRequest.Id);
-            _mapper.Map(updateRoleRequest, data);
+            var data = await _classroomDal.GetAsync(i => i.Id == updateClassroomRequest.Id);
+            _mapper.Map(updateClassroomRequest, data);
             data.UpdatedDate = DateTime.Now;
-            await _roleDal.UpdateAsync(data);
-            var result = _mapper.Map<UpdatedRoleResponse>(data);
+            await _classroomDal.UpdateAsync(data);
+            var result = _mapper.Map<UpdatedClassroomResponse>(data);
             return result;
 
         }
-    }
+
+  
+}
 
