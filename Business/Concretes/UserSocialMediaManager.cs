@@ -27,7 +27,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        public async Task<CreatedUserSocialMediaResponse> Add(CreateUserSocialMediaRequest createUserSociaMediaRequest)
+        public async Task<CreatedUserSocialMediaResponse> AddAsync(CreateUserSocialMediaRequest createUserSociaMediaRequest)
         {
             UserSocialMedia userSocialMedia = _mapper.Map<UserSocialMedia>(createUserSociaMediaRequest);
             UserSocialMedia createdUserSocialMedia = await _userSocialMediaDal.AddAsync(userSocialMedia);
@@ -35,14 +35,14 @@ namespace Business.Concretes
             return createdUserSocialMediaResponse;
         }
 
-        public async Task<UserSocialMedia> Delete(int id)
+        public async Task<UserSocialMedia> DeleteAsync(int id)
         {
             var data = await _userSocialMediaDal.GetAsync(i => i.Id == id);
             var result = await _userSocialMediaDal.DeleteAsync(data);
             return result;
         }
 
-        public async Task<IPaginate<GetListUserSocialMediaResponse>> GetAll(PageRequest pageRequest)
+        public async Task<IPaginate<GetListUserSocialMediaResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _userSocialMediaDal.GetListAsync(
                 index: pageRequest.PageIndex,
@@ -52,7 +52,7 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<UpdatedUserSocialMediaResponse> Update(UpdateUserSocialMediaRequest updateUserSocialMediaRequest)
+        public async Task<UpdatedUserSocialMediaResponse> UpdateAsync(UpdateUserSocialMediaRequest updateUserSocialMediaRequest)
         {
             var data = await _userSocialMediaDal.GetAsync(i => i.Id == updateUserSocialMediaRequest.Id);
             _mapper.Map(updateUserSocialMediaRequest, data);

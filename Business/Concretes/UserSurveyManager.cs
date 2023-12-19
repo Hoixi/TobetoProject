@@ -27,7 +27,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        public async Task<CreatedUserSurveyResponse> Add(CreateUserSurveyRequest createUserSurveyRequest)
+        public async Task<CreatedUserSurveyResponse> AddAsync(CreateUserSurveyRequest createUserSurveyRequest)
         {
             UserSurvey userSurvey = _mapper.Map<UserSurvey>(createUserSurveyRequest);
             UserSurvey createdUserSurvey = await _userSurveyDal.AddAsync(userSurvey);
@@ -35,14 +35,14 @@ namespace Business.Concretes
             return createdUserSurveyResponse;
         }
 
-        public async Task<UserSurvey> Delete(int id)
+        public async Task<UserSurvey> DeleteAsync(int id)
         {
             var data = await _userSurveyDal.GetAsync(i => i.Id == id);
             var result = await _userSurveyDal.DeleteAsync(data);
             return result;
         }
 
-        public async Task<IPaginate<GetListUserSurveyResponse>> GetAll(PageRequest pageRequest)
+        public async Task<IPaginate<GetListUserSurveyResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _userSurveyDal.GetListAsync(
                 index: pageRequest.PageIndex,
@@ -52,7 +52,7 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<UpdatedUserSurveyResponse> Update(UpdateUserSurveyRequest updateUserSurveyRequest)
+        public async Task<UpdatedUserSurveyResponse> UpdateAsync(UpdateUserSurveyRequest updateUserSurveyRequest)
         {
             var data = await _userSurveyDal.GetAsync(i => i.Id == updateUserSurveyRequest.Id);
             _mapper.Map(updateUserSurveyRequest, data);
