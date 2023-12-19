@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Responses.UserResponses
 {
-    public class GetLİstUserResponse
+    public class GetListUserResponse
     {
         public int Id { get; set; }
         public string NationalIdentity { get; set; }
