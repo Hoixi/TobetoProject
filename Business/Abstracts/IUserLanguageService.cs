@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     internal interface IUserLanguageService
     {
-        Task<CreatedUserLanguageResponse> Add(CreateUserLanguageRequest createUserLanguageRequest);
-        Task<UpdatedUserLanguageResponse> Update(UpdateUserLanguageRequest updateUserLanguageRequest);
-        Task<UserLanguage> Delete(int id);
-        Task<IPaginate<GetListUserLanguageResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedUserLanguageResponse> AddAsync(CreateUserLanguageRequest createUserLanguageRequest);
+        Task<UpdatedUserLanguageResponse> UpdateAsync(UpdateUserLanguageRequest updateUserLanguageRequest);
+        Task<UserLanguage> DeleteAsync(int id);
+        Task<IPaginate<GetListUserLanguageResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

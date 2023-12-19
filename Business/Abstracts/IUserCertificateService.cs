@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface IUserCertificateService
     {
-        Task<CreatedUserCertificateResponse> Add(CreateUserCertificateRequest createUserCertificateRequest);
-        Task<UpdatedUserCertificateResponse> Update(UpdateUserCertificateRequest updateUserCertificateRequest);
-        Task<UserCertificate> Delete(int id);
-        Task<IPaginate<GetListUserCertificateResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedUserCertificateResponse> AddAsync(CreateUserCertificateRequest createUserCertificateRequest);
+        Task<UpdatedUserCertificateResponse> UpdateAsync(UpdateUserCertificateRequest updateUserCertificateRequest);
+        Task<UserCertificate> DeleteAsync(int id);
+        Task<IPaginate<GetListUserCertificateResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

@@ -9,24 +9,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Profiles
-{
-    public class RoleProfile:Profile
-    {
-        public RoleProfile() 
+//namespace Business.Profiles
+//{
+//    public class RoleProfile:Profile
+//    {
+//        public RoleProfile() 
         
-        {
-            CreateMap<CreateRoleRequest, Role>();        
-            CreateMap<Role, CreatedRoleResponse>();
+//        {
+//            CreateMap<CreateRoleRequest, Role>();        
+//            CreateMap<Role, CreatedRoleResponse>();
 
 
-            CreateMap<Role, GetListRoleResponse>().ReverseMap();
-            CreateMap<Paginate<Role>, Paginate<GetListRoleResponse>>();
+//            CreateMap<Role, GetListRoleResponse>().ReverseMap();
+//            CreateMap<Paginate<Role>, Paginate<GetListRoleResponse>>();
 
-            CreateMap<UpdateRoleRequest,Role >().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
-            CreateMap<Role,UpdatedRoleResponse>();
-        }
+//            CreateMap<UpdateRoleRequest,Role >().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
+//            CreateMap<Role,UpdatedRoleResponse>();
+//        }
 
 
-    }
-}
+//    }
+//}

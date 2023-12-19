@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface IStudentService
     {
-        Task<CreatedStudentResponse> Add(CreateStudentRequest createStudentRequest);
-        Task<UpdatedStudentResponse> Update(UpdateStudentRequest updateStudentRequest);
-        Task<Student> Delete(int id);
-        Task<IPaginate<GetListStudentResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedStudentResponse> AddAsync(CreateStudentRequest createStudentRequest);
+        Task<UpdatedStudentResponse> UpdateAsync(UpdateStudentRequest updateStudentRequest);
+        Task<Student> DeleteAsync(int id);
+        Task<IPaginate<GetListStudentResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

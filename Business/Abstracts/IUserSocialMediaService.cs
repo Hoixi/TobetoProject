@@ -12,9 +12,9 @@ namespace Business.Abstracts
 {
     public interface IUserSocialMediaService
     {
-        Task<CreatedUserSocialMediaResponse> Add(CreateUserSocialMediaRequest createUserSociaMediaRequest);
-        Task<UpdatedUserSocialMediaResponse> Update(UpdateUserSocialMediaRequest updateUserSocialMediaRequest);
-        Task<UserSocialMedia> Delete(int id);
-        Task<IPaginate<GetListUserSocialMediaResponse>> GetAll(PageRequest pageRequest);
+        Task<CreatedUserSocialMediaResponse> AddAsync(CreateUserSocialMediaRequest createUserSociaMediaRequest);
+        Task<UpdatedUserSocialMediaResponse> UpdateAsync(UpdateUserSocialMediaRequest updateUserSocialMediaRequest);
+        Task<UserSocialMedia> DeleteAsync(int id);
+        Task<IPaginate<GetListUserSocialMediaResponse>> GetAllAsync(PageRequest pageRequest);
     }
 }

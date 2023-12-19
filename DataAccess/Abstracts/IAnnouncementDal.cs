@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Abstracts
 {
-    internal interface IAnnouncementDal:IRepository<Announcement,int>,IAsyncRepository<Announcement,int>
+    public interface IAnnouncementDal:IRepository<Announcement,int>,IAsyncRepository<Announcement,int>
     {
 
     }
