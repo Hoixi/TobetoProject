@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Responses.InstructorResponses
 {
-    public class GetLİstInstructorResponse
+    public class GetListInstructorResponse
     {
         public int Id { get; set; }
         public int UserId { get; set; }

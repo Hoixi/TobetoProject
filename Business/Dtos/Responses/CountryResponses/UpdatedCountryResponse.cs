@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses.CourseSubTypeResponses
+namespace Business.Dtos.Responses.CountryResponses
 {
-    public class UpdatedCreatedSubTypeResponse
+    public class UpdatedCountryResponse
     {
         public int Id { get; set; }
         public string Name { get; set; }
