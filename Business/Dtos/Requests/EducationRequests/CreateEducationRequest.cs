@@ -10,7 +10,7 @@ namespace Business.Dtos.Requests.EducationRequests
     {
         public int UserId { get; set; }
         public int EducationDegreeId { get; set; }
-        public string SchoolName { get; set; }
+        public int SchoolNameId { get; set; }
         public string Department { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
