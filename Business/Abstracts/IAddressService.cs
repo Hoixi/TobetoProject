@@ -7,8 +7,8 @@ namespace Business.Abstracts;
 
 public interface IAddressService
 {
-    Task<CreatedAddressResponse> AddAsync(CreateAddressRequest createCustomerRequest);
-    Task<UpdatedAddressResponse> UpdateAsync(UpdateAddressRequest updateCustomerRequest);
+    Task<CreatedAddressResponse> AddAsync(CreateAddressRequest createAddressRequest);
+    Task<UpdatedAddressResponse> UpdateAsync(UpdateAddressRequest updateAddressRequest);
     Task<Address> DeleteAsync(int id);
     Task<IPaginate<GetListAddressResponse>> GetAllAsync(PageRequest pageRequest);
 }

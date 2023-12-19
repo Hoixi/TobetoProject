@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 //        IRoleDal _roleDal;
 //        IMapper _mapper;
 
-//        public RoleManager(IRoleDal roleDal,IMapper mapper)
+//        public RoleManager(IRoleDal roleDal, IMapper mapper)
 //        {
 //            _roleDal = roleDal;
 //            _mapper = mapper;
@@ -32,10 +32,10 @@ using System.Threading.Tasks;
 //            return createdRoleResponse;
 //        }
 
-//        public async Task<Role> Delete(int Id,bool permanent)
+//        public async Task<Role> Delete(int Id, bool permanent)
 //        {
 //            var data = await _roleDal.GetAsync(i => i.Id == Id);
-//            var result = await _roleDal.DeleteAsync(data,permanent);
+//            var result = await _roleDal.DeleteAsync(data, permanent);
 //            return result;
 //        }
 
