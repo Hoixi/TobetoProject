@@ -9,13 +9,14 @@ using System.Threading.Tasks;
 
 namespace DataAccess.EntityConfigurations
 {
-    public class CategoryConfiguration : IEntityTypeConfiguration<Category>
+    public class CompanyConfiguration : IEntityTypeConfiguration<Company>
     {
-        public void Configure(EntityTypeBuilder<Category> builder)
+        public void Configure(EntityTypeBuilder<Company> builder)
         {
-            builder.ToTable("Categories").HasKey(b => b.Id);
+            builder.ToTable("Companies").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.Name).HasColumnName("Name");
+            builder.Property(b => b.Url).HasColumnName("Url");
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }
