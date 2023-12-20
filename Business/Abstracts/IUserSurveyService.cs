@@ -1,5 +1,6 @@
-﻿using Business.Dtos.Requests.UserServeyRequests;
-using Business.Dtos.Responses.UserServeyResponses;
+﻿
+using Business.Dtos.Requests.UserSurveyRequests;
+using Business.Dtos.Responses.UserSurveyResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
 using System;
