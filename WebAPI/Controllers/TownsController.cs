@@ -39,9 +39,9 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int Id)
+        public async Task<IActionResult> Delete([FromQuery] int id)
         {
-            var result = await _townService.DeleteAsync(Id);
+            var result = await _townService.DeleteAsync(id);
             return Ok(result);
         }
 
