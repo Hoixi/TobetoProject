@@ -37,9 +37,9 @@ public class ClassroomInstructorsController : ControllerBase
         return Ok(result);
     }
     [HttpDelete("Delete")]
-    public async Task<IActionResult> Delete([FromQuery] int Id)
+    public async Task<IActionResult> Delete([FromQuery] int id)
     {
-        var result = await _classroomInstructorService.DeleteAsync(Id);
+        var result = await _classroomInstructorService.DeleteAsync(id);
         return Ok(result);
     }
 }
