@@ -7,11 +7,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AddressController : ControllerBase
+    public class AddressesController : ControllerBase
     {
         IAddressService _addressService;
 
-        public AddressController(IAddressService addressService)
+        public AddressesController(IAddressService addressService)
         {
             _addressService = addressService;
         }
