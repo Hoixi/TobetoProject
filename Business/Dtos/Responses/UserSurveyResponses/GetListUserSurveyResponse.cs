@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses.UserServeyResponses
+namespace Business.Dtos.Responses.UserSurveyResponses
 {
     public class GetListUserSurveyResponse
     {

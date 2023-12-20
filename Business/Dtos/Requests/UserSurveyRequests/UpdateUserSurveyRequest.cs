@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Dtos.Responses.UserServeyResponses
+namespace Business.Dtos.Requests.UserSurveyRequests
 {
-    public class UpdatedUserSurveyResponse
+    public class UpdateUserSurveyRequest
     {
         public int Id { get; set; }
         public int StudentId { get; set; }
         public int SurveyId { get; set; }
-        public DateTime UpdateDate { get; set; }
     }
 }
