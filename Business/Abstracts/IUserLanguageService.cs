@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
-    internal interface IUserLanguageService
+    public interface IUserLanguageService
     {
         Task<CreatedUserLanguageResponse> AddAsync(CreateUserLanguageRequest createUserLanguageRequest);
         Task<UpdatedUserLanguageResponse> UpdateAsync(UpdateUserLanguageRequest updateUserLanguageRequest);
