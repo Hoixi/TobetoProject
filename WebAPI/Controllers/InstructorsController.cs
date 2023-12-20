@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class InstructorsController : Controller
     {
         IInstructorService _instructorService;

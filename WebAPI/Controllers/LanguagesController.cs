@@ -11,6 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class LanguagesController : Controller
     {
         ILanguageService _languageService;
