@@ -48,7 +48,10 @@ public class UserManager : IUserService
 
     public async Task<IPaginate<GetListUserResponse>> GetAllAsync(PageRequest pageRequest)
     {
-        var data = await _userDal.GetListAsync(include: p => p.Include(p => p.UserSocialMedias),
+        var data = await _userDal.GetListAsync(
+            include: p => p
+        .Include(p => p.UserSocialMedias)
+        .Include(p=>p.UserLanguages),
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
            );

@@ -1,4 +1,5 @@
-﻿using Business.Dtos.Responses.UserSocialMediaResponses;
+﻿using Business.Dtos.Responses.UserLanguageResponses;
+using Business.Dtos.Responses.UserSocialMediaResponses;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -19,5 +20,6 @@ namespace Business.Dtos.Responses.UserResponses
         public int ImageId { get; set; }
         public DateTime BirthDate { get; set; }
         public List<GetListUserSocialMediaResponse> UserSocialMedias { get; set; }
+        public List<GetListUserLanguageResponse> UserLanguages{ get; set; }
     }
 }
