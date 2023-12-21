@@ -18,6 +18,9 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.UserId).HasColumnName("UserId");
             builder.Property(b => b.Path).HasColumnName("Path");
             builder.Property(b => b.FileName).HasColumnName("FileName");
+
+            builder.HasOne(b => b.User).WithMany(b => b.Certificates).HasForeignKey(b => b.UserId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

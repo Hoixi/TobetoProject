@@ -14,5 +14,6 @@ namespace Entities.Concretes
         public string Password { get; set; }
         public List<UserSocialMedia> UserSocialMedias { get; set; }
         public List<UserLanguage> UserLanguages { get; set; }
+        public List<UserCertificate> UserCertificates { get; set; }
     }
 }

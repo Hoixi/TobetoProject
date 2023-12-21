@@ -11,6 +11,7 @@ namespace Entities.Concretes
     {
         public int UserId { get; set; }
         public int CertificateId { get; set; }
+        public User User { get; set; }
 
     }
 }
