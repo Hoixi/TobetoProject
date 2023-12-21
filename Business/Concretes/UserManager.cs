@@ -1,6 +1,4 @@
-﻿using System;
-using System.Text.Json;
-using AutoMapper;
+﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
 using Business.Dtos.Responses.UserResponses;
@@ -9,7 +7,6 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
 namespace Business.Concretes;
 
@@ -28,10 +25,10 @@ public class UserManager : IUserService
 
     public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
     {
-         _userBusinessRules.IdentityNoMustBeEleven(createUserRequest);
-         _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
-         _userBusinessRules.PasswordValidate(createUserRequest);
-         _userBusinessRules.PhoneNumberValidate(createUserRequest);
+        _userBusinessRules.IdentityNoMustBeEleven(createUserRequest);
+        _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
+        _userBusinessRules.PasswordValidate(createUserRequest);
+        _userBusinessRules.PhoneNumberValidate(createUserRequest);
 
         User user = _mapper.Map<User>(createUserRequest);
         User createdUser = await _userDal.AddAsync(user);
@@ -50,14 +47,16 @@ public class UserManager : IUserService
     {
         var data = await _userDal.GetListAsync(
             include: p => p
-        .Include(p=>p.Certificates)
+        .Include(p => p.UserAnnouncements)  
+        .Include(p => p.Certificates)
         .Include(p => p.UserSocialMedias)
-        .Include(p=>p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)
+        .Include(p => p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)
         .Include(p => p.UserLanguages).ThenInclude(ul => ul.Language),
-            index: pageRequest.PageIndex,
-            size: pageRequest.PageSize
-           );
-        var result = _mapper.Map<Paginate<GetListUserResponse>>(data);      
+
+           index: pageRequest.PageIndex,
+           size: pageRequest.PageSize
+           ) ;
+        var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
         return result;
     }
 

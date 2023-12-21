@@ -7,6 +7,7 @@ namespace Entities.Concretes
 	{
 		public int UserId { get; set; }
 		public string AnnouncementId { get; set; }
-	}
+        public User User { get; set; }
+    }
 }
 
