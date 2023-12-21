@@ -54,11 +54,7 @@ public class UserManager : IUserService
            );
 
         var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
-        var jsonString = JsonConvert.SerializeObject(result, new JsonSerializerSettings
-        {
-            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-            MaxDepth = 5, 
-        });
+
 
            
         return result;
