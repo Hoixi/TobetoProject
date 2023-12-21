@@ -52,11 +52,7 @@ public class UserManager : IUserService
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
            );
-
-        var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
-
-
-           
+        var result = _mapper.Map<Paginate<GetListUserResponse>>(data);      
         return result;
     }
 
