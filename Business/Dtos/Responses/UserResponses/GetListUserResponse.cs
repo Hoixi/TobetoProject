@@ -18,7 +18,6 @@ namespace Business.Dtos.Responses.UserResponses
         public string Email { get; set; }
         public int ImageId { get; set; }
         public DateTime BirthDate { get; set; }
-        public string Password { get; set; }
         public List<GetListUserSocialMediaResponse> UserSocialMedias { get; set; }
     }
 }
