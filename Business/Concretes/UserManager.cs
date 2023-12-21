@@ -51,7 +51,8 @@ public class UserManager : IUserService
         var data = await _userDal.GetListAsync(
             include: p => p
         .Include(p => p.UserSocialMedias)
-        .Include(p=>p.UserLanguages),
+        .Include(p=>p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)
+        .Include(p => p.UserLanguages).ThenInclude(ul => ul.Language),
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
            );
