@@ -3,6 +3,7 @@ using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
 using Business.Dtos.Responses.UserResponses;
+using Business.Rules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -13,15 +14,22 @@ public class UserManager : IUserService
 {
     IUserDal _userDal;
     IMapper _mapper;
+    UserBusinessRules _userBusinessRules;
 
-    public UserManager(IUserDal userDal, IMapper mapper)
+    public UserManager(IUserDal userDal, IMapper mapper, UserBusinessRules userBusinessRules)
     {
         _userDal = userDal;
         _mapper = mapper;
+        _userBusinessRules = userBusinessRules;
     }
 
     public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
     {
+         _userBusinessRules.IdentityNoMustBeEleven(createUserRequest);
+         _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
+         _userBusinessRules.PasswordValidate(createUserRequest);
+         _userBusinessRules.PhoneNumberValidate(createUserRequest);
+
         User user = _mapper.Map<User>(createUserRequest);
         User createdUser = await _userDal.AddAsync(user);
         CreatedUserResponse createdUserResponse = _mapper.Map<CreatedUserResponse>(createdUser);
