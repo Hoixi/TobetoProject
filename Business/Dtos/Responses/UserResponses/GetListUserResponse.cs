@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Business.Dtos.Responses.UserSocialMediaResponses;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,6 @@ namespace Business.Dtos.Responses.UserResponses
         public int ImageId { get; set; }
         public DateTime BirthDate { get; set; }
         public string Password { get; set; }
-        public List<UserSocialMedia> UserSocialMedias { get; set; }
+        public List<GetListUserSocialMediaResponse> UserSocialMedias { get; set; }
     }
 }

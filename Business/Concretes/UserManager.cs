@@ -9,6 +9,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace Business.Concretes;
 
@@ -52,9 +53,14 @@ public class UserManager : IUserService
             size: pageRequest.PageSize
            );
 
-        var x = JsonSerializer.Serialize(data);
-        var result = _mapper.Map<Paginate<GetListUserResponse>>(x);
-        
+        var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
+        var jsonString = JsonConvert.SerializeObject(result, new JsonSerializerSettings
+        {
+            PreserveReferencesHandling = PreserveReferencesHandling.Objects,
+            MaxDepth = 5, 
+        });
+
+           
         return result;
     }
 

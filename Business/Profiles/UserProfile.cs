@@ -20,21 +20,12 @@ namespace Business.Profiles
             CreateMap<CreateUserRequest, User>();
             CreateMap<User, CreatedUserResponse>();
 
-
-
-
+            CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
             CreateMap<User, GetListUserResponse>()
-    .ForMember(dest => dest.UserSocialMedias, opt => opt.MapFrom(src => src.UserSocialMedias))
-    .ReverseMap();
+                .ForMember(dest => dest.UserSocialMedias, opt => opt.MapFrom(src => src.UserSocialMedias))
+                .ReverseMap();
 
-
-            CreateMap<Paginate<User>, Paginate<GetListUserResponse>>()
-                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.Items));
-
-
-
-
-
+            CreateMap<Paginate<User>, Paginate<GetListUserResponse>>();
 
             CreateMap<UpdateUserRequest, User>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
             CreateMap<User, UpdatedUserResponse>();
