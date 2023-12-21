@@ -17,6 +17,7 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.UserId).HasColumnName("UserId");
             builder.Property(b => b.SocialMediaId).HasColumnName("SocialMediaId");
+            builder.HasOne(b => b.User);
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

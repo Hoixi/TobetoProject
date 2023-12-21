@@ -23,6 +23,7 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.Email).HasColumnName("Email");
             builder.Property(b => b.BirthDate).HasColumnName("BirthDate");
             builder.Property(b => b.Password).HasColumnName("Password");
+            builder.HasMany(b => b.UserSocialMedia);
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }
