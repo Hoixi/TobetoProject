@@ -9,6 +9,6 @@ namespace Business.Dtos.Requests.UserAnnouncementRequests
     public class CreateUserAnnouncementRequest
     {
         public int UserId { get; set; }
-        public string AnnouncementId { get; set; }
+        public int AnnouncementId { get; set; }
     }
 }

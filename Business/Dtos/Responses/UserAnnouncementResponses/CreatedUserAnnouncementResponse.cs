@@ -10,6 +10,6 @@ namespace Business.Dtos.Responses.UserAnnouncementResponses
     {
         public int Id { get; set; }
         public int UserId { get; set; }
-        public string AnnouncementId { get; set; }
+        public int AnnouncementId { get; set; }
     }
 }
