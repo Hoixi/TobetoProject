@@ -1,4 +1,5 @@
-﻿using Business.Dtos.Responses.UserLanguageResponses;
+﻿using Business.Dtos.Responses.CertificateResponses;
+using Business.Dtos.Responses.UserLanguageResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
 using Entities.Concretes;
 using System;
@@ -21,5 +22,6 @@ namespace Business.Dtos.Responses.UserResponses
         public DateTime BirthDate { get; set; }
         public List<GetListUserSocialMediaResponse> UserSocialMedias { get; set; }
         public List<GetListUserLanguageResponse> UserLanguages{ get; set; }
+        public List<GetListCertificateResponse> Certificates { get; set; }
     }
 }

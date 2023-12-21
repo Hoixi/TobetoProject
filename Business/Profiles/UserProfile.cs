@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Business.Dtos.Requests.UserRequests;
+using Business.Dtos.Responses.CertificateResponses;
 using Business.Dtos.Responses.UserLanguageResponses;
 using Business.Dtos.Responses.UserResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
@@ -21,11 +22,14 @@ namespace Business.Profiles
             CreateMap<CreateUserRequest, User>();
             CreateMap<User, CreatedUserResponse>();
 
+            CreateMap<Certificate, GetListCertificateResponse>();
+
             CreateMap<UserLanguage, GetListUserLanguageResponse>();
             
 
             CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
             CreateMap<User, GetListUserResponse>()
+                .ForMember(dest => dest.Certificates, opt => opt.MapFrom(src => src.Certificates))
                 .ForMember(dest => dest.UserSocialMedias, opt => opt.MapFrom(src => src.UserSocialMedias))
                 .ForMember(dest => dest.UserLanguages, opt => opt.MapFrom(src => src.UserLanguages))
                 .ReverseMap();

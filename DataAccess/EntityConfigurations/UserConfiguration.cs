@@ -23,12 +23,20 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(b => b.Email).HasColumnName("Email");
         builder.Property(b => b.BirthDate).HasColumnName("BirthDate");
         builder.Property(b => b.Password).HasColumnName("Password");
+
         builder.HasMany(b => b.UserSocialMedias)
         .WithOne(usm => usm.User) // UserSocialMedia sınıfındaki User ilişkisi
         .HasForeignKey(usm => usm.UserId);
+
         builder.HasMany(b => b.UserLanguages)
         .WithOne(usm => usm.User)
         .HasForeignKey(usm => usm.UserId);
+
+        builder.HasMany(b => b.Certificates)
+        .WithOne(usm => usm.User)
+        .HasForeignKey(usm => usm.UserId);
+
+
         builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
     }
 }
