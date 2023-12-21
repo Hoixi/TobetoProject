@@ -44,7 +44,6 @@ public static class BusinessServiceRegistration
         services.AddScoped<ISurveyService, SurveyManager>();
         services.AddScoped<ITownService, TownManager>();
         services.AddScoped<IUserAnnouncementService, UserAnnouncementManager>();
-        services.AddScoped<IUserCertificateService, UserCertificateManager>();
         services.AddScoped<IUserService, UserManager>();
         services.AddScoped<IUserLanguageService, UserLanguageManager>();
         services.AddScoped<IUserSkillService, UserSkillManager>();

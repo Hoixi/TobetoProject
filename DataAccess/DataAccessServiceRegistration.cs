@@ -44,7 +44,6 @@ public static class DataAccessServiceRegistration
         services.AddScoped<ISurveyDal, EfSurveyDal>();    
         services.AddScoped<ITownDal, EfTownDal>();    
         services.AddScoped<IUserAnnouncementDal, EfUserAnnouncementDal>();    
-        services.AddScoped<IUserCertificateDal, EfUserCertificateDal>();    
         services.AddScoped<IUserDal, EfUserDal>();    
         services.AddScoped<IUserLanguageDal, EfUserLanguageDal>();    
         services.AddScoped<IUserSkillDal, EfUserSkillDal>();    

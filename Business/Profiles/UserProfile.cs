@@ -29,7 +29,7 @@ namespace Business.Profiles
 
             CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
             CreateMap<User, GetListUserResponse>()
-                /*.ForMember(dest => dest.Certificates, opt => opt.MapFrom(src => src.Certificates))*/
+                .ForMember(dest => dest.Certificates, opt => opt.MapFrom(src => src.Certificates))
                 .ForMember(dest => dest.UserSocialMedias, opt => opt.MapFrom(src => src.UserSocialMedias))
                 .ForMember(dest => dest.UserLanguages, opt => opt.MapFrom(src => src.UserLanguages))
                 .ReverseMap();

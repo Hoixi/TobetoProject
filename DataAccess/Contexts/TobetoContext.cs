@@ -48,7 +48,6 @@ public class TobetoContext : DbContext
     public DbSet<UserSkill> UserSkills { get; set; }
     public DbSet<UserSocialMedia> UserSocialMedias { get; set; }
     public DbSet<UserAnnouncement> UserAnnouncements { get; set; }
-    public DbSet<UserCertificate> UserCertificates { get; set; }
     public DbSet<UserSurvey> UserSurveys { get; set; }
     public DbSet<Image> Images { get; set; }
     public DbSet<Survey> Surveys { get; set; }
