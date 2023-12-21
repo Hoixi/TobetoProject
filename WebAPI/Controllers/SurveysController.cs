@@ -8,11 +8,11 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SurveyController : ControllerBase
+    public class SurveysController : ControllerBase
     {
         ISurveyService _surveyService;
 
-        public SurveyController(ISurveyService surveyService)
+        public SurveysController(ISurveyService surveyService)
         {
             _surveyService = surveyService;
         }
