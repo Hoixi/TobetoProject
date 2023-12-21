@@ -7,6 +7,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -38,7 +39,9 @@ namespace Business.Concretes
 
         public async Task<IPaginate<GetListUserLanguageResponse>> GetAllAsync(PageRequest pageRequest)
         {
-            var data = await _userLanguageDal.GetListAsync(
+            var data = await _userLanguageDal.GetListAsync(include: p => p
+        .Include(p => p.Language)
+        .Include(p => p.LanguageLevel),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );

@@ -20,7 +20,10 @@ namespace Business.Profiles
             CreateMap<UserLanguage, CreatedUserLanguageResponse>();
 
 
-            CreateMap<UserLanguage, GetListUserLanguageResponse>().ReverseMap();
+            CreateMap<UserLanguage, GetListUserLanguageResponse>()
+                .ForMember(dest => dest.LanguageName, opt => opt.MapFrom(src => src.Language.Name))
+                .ForMember(dest => dest.LanguageLevelId, opt => opt.MapFrom(src => src.LanguageLevel.Name))
+                .ReverseMap(); ;
             CreateMap<Paginate<UserLanguage>, Paginate<GetListUserLanguageResponse>>();
 
             CreateMap<UpdateUserLanguageRequest, UserLanguage>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());

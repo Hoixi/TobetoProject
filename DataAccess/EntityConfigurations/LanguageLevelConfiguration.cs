@@ -16,6 +16,9 @@ namespace DataAccess.EntityConfigurations
             builder.ToTable("LanguageLevels").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.Name).HasColumnName("Name");
+            builder.HasMany(b => b.UserLanguages)
+                .WithOne(usm => usm.LanguageLevel)
+                .HasForeignKey(usm => usm.LanguageLevelId);
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }
