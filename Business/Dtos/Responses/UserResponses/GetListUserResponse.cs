@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concretes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,6 @@ namespace Business.Dtos.Responses.UserResponses
         public int ImageId { get; set; }
         public DateTime BirthDate { get; set; }
         public string Password { get; set; }
+        public List<UserSocialMedia> UserSocialMedias { get; set; }
     }
 }

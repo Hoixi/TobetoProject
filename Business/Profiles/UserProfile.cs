@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Dtos.Requests.UserRequests;
 using Business.Dtos.Responses.UserResponses;
+using Business.Dtos.Responses.UserSocialMediaResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
 using System;
@@ -20,8 +21,20 @@ namespace Business.Profiles
             CreateMap<User, CreatedUserResponse>();
 
 
-            CreateMap<User, GetListUserResponse>().ReverseMap();
-            CreateMap<Paginate<User>, Paginate<GetListUserResponse>>();
+
+
+            CreateMap<User, GetListUserResponse>()
+    .ForMember(dest => dest.UserSocialMedias, opt => opt.MapFrom(src => src.UserSocialMedias))
+    .ReverseMap();
+
+
+            CreateMap<Paginate<User>, Paginate<GetListUserResponse>>()
+                .ForMember(dest => dest.Items, opt => opt.MapFrom(src => src.Items));
+
+
+
+
+
 
             CreateMap<UpdateUserRequest, User>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
             CreateMap<User, UpdatedUserResponse>();

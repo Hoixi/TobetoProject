@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json;
 using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
@@ -7,6 +8,7 @@ using Business.Rules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes;
 
@@ -45,11 +47,14 @@ public class UserManager : IUserService
 
     public async Task<IPaginate<GetListUserResponse>> GetAllAsync(PageRequest pageRequest)
     {
-        var data = await _userDal.GetListAsync(
+        var data = await _userDal.GetListAsync(include: p => p.Include(p => p.UserSocialMedias),
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
            );
-        var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
+
+        var x = JsonSerializer.Serialize(data);
+        var result = _mapper.Map<Paginate<GetListUserResponse>>(x);
+        
         return result;
     }
 
