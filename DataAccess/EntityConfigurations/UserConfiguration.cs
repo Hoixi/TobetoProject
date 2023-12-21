@@ -19,7 +19,7 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.NationalIdentity).HasColumnName("NationalIdentity");
             builder.Property(b => b.FirstName).HasColumnName("FirstName");
             builder.Property(b => b.LastName).HasColumnName("LastName");
-            builder.Property(b => b.Telephone).HasColumnName("Telephone");
+            builder.Property(b => b.PhoneNumber).HasColumnName("PhoneNumber");
             builder.Property(b => b.Email).HasColumnName("Email");
             builder.Property(b => b.BirthDate).HasColumnName("BirthDate");
             builder.Property(b => b.Password).HasColumnName("Password");
