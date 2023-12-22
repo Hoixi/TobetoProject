@@ -17,5 +17,4 @@ public class User : Entity<int>
     public List<Certificate> Certificates { get; set; }
     public List<UserAnnouncement> UserAnnouncements { get; set; }
     public List<Experience> Experiences { get; set; }
-    public City Experience{ get; set; }
 }

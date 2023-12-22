@@ -7,6 +7,7 @@ using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -48,6 +49,7 @@ public class ExperienceManager : IExperienceService
     public async Task<IPaginate<GetListExperienceResponse>> GetAllAsync(PageRequest pageRequest)
     {
         var data = await _experienceDal.GetListAsync(
+            include: e => e.Include(c => c.City),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                 );

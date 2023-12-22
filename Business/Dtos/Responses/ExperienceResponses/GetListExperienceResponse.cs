@@ -11,12 +11,12 @@ namespace Business.Dtos.Responses.ExperienceResponses
     {
         public int Id { get; set; }
         public int UserId { get; set; }
+        public int CityId { get; set; }
         public string CityName { get; set; }
         public string CompanyName { get; set; }
         public string Position { get; set; }
         public string Sector { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public City City { get; set; }
     }
 }

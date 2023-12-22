@@ -22,5 +22,4 @@ public class GetListUserResponse
     public List<GetListCertificateResponse> Certificates { get; set; }
     public List<GetListUserAnnouncementResponse> UserAnnouncements { get; set; }
     public List<GetListExperienceResponse> Experiences { get; set; }
-    public Experience Experience{ get; set; }
 }

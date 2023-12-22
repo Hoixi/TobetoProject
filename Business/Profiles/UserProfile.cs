@@ -19,24 +19,19 @@ public class UserProfile : Profile
         CreateMap<CreateUserRequest, User>();
         CreateMap<User, CreatedUserResponse>();
 
-        //CreateMap<Experience, GetListExperienceResponse>();
 
-        //CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>();
-
-        //CreateMap<Certificate, GetListCertificateResponse>();
-
-        //CreateMap<UserLanguage, GetListUserLanguageResponse>();
-
-        //CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
+        CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>();
+        CreateMap<Certificate, GetListCertificateResponse>();
+        CreateMap<UserLanguage, GetListUserLanguageResponse>();
+        CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
+        CreateMap<Experience, GetListExperienceResponse>();
 
         CreateMap<User, GetListUserResponse>()
             .ForMember(dest => dest.Certificates, opt => opt.MapFrom(src => src.Certificates))
             .ForMember(dest => dest.Experiences, opt => opt.MapFrom(src => src.Experiences))
-            .ForMember(dest => dest.Experiences, opt => opt.MapFrom(src => src.Experience))
             .ForMember(dest => dest.UserSocialMedias, opt => opt.MapFrom(src => src.UserSocialMedias))
             .ForMember(dest => dest.UserLanguages, opt => opt.MapFrom(src => src.UserLanguages))
             .ForMember(dest => dest.UserAnnouncements, opt => opt.MapFrom(src => src.UserAnnouncements))
-
             .ReverseMap();
 
         CreateMap<Paginate<User>, Paginate<GetListUserResponse>>();

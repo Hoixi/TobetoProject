@@ -19,8 +19,9 @@ namespace Business.Profiles
             CreateMap<CreateExperienceRequest, Experience>();
             CreateMap<Experience, CreatedExperienceResponse>();
 
-
-            CreateMap<Experience, GetListExperienceResponse>().ReverseMap();
+            CreateMap<Experience, GetListExperienceResponse>()
+                .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+                .ReverseMap();
             CreateMap<Paginate<Experience>, Paginate<GetListExperienceResponse>>();
 
             CreateMap<UpdateExperienceRequest, Experience>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
