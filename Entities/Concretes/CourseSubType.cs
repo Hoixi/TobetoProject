@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Microsoft.Extensions.DependencyModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Entities.Concretes
     public class CourseSubType:Entity<int>
     {
         public string Name { get; set; }
+        public List<Course> Courses { get; set; }
     }
 }

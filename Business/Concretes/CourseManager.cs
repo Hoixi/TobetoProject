@@ -5,6 +5,7 @@ using Business.Dtos.Responses.CourseResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -37,6 +38,7 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListCourseResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _courseDal.GetListAsync(
+                include: p=> p.Include(st=> st.CourseSubType),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );

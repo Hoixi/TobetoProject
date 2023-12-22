@@ -25,7 +25,7 @@ public class UserManager : IUserService
 
     public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
     {
-        _userBusinessRules.IdentityNoMustBeEleven(createUserRequest);
+        _userBusinessRules.IdentityNoMustBeSizeOfEleven(createUserRequest);
         _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
         _userBusinessRules.PasswordValidate(createUserRequest);
         _userBusinessRules.PhoneNumberValidate(createUserRequest);

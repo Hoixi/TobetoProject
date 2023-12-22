@@ -9,18 +9,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess.EntityConfigurations
 {
-    public class CourseConfiguration : IEntityTypeConfiguration<Course>
+    public class CourseSubTypeConfiguration : IEntityTypeConfiguration<CourseSubType>
     {
-        public void Configure(EntityTypeBuilder<Course> builder)
+        public void Configure(EntityTypeBuilder<CourseSubType> builder)
         {
-            builder.ToTable("Courses").HasKey(b => b.Id);
+            builder.ToTable("CourseSubTypes").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
-            builder.Property(b => b.ImageId).HasColumnName("ImageId");
             builder.Property(b => b.Name).HasColumnName("Name");
-            builder.Property(b => b.Description).HasColumnName("Description");
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
-            builder.HasOne(c => c.CourseSubType).WithMany(c => c.Courses).HasForeignKey(c => c.SubTypeId);
-
+            builder.HasMany(c => c.Courses).WithOne(c => c.CourseSubType).HasForeignKey(c => c.SubTypeId);
         }
     }
 }
