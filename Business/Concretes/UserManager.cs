@@ -49,7 +49,7 @@ public class UserManager : IUserService
             include: p => p
         .Include(p => p.UserAnnouncements)  
         .Include(p => p.Certificates)
-        .Include(p => p.UserSocialMedias)
+        .Include(p => p.UserSocialMedias).ThenInclude(ul=>ul.SocialMedia)
         .Include(p => p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)
         .Include(p => p.UserLanguages).ThenInclude(ul => ul.Language),
 

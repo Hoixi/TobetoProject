@@ -15,7 +15,7 @@ namespace DataAccess.EntityConfigurations
         {
             builder.ToTable("SocialMedias").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
-            builder.Property(b => b.Name).HasColumnName("Name");
+            builder.Property(b => b.Name).HasColumnName("Name");            
             /*Icon Name?*/
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }

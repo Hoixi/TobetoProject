@@ -11,6 +11,7 @@ namespace Business.Dtos.Responses.UserSocialMediaResponses
         public int Id { get; set; }
         public int UserId { get; set; }
         public int SocialMediaId { get; set; }
+        public string SocialMediaName { get; set; }
         public string Url { get; set; }
     }
 }
