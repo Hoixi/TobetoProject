@@ -10,6 +10,8 @@ namespace Entities.Concretes
         public string Position { get; set;}
         public  string Sector { get; set; }
         public DateTime StartDate { get; set;}
-        public DateTime ?EndDate { get; set;}
+        public DateTime? EndDate { get; set;}
+        public User User { get; set; }
+        public City City { get; set; }
     }
 }

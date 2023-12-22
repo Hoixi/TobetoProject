@@ -1,7 +1,9 @@
 ﻿using Business.Dtos.Responses.CertificateResponses;
+using Business.Dtos.Responses.ExperienceResponses;
 using Business.Dtos.Responses.UserAnnouncementResponses;
 using Business.Dtos.Responses.UserLanguageResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
+using Entities.Concretes;
 
 namespace Business.Dtos.Responses.UserResponses;
 
@@ -19,4 +21,6 @@ public class GetListUserResponse
     public List<GetListUserLanguageResponse> UserLanguages { get; set; }
     public List<GetListCertificateResponse> Certificates { get; set; }
     public List<GetListUserAnnouncementResponse> UserAnnouncements { get; set; }
+    public List<GetListExperienceResponse> Experiences { get; set; }
+    public Experience Experience{ get; set; }
 }

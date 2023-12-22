@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Dtos.Requests.UserRequests;
 using Business.Dtos.Responses.CertificateResponses;
+using Business.Dtos.Responses.ExperienceResponses;
 using Business.Dtos.Responses.UserAnnouncementResponses;
 using Business.Dtos.Responses.UserLanguageResponses;
 using Business.Dtos.Responses.UserResponses;
@@ -18,16 +19,20 @@ public class UserProfile : Profile
         CreateMap<CreateUserRequest, User>();
         CreateMap<User, CreatedUserResponse>();
 
-        CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>();
+        //CreateMap<Experience, GetListExperienceResponse>();
 
-        CreateMap<Certificate, GetListCertificateResponse>();
+        //CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>();
 
-        CreateMap<UserLanguage, GetListUserLanguageResponse>();
+        //CreateMap<Certificate, GetListCertificateResponse>();
 
-        CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
+        //CreateMap<UserLanguage, GetListUserLanguageResponse>();
+
+        //CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
 
         CreateMap<User, GetListUserResponse>()
             .ForMember(dest => dest.Certificates, opt => opt.MapFrom(src => src.Certificates))
+            .ForMember(dest => dest.Experiences, opt => opt.MapFrom(src => src.Experiences))
+            .ForMember(dest => dest.Experiences, opt => opt.MapFrom(src => src.Experience))
             .ForMember(dest => dest.UserSocialMedias, opt => opt.MapFrom(src => src.UserSocialMedias))
             .ForMember(dest => dest.UserLanguages, opt => opt.MapFrom(src => src.UserLanguages))
             .ForMember(dest => dest.UserAnnouncements, opt => opt.MapFrom(src => src.UserAnnouncements))

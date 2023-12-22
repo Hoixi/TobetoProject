@@ -48,6 +48,7 @@ public class UserManager : IUserService
         var data = await _userDal.GetListAsync(
             include: p => p
         .Include(p => p.UserAnnouncements)  
+        .Include(p => p.Experiences).ThenInclude(ul=>ul.City)  
         .Include(p => p.Certificates)
         .Include(p => p.UserSocialMedias).ThenInclude(ul=>ul.SocialMedia)
         .Include(p => p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)

@@ -16,6 +16,7 @@ namespace DataAccess.EntityConfigurations
             builder.ToTable("Cities").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.Name).HasColumnName("Name");
+            builder.HasMany(b => b.Experiences).WithOne(b => b.City).HasForeignKey(b => b.CityId);
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

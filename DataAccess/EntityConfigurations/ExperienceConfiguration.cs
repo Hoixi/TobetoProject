@@ -22,6 +22,8 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.Sector).HasColumnName("Sector");
             builder.Property(b => b.StartDate).HasColumnName("StartDate");
             builder.Property(b => b.EndDate).HasColumnName("EndDate");
+            builder.HasOne(b => b.User).WithMany(b => b.Experiences).HasForeignKey(b => b.UserId);
+            builder.HasOne(b => b.City).WithMany(b => b.Experiences).HasForeignKey(b => b.CityId);
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }
