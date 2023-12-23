@@ -5,6 +5,7 @@ using Business.Dtos.Responses.AddressResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -37,6 +38,10 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListAddressResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _addressDal.GetListAsync(
+                include: p => p
+                .Include(p => p.Town)
+                .Include(c => c.Country)
+                .Include(ct => ct.City),    
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );
