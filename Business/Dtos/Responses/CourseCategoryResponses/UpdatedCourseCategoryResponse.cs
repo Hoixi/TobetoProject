@@ -11,6 +11,5 @@ namespace Business.Dtos.Responses.CourseCategoryResponses
         public int Id { get; set; }
         public int CourseId { get; set; }
         public int CategoryId { get; set; }
-        public DateTime UpdateDate { get; set; }
     }
 }

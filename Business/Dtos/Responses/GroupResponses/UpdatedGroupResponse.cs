@@ -10,6 +10,5 @@ namespace Business.Dtos.Responses.GroupResponses
     {
         public int Id { get; set; }
         public int Name { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }

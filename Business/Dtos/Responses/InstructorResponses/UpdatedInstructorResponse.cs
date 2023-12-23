@@ -13,7 +13,6 @@ namespace Business.Dtos.Responses.InstructorResponses
         public int UserId { get; set; }
         public User User { get; set; }
         public Course Course { get; set; }
-        public DateTime UpdatedDate { get; set; }
 
     }
 }

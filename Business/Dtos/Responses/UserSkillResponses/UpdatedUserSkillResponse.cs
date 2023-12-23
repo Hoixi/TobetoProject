@@ -11,6 +11,5 @@ namespace Business.Dtos.Responses.UserSkillResponses
         public int Id { get; set; }
         public int UserId { get; set; }
         public int SkillId { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }

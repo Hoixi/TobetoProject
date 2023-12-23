@@ -14,6 +14,5 @@ namespace Business.Dtos.Responses.AddressResponses
         public int CityId { get; set; }
         public int CountryId { get; set; }
         public string Description { get; set; }
-        public  DateTime UpdatedDate { get; set; }
     }
 }

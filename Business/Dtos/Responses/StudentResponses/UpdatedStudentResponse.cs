@@ -11,6 +11,5 @@ namespace Business.Dtos.Responses.StudentResponses
         public int Id { get; set; }
         public int UserId { get; set; }
         public int StudentNumber { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }

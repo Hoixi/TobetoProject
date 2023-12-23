@@ -12,6 +12,5 @@ namespace Business.Dtos.Responses.UserLanguageResponses
         public int UserId { get; set; }
         public int LanguageId { get; set; }
         public int LanguageLevelId { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }
