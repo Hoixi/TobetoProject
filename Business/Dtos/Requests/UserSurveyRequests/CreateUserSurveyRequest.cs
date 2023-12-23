@@ -8,7 +8,7 @@ namespace Business.Dtos.Requests.UserSurveyRequests
 {
     public class CreateUserSurveyRequest
     {
-        public int StudentId { get; set; }
+        public int UserId { get; set; }
         public int SurveyId { get; set; }
     }
 }

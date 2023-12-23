@@ -9,7 +9,7 @@ namespace Business.Dtos.Requests.UserSurveyRequests
     public class UpdateUserSurveyRequest
     {
         public int Id { get; set; }
-        public int StudentId { get; set; }
+        public int UserId { get; set; }
         public int SurveyId { get; set; }
     }
 }

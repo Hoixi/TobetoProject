@@ -15,7 +15,7 @@ namespace DataAccess.EntityConfigurations
         {
             builder.ToTable("UserSurveys").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
-            builder.Property(b => b.StudentId).HasColumnName("StudentId");
+            builder.Property(b => b.UserId).HasColumnName("StudentId");
             builder.Property(b => b.SurveyId).HasColumnName("SurveyId");
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }

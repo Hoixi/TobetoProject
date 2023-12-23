@@ -9,7 +9,7 @@ namespace Business.Dtos.Responses.UserSurveyResponses
     public class CreatedUserSurveyResponse
     {
         public int Id { get; set; }
-        public int StudentId { get; set; }
+        public int UserId { get; set; }
         public int SurveyId { get; set; }
     }
 }
