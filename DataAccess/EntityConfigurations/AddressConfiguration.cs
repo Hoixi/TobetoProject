@@ -20,6 +20,23 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.CityId).HasColumnName("CityId");
             builder.Property(b => b.CountryId).HasColumnName("CountryId");
             builder.Property(b => b.Description).HasColumnName("Description");
+
+            builder.HasOne(a => a.User)
+            .WithMany(u => u.Addresses)
+            .HasForeignKey(u => u.UserId);
+
+            builder.HasOne(a => a.City)
+            .WithMany(u => u.Addresses)
+            .HasForeignKey(u => u.CityId);
+
+            builder.HasOne(a => a.Country)
+            .WithMany(u => u.Addresses)
+            .HasForeignKey(u => u.CountryId);
+
+            builder.HasOne(a => a.Town)
+            .WithMany(u => u.Addresses)
+            .HasForeignKey(u => u.TownId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

@@ -7,7 +7,8 @@ namespace Entities.Concretes
 	{
 		public int UserId { get; set; }
 		public int SurveyId { get; set; }
+        public User User { get; set; }
 
-	}
+    }
 }
 

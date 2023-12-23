@@ -20,7 +20,11 @@ namespace Business.Profiles
             CreateMap<Address, CreatedAddressResponse>();
 
 
-            CreateMap<Address, GetListAddressResponse>().ReverseMap();
+            CreateMap<Address, GetListAddressResponse>()
+                .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+                .ForMember(dest => dest.CountryName, opt => opt.MapFrom(src => src.Country.Name))
+                .ForMember(dest => dest.TownName , opt => opt.MapFrom(src => src.Town.Name))
+                .ReverseMap();
             CreateMap<Paginate<Address>, Paginate<GetListAddressResponse>>();
 
             CreateMap<UpdateAddressRequest, Address>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());

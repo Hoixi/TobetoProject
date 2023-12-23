@@ -52,7 +52,11 @@ public class UserManager : IUserService
         .Include(p => p.Certificates)
         .Include(p => p.UserSocialMedias).ThenInclude(ul=>ul.SocialMedia)
         .Include(p => p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)
-        .Include(p => p.UserLanguages).ThenInclude(ul => ul.Language),
+        .Include(p => p.UserLanguages).ThenInclude(ul => ul.Language)
+        .Include(p => p.UserSurveys)
+        .Include(p => p.Addresses).ThenInclude(cl=> cl.Country)
+        .Include(p => p.Addresses).ThenInclude(cl=> cl.City)
+        .Include(p => p.Addresses).ThenInclude(cl=> cl.Town),
 
            index: pageRequest.PageIndex,
            size: pageRequest.PageSize

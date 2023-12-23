@@ -17,6 +17,11 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.Name).HasColumnName("Name");
             builder.HasMany(b => b.Experiences).WithOne(b => b.City).HasForeignKey(b => b.CityId);
+
+            builder.HasMany(b => b.Addresses)
+            .WithOne(usm => usm.City)
+            .HasForeignKey(usm => usm.CityId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }
