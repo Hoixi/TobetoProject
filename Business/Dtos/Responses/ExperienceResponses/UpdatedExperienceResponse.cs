@@ -16,6 +16,5 @@ namespace Business.Dtos.Responses.ExperienceResponses
         public string Sector { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }
-        public DateTime UpdateDate { get; set; }
     }
 }

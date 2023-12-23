@@ -11,6 +11,5 @@ namespace Business.Dtos.Responses.UserSurveyResponses
         public int Id { get; set; }
         public int UserId { get; set; }
         public int SurveyId { get; set; }
-        public DateTime UpdateDate { get; set; }
     }
 }
