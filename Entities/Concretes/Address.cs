@@ -15,3 +15,4 @@ namespace Entities.Concretes
         public Town Town { get; set; }
     }
 }
+

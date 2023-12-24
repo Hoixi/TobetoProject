@@ -15,3 +15,4 @@ public class Entity<TId> : IEntityTimestamps
     public Entity() { Id = default; }
     public Entity(TId id) { Id = id; }
 }
+

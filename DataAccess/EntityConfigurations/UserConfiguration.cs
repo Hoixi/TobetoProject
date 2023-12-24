@@ -1,11 +1,6 @@
 ﻿using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess.EntityConfigurations;
 
@@ -49,6 +44,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         .HasForeignKey(usm => usm.UserId);
 
         builder.HasMany(b => b.Addresses)
+        .WithOne(usm => usm.User)
+        .HasForeignKey(usm => usm.UserId);
+
+        builder.HasMany(b => b.Instructors)
         .WithOne(usm => usm.User)
         .HasForeignKey(usm => usm.UserId);
 

@@ -47,6 +47,7 @@ public class UserManager : IUserService
     {
         var data = await _userDal.GetListAsync(
             include: p => p
+    
         .Include(p => p.UserAnnouncements)  
         .Include(p => p.Experiences).ThenInclude(ul=>ul.City)  
         .Include(p => p.Certificates)

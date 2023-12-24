@@ -46,6 +46,8 @@ public class InstructorManager : IInstructorService
     public async Task<IPaginate<GetListInstructorResponse>> GetAllAsync(PageRequest pageRequest)
     {
         var data = await _instructorDal.GetListAsync(
+            include: p => p
+            .Include(p => p.Instructors)
                index: pageRequest.PageIndex,
                size: pageRequest.PageSize
                );

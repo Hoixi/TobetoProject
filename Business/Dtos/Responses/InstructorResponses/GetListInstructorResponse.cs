@@ -10,8 +10,8 @@ namespace Business.Dtos.Responses.InstructorResponses
     public class GetListInstructorResponse
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
-        public User User { get; set; }
-        public Course Course { get; set; }
+        public string InstructorName { get; set; }
+        
+
     }
 }
