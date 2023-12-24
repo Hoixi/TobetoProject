@@ -11,4 +11,7 @@ public class Course : Entity<int>
     public DateTime StartedDate { get; set; }
     public DateTime EndDate { get; set; }
     public CourseSubType CourseSubType { get; set; }
+
+    public List<ClassroomGroupCourse> ClassroomGroupCourses { get; set; }
+
 }

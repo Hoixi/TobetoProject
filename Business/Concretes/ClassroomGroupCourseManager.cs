@@ -5,6 +5,7 @@ using Business.Dtos.Responses.ClassroomGroupCourseResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes;
 
@@ -37,6 +38,11 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
     public async Task<IPaginate<GetListClassroomGroupCourseResponse>> GetAllAsync(PageRequest pageRequest)
     {
         var data = await _classroomGroupCourseDal.GetListAsync(
+
+            include: cgc=>cgc
+            .Include(cgc=>cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
+            .Include(cgc=>cgc.Courses),
+
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
             );

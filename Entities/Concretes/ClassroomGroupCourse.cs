@@ -6,5 +6,9 @@ namespace Entities.Concretes
     {
         public int ClassroomGroupId { get; set; }
         public int CourseId { get; set; }
+        public ClassroomGroup ClassroomGroups { get; set; }
+        public Course Courses { get; set; }
+        
+
     }
 }

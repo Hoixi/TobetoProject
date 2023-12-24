@@ -9,7 +9,7 @@ namespace Business.Dtos.Responses.ClassroomGroupCourseResponses
     public class GetListClassroomGroupCourseResponse
     {
         public int Id { get; set; }
-        public int ClassroomGroupId { get; set; }
-        public int CourseId { get; set; }
+        public string ClassroomGroupName { get; set; }
+        public string CourseName { get; set; }
     }
 }
