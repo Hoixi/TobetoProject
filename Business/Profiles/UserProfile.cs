@@ -28,7 +28,6 @@ public class UserProfile : Profile
         CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
         CreateMap<Experience, GetListExperienceResponse>();
         CreateMap<Address, GetListAddressResponse>();
-        CreateMap<Instructor, GetListInstructorResponse>();
 
         CreateMap<User, GetListUserResponse>()
             .ForMember(dest => dest.Certificates, opt => opt.MapFrom(src => src.Certificates))

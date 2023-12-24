@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Business.Dtos.Responses.UserResponses;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace Business.Dtos.Responses.InstructorResponses
     {
         public int Id { get; set; }
         public string InstructorName { get; set; }
-        
+
 
     }
 }

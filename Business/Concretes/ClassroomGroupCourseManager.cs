@@ -41,6 +41,7 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
 
             include: cgc=>cgc
             .Include(cgc=>cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
+            .Include(cgc=>cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
             .Include(cgc=>cgc.Courses),
 
             index: pageRequest.PageIndex,

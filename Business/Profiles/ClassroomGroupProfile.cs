@@ -22,7 +22,7 @@ namespace Business.Profiles
 
             CreateMap<ClassroomGroup, GetListClassroomGroupResponse>()
 
-                .ForMember(dest => dest.ClassroomName, opt => opt.MapFrom(src => src.Classroom.Name))
+                .ForMember(dest => dest.ClassroomName, opt => opt.MapFrom(src => src.Classroom.Name))                
                 .ForMember(dest => dest.GroupName, opt => opt.MapFrom(src => src.Group.Name))
                 .ReverseMap();
             CreateMap<Paginate<ClassroomGroup>, Paginate<GetListClassroomGroupResponse>>();

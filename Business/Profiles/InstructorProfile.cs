@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Dtos.Requests.InstructorRequests;
 using Business.Dtos.Responses.InstructorResponses;
+using Business.Dtos.Responses.UserResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
 using System;
@@ -19,10 +20,12 @@ namespace Business.Profiles
             CreateMap<CreateInstructorRequest, Instructor>();
             CreateMap<Instructor, CreatedInstructorResponse>();
 
+            CreateMap<User, GetListUserResponse>();
 
             CreateMap<Instructor, GetListInstructorResponse>()
-                .ForMember(dest => dest.InstructorName, src => src.MapFrom(asd => asd.User.FirstName))
-                
+                .ForMember(dest => dest.InstructorName, opt => opt.MapFrom(src => $"{src.User.FirstName} {src.User.LastName}"))
+
+
                 .ReverseMap();
             CreateMap<Paginate<Instructor>, Paginate<GetListInstructorResponse>>();
 
