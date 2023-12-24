@@ -8,6 +8,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,7 +48,7 @@ public class InstructorManager : IInstructorService
     {
         var data = await _instructorDal.GetListAsync(
             include: p => p
-            .Include(p => p.Instructors)
+            .Include(p => p.User),
                index: pageRequest.PageIndex,
                size: pageRequest.PageSize
                );

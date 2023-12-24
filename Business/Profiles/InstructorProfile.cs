@@ -22,6 +22,7 @@ namespace Business.Profiles
 
             CreateMap<Instructor, GetListInstructorResponse>()
                 .ForMember(dest => dest.InstructorName, src => src.MapFrom(asd => asd.User.FirstName))
+                
                 .ReverseMap();
             CreateMap<Paginate<Instructor>, Paginate<GetListInstructorResponse>>();
 
