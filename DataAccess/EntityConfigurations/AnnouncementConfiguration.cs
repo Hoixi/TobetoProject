@@ -19,6 +19,11 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.Description).HasColumnName("Description");
 
 
+            builder.HasMany(b => b.UserAnnouncements)
+            .WithOne(usm => usm.Announcement)
+            .HasForeignKey(usm => usm.Id);
+
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

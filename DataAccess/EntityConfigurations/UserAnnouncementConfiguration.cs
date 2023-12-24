@@ -13,6 +13,14 @@ public class UserAnnouncementConfiguration : IEntityTypeConfiguration<UserAnnoun
         builder.Property(b => b.UserId).HasColumnName("UserId");
         builder.Property(b => b.AnnouncementId).HasColumnName("AnnouncementId");
         builder.HasOne(b => b.User).WithMany(b => b.UserAnnouncements).HasForeignKey(b => b.UserId);
+
+        builder.HasOne(b => b.Announcement)
+                .WithMany(b => b.UserAnnouncements)
+                .HasForeignKey(b => b.AnnouncementId);
+
+
+
+
         builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         
     }

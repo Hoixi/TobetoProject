@@ -20,7 +20,9 @@ namespace Business.Profiles
             CreateMap<UserAnnouncement, CreatedUserAnnouncementResponse>();
 
 
-            CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>().ReverseMap();
+            CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>()
+                .ForMember(a => a.AnnouncementName, opt => opt.MapFrom(ua => ua.Announcement.Name))
+                .ReverseMap();
             CreateMap<Paginate<UserAnnouncement>, Paginate<GetListUserAnnouncementResponse>>();
 
             CreateMap<UpdateUserAnnouncementRequest, UserAnnouncement>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());

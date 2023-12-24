@@ -5,6 +5,7 @@ using Business.Dtos.Responses.UserAnnouncementResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -37,6 +38,7 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListUserAnnouncementResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _userAnnouncementDal.GetListAsync(
+                include : ua => ua.Include(a => a.Announcement),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );

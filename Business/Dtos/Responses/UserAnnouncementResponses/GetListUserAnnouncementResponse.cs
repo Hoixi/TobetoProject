@@ -11,5 +11,6 @@ namespace Business.Dtos.Responses.UserAnnouncementResponses
         public int Id { get; set; }
         public int UserId { get; set; }
         public int AnnouncementId { get; set; }
+        public  string AnnouncementName { get; set; }
     }
 }
