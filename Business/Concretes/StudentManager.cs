@@ -8,6 +8,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,6 +46,8 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListStudentResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _studentDal.GetListAsync(
+                include: j => j
+                .Include(u => u.User),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );

@@ -5,6 +5,7 @@ using Business.Dtos.Responses.ClassroomStudentResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes;
 
@@ -37,6 +38,9 @@ public class ClassroomStudentManager : IClassroomStudentService
     public async Task<IPaginate<GetListClassroomStudentResponse>> GetAllAsync(PageRequest pageRequest)
     {
         var data = await _classroomStudentDal.GetListAsync(
+            include: s => s
+            .Include(s => s.Student)
+            .ThenInclude(s => s.User),
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
             );

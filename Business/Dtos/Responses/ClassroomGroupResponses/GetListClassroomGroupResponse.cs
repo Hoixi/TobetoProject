@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Dtos.Responses.ClassroomStudentResponses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace Business.Dtos.Responses.ClassroomGroupResponses
         public int Id { get; set; }
         public string ClassroomName { get; set; }
         public string GroupName { get; set; }
-
+        public List<GetListClassroomStudentResponse> Students { get; set; }
 
     }
 }

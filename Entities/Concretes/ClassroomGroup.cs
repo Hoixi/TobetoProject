@@ -10,4 +10,5 @@ public class ClassroomGroup : Entity<int>
     public  Group Group { get; set; }
     public Classroom Classroom { get; set; }
     public List<ClassroomGroupCourse> ClassroomGroupCourses { get; set; }
+    public List<ClassroomStudent> ClassroomStudents { get; set; }
 }

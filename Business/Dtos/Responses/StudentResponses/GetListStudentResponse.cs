@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Business.Dtos.Responses.UserResponses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,8 @@ namespace Business.Dtos.Responses.StudentResponses
     public class GetListStudentResponse
     {
         public int Id { get; set; }
-        public int UserId { get; set; }
         public int StudentNumber { get; set; }
+        public int UserId { get; set; }
+        public GetListlimitedUserResponse UserDetail { get; set; }            
     }
 }

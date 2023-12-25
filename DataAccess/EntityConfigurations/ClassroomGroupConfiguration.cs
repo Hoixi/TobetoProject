@@ -28,7 +28,9 @@ namespace DataAccess.EntityConfigurations
            .WithMany(usm => usm.ClassroomGroups)
            .HasForeignKey(usm => usm.ClassroomId);
 
-
+            builder.HasMany(cg => cg.ClassroomStudents)
+            .WithOne(cs => cs.ClassroomGroup)
+            .HasForeignKey(cs => cs.ClassroomGroupId);
 
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }

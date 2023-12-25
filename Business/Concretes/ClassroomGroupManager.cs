@@ -41,7 +41,10 @@ public class ClassroomGroupManager : IClassroomGroupService
             include:
             cg=>cg
             .Include(cg=>cg.Group)
-            .Include(cg=>cg.Classroom),
+            .Include(cg=>cg.Classroom)
+            .Include(cg=>cg.ClassroomStudents)
+                .ThenInclude(cg => cg.Student)
+                .ThenInclude(cg => cg.User),
 
 
             index: pageRequest.PageIndex,
