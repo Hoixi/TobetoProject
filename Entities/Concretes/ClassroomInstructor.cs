@@ -6,5 +6,6 @@ namespace Entities.Concretes
     {
         public int InstructorId { get; set; }
         public int ClassroomId { get; set; }
+        public Instructor Instructor { get; set; }
     }
 }
