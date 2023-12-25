@@ -20,7 +20,7 @@ public static class BusinessServiceRegistration
         services.AddScoped<IClassroomService, ClassroomManager>();
         services.AddScoped<IClassroomGroupCourseService, ClassroomGroupCourseManager>();
         services.AddScoped<IClassroomGroupService, ClassroomGroupManager>();
-        services.AddScoped<IClassroomInstructorService, ClassroomInstructorManager>();
+        services.AddScoped<ICourseInstructorService, CourseInstructorManager>();
         services.AddScoped<IClassroomStudentService, ClassroomStudentManager>();
         services.AddScoped<ICompanyService, CompanyManager>();
         services.AddScoped<ICountryService, CountryManager>();

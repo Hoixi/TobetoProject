@@ -25,6 +25,10 @@ namespace DataAccess.EntityConfigurations
             .WithOne(usm => usm.Courses)
             .HasForeignKey(usm => usm.CourseId);
 
+            builder.HasMany(b => b.CourseInstructors)
+            .WithOne(usm => usm.Course)
+            .HasForeignKey(usm => usm.CourseId);
+
 
 
             builder.HasOne(c => c.CourseSubType).WithMany(c => c.Courses).HasForeignKey(c => c.SubTypeId);
