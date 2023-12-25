@@ -2,10 +2,10 @@
 
 namespace Entities.Concretes
 {
-    public class ClassroomInstructor:Entity<int>
+    public class CourseInstructor:Entity<int>
     {
         public int InstructorId { get; set; }
-        public int ClassroomId { get; set; }
+        public int CourseId { get; set; }
         public Instructor Instructor { get; set; }
     }
 }

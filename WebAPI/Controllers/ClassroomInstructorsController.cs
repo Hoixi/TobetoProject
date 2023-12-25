@@ -7,39 +7,39 @@ namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class ClassroomInstructorsController : ControllerBase
+public class CourseInstructorsController : ControllerBase
 {
 
-    IClassroomInstructorService _classroomInstructorService;
+    ICourseInstructorService _courseInstructorService;
 
-    public ClassroomInstructorsController(IClassroomInstructorService classroomInstructorService)
+    public CourseInstructorsController(ICourseInstructorService courseInstructorService)
     {
-        _classroomInstructorService = classroomInstructorService;
+        _courseInstructorService = courseInstructorService;
     }
 
     [HttpPost("Add")]
-    public async Task<IActionResult> Add([FromQuery] CreateClassroomInstructorRequest createClassroomInstructorRequest)
+    public async Task<IActionResult> Add([FromQuery] CreateCourseInstructorRequest createCourseInstructorRequest)
     {
-        var result = await _classroomInstructorService.AddAsync(createClassroomInstructorRequest);
+        var result = await _courseInstructorService.AddAsync(createCourseInstructorRequest);
         return Ok(result);
     }
 
     [HttpGet("GetAll")]
     public async Task<IActionResult> GetAll([FromQuery] PageRequest pageRequest)
     {
-        var result = await _classroomInstructorService.GetAllAsync(pageRequest);
+        var result = await _courseInstructorService.GetAllAsync(pageRequest);
         return Ok(result);
     }
     [HttpPut("Update")]
-    public async Task<IActionResult> Update([FromQuery] UpdateClassroomInstructorRequest updateClassroomInstructorRequest)
+    public async Task<IActionResult> Update([FromQuery] UpdateCourseInstructorRequest updateCourseInstructorRequest)
     {
-        var result = await _classroomInstructorService.UpdateAsync(updateClassroomInstructorRequest);
+        var result = await _courseInstructorService.UpdateAsync(updateCourseInstructorRequest);
         return Ok(result);
     }
     [HttpDelete("Delete")]
     public async Task<IActionResult> Delete([FromQuery] int id)
     {
-        var result = await _classroomInstructorService.DeleteAsync(id);
+        var result = await _courseInstructorService.DeleteAsync(id);
         return Ok(result);
     }
 }

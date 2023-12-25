@@ -6,21 +6,20 @@ using Entities.Concretes;
 
 namespace Business.Profiles;
 
-public class ClassroomInstructorProfile : Profile
+public class CourseInstructorProfile : Profile
 {
-    public ClassroomInstructorProfile()
+    public CourseInstructorProfile()
 
     {
-        CreateMap<CreateClassroomInstructorRequest, ClassroomInstructor>();
-        CreateMap<ClassroomInstructor, CreatedClassroomInstructorResponse>();
+        CreateMap<CreateCourseInstructorRequest, CourseInstructor>();
+        CreateMap<CourseInstructor, CreatedCourseInstructorResponse>();
 
 
-        CreateMap<ClassroomInstructor, GetListClassroomInstructorResponse>()
+        CreateMap<CourseInstructor, GetListCourseInstructorResponse>()
             .ForMember(i => i.InstructorName, opt => opt.MapFrom(src => $"{src.Instructor.User.FirstName} {src.Instructor.User.LastName}"))
             .ReverseMap();
-        CreateMap<Paginate<ClassroomInstructor>, Paginate<GetListClassroomInstructorResponse>>();
-
-        CreateMap<UpdateClassroomInstructorRequest, ClassroomInstructor>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
-        CreateMap<ClassroomInstructor, UpdatedClassroomInstructorResponse>();
+        CreateMap<Paginate<CourseInstructor>, Paginate<GetListCourseInstructorResponse>>();
+        CreateMap<UpdateCourseInstructorRequest, CourseInstructor>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
+        CreateMap<CourseInstructor, UpdatedCourseInstructorResponse>();
     }
 }

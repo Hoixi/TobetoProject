@@ -20,7 +20,7 @@ public static class DataAccessServiceRegistration
         services.AddScoped<IClassroomDal, EfClassroomDal>();    
         services.AddScoped<IClassroomGroupCourseDal, EfClassroomGroupCourseDal>();    
         services.AddScoped<IClassroomGroupDal, EfClassroomGroupDal>();    
-        services.AddScoped<IClassroomInstructorDal, EfClassroomInstructorDal>();    
+        services.AddScoped<ICourseInstructorDal, EfCourseInstructorDal>();    
         services.AddScoped<IClassroomStudentDal, EfClassroomStudentDal>();    
         services.AddScoped<ICompanyDal, EfCompanyDal>();    
         services.AddScoped<ICountryDal, EfCountryDal>();    

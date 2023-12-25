@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Business.Dtos.Requests.ClassroomInstructorRequests
 {
-    public class CreateClassroomInstructorRequest
+    public class UpdateCourseInstructorRequest
     {
+        public int Id { get; set; }
         public int InstructorId { get; set; }
-        public int ClassroomId { get; set; }
+        public int CourseId { get; set; }
     }
 }

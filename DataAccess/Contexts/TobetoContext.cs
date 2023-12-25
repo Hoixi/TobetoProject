@@ -22,7 +22,7 @@ public class TobetoContext : DbContext
     public DbSet<Classroom> Classrooms{ get; set; }
     public DbSet<ClassroomGroup> ClassroomGroups{ get; set; }
     public DbSet<ClassroomGroupCourse> ClassroomGroupCourses{ get; set; }
-    public DbSet<ClassroomInstructor> ClassroomInstructors { get; set; }
+    public DbSet<CourseInstructor> CourseInstructors { get; set; }
     public DbSet<ClassroomStudent> ClassroomStudents { get; set; }
     public DbSet<Company> Companies { get; set; }
     public DbSet<Country> Countries { get; set; }
