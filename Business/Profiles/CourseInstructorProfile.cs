@@ -17,6 +17,7 @@ public class CourseInstructorProfile : Profile
 
         CreateMap<CourseInstructor, GetListCourseInstructorResponse>()
             .ForMember(i => i.InstructorName, opt => opt.MapFrom(src => $"{src.Instructor.User.FirstName} {src.Instructor.User.LastName}"))
+            .ForMember(i => i.CourseName, opt => opt.MapFrom(src => src.Course.Name))
             .ReverseMap();
         CreateMap<Paginate<CourseInstructor>, Paginate<GetListCourseInstructorResponse>>();
         CreateMap<UpdateCourseInstructorRequest, CourseInstructor>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());

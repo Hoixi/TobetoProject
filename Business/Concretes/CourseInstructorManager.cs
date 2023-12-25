@@ -38,7 +38,7 @@ public class CourseInstructorManager : ICourseInstructorService
     public async Task<IPaginate<GetListCourseInstructorResponse>> GetAllAsync(PageRequest pageRequest)
     {
         var data = await _courseInstructorDal.GetListAsync(
-            include: ci => ci.Include(cl => cl.Instructor).ThenInclude(u => u.User),
+            include: ci => ci.Include(cl => cl.Instructor).ThenInclude(u => u.User).Include(i => i.Course),
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
             );

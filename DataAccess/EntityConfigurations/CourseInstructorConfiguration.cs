@@ -11,10 +11,16 @@ public class CourseInstructorConfiguration : IEntityTypeConfiguration<CourseInst
         builder.ToTable("CourseInstructors").HasKey(b => b.Id);
         builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
         builder.Property(b => b.InstructorId).HasColumnName("InstructorId");
-        builder.Property(b => b.CourseId).HasColumnName("ClassroomId");
+        builder.Property(b => b.CourseId).HasColumnName("CourseId");
+
         builder.HasOne(b => b.Instructor)
         .WithMany(usm => usm.CourseInstructors)
         .HasForeignKey(usm => usm.InstructorId);
+
+        builder.HasOne(b => b.Instructor)
+        .WithMany(usm => usm.CourseInstructors)
+        .HasForeignKey(usm => usm.InstructorId);
+
         builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
     }
 }
