@@ -25,6 +25,8 @@ namespace DataAccess.EntityConfigurations
             builder.HasOne(cs => cs.Student)
             .WithMany(cg => cg.Classrooms)
             .HasForeignKey(cs => cs.StudentId);
+                       
+
 
 
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);

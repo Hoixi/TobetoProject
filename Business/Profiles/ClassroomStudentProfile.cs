@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Business.Dtos.Requests.ClassroomStudentRequests;
+using Business.Dtos.Responses.ClassroomGroupCourseResponses;
+using Business.Dtos.Responses.ClassroomResponses;
 using Business.Dtos.Responses.ClassroomStudentResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -22,6 +24,8 @@ namespace Business.Profiles
 
             CreateMap<ClassroomStudent, GetListClassroomStudentResponse>()
                  .ForMember(dest => dest.Student, opt => opt.MapFrom(src => src.Student))
+                 .ForMember(dest => dest.ClassroomGroupName, opt => opt.MapFrom(src => src.ClassroomGroup.Classroom.Name + " - " + src.ClassroomGroup.Group.Name))
+                //.ForMember(dest=>dest.ClassroomGroupCourseName,opt =>opt.MapFrom(src=>src.ClassroomGroupCourse))
                 .ReverseMap();
             CreateMap<Paginate<ClassroomStudent>, Paginate<GetListClassroomStudentResponse>>();
 

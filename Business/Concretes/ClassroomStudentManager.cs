@@ -39,6 +39,9 @@ public class ClassroomStudentManager : IClassroomStudentService
     {
         var data = await _classroomStudentDal.GetListAsync(
             include: s => s
+            .Include(cg=>cg.ClassroomGroup).ThenInclude(c=>c.Classroom)
+            .Include(cg=>cg.ClassroomGroup).ThenInclude(c=>c.Group)
+            
             .Include(s => s.Student)
             .ThenInclude(s => s.User),
             index: pageRequest.PageIndex,
