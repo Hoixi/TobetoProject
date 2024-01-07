@@ -24,11 +24,10 @@ public class UserManager : IUserService
         _mapper = mapper;
         _userBusinessRules = userBusinessRules;
     }
-
+    
     public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
     {
         ValidationTool.Validate(new UserValidate(), createUserRequest);
-        _userBusinessRules.IdentityNoMustBeSizeOfEleven(createUserRequest);
         _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
         _userBusinessRules.PasswordValidate(createUserRequest);
         _userBusinessRules.PhoneNumberValidate(createUserRequest);

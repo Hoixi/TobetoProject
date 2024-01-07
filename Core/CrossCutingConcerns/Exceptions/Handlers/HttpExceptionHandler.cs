@@ -30,9 +30,6 @@ public class HttpExceptionHandler : ExceptionHandler
         set => _response = value;
     }
 
-
-
-
     protected override Task HandleException(BusinessException businessException)
     {
         Response.StatusCode = StatusCodes.Status400BadRequest;
