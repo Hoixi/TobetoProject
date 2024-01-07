@@ -1,4 +1,6 @@
 ﻿using Core.CrossCutingConcerns.Exceptions.Extensions;
+using Core.CrossCutingConcerns.Exceptions.HttpProblemDetails;
+using Core.CrossCutingConcerns.Exceptions.Types;
 using Core.CrossCutingConcerns.HttpProblemDetails;
 using Core.CrossCutingConcerns.Types;
 using Core.CrossCuttingConcerns.Exceptions.HttpProblemDetails;
@@ -10,22 +12,39 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ValidationProblemDetails = Core.CrossCuttingConcerns.Exceptions.HttpProblemDetails.ValidationProblemDetails;
+
 
 namespace Core.CrossCutingConcerns.Handlers;
 
 public class HttpExceptionHandler : ExceptionHandler
 {
     private HttpResponse? _response;
+    private readonly ValidationProblem _validationProblem;
+    public HttpExceptionHandler()
+    {
+        _validationProblem = new ValidationProblem();
+    }
     public HttpResponse Response
     {
         get => _response ?? throw new ArgumentNullException(nameof(_response));
         set => _response = value;
     }
+
+
+
+
     protected override Task HandleException(BusinessException businessException)
     {
         Response.StatusCode = StatusCodes.Status400BadRequest;
         string details = new BusinessProblemDetails(businessException.Message).AsJson();
+        return Response.WriteAsync(details);
+    }
+
+    protected override Task HandleException(ValidationCustomException validationException)
+    {
+        Response.ContentType = "application/json";
+        Response.StatusCode = StatusCodes.Status400BadRequest;
+        string details = _validationProblem.Result(validationException).AsJson();
         return Response.WriteAsync(details);
     }
 
@@ -36,10 +55,4 @@ public class HttpExceptionHandler : ExceptionHandler
     //    return Response.WriteAsync(details);
     //}
 
-    //protected override Task HandleException(ValidationException validationException)
-    //{
-    //    Response.StatusCode = StatusCodes.Status400BadRequest;
-    //    string details = new ValidationProblemDetails(validationException.Errors).AsJson();
-    //    return Response.WriteAsync(details);
-    //}
 }

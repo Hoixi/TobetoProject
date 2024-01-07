@@ -1,4 +1,5 @@
 ﻿using Core.CrossCutingConcerns.Handlers;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,10 @@ public class ExceptionMiddleware
         {
             await _next(context);
         }
+        catch (ValidationException validationException)
+        {
+            await HandleValidationExceptionAsync(context.Response, validationException);
+        }
         catch (Exception exception)
         {
             await HandleExceptionAsync(context.Response, exception);
@@ -41,5 +46,12 @@ public class ExceptionMiddleware
         response.ContentType = "application/json";
         _httpExceptionHandler.Response = response;
         return _httpExceptionHandler.HandleExceptionAsync(exception);
+    }
+
+    private Task HandleValidationExceptionAsync(HttpResponse response, ValidationException validationException)
+    {
+        response.ContentType = "application/json";
+        _httpExceptionHandler.Response = response;
+        return _httpExceptionHandler.HandleExceptionAsync(validationException);
     }
 }

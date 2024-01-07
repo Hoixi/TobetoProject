@@ -3,6 +3,8 @@ using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
 using Business.Dtos.Responses.UserResponses;
 using Business.Rules;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCutingConcerns.Validations.FluentValidation;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
@@ -25,6 +27,7 @@ public class UserManager : IUserService
 
     public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
     {
+        ValidationTool.Validate(new UserValidate(), createUserRequest);
         _userBusinessRules.IdentityNoMustBeSizeOfEleven(createUserRequest);
         _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
         _userBusinessRules.PasswordValidate(createUserRequest);
