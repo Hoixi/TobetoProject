@@ -17,7 +17,7 @@ public class ValidationProblem
         {
             Type = "https://www.example.com/validation-error",
             Title = "Validation error occurred.",
-            Status = StatusCodes.Status400BadRequest,
+            Status = StatusCodes.Status400BadRequest,          
         };
 
         foreach (var error in validationException.Errors)
