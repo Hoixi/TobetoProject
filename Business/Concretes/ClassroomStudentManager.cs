@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomStudentRequests;
+using Business.Dtos.Responses.ClassroomResponses;
 using Business.Dtos.Responses.ClassroomStudentResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,6 +51,13 @@ public class ClassroomStudentManager : IClassroomStudentService
             );
         var result = _mapper.Map<Paginate<GetListClassroomStudentResponse>>(data);
         return result;
+    }
+
+    public async Task<CreatedClassroomStudentResponse> GetById(int id)
+    {
+            var data = await _classroomStudentDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedClassroomStudentResponse>(data);
+            return result;
     }
 
     public async Task<UpdatedClassroomStudentResponse> UpdateAsync(UpdateClassroomStudentRequest updateClassroomStudentRequest)

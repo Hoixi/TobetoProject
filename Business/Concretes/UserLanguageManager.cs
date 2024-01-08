@@ -2,6 +2,7 @@
 using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserLanguageRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserLanguageResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -56,6 +57,13 @@ namespace Business.Concretes
             data.UpdatedDate = DateTime.Now;
             await _userLanguageDal.UpdateAsync(data);
             var result = _mapper.Map<UpdatedUserLanguageResponse>(data);
+            return result;
+        }
+
+        public async Task<CreatedUserLanguageResponse> GetById(int id)
+        {
+            var data = await _userLanguageDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedUserLanguageResponse>(data);
             return result;
         }
     }

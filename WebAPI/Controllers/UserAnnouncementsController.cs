@@ -43,6 +43,13 @@ namespace WebAPI.Controllers
             var result = await _userAnnouncementService.DeleteAsync(id);
             return Ok(result);
         }
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            var result = await _userAnnouncementService.GetById(id);
+            return Ok(result);
+        }
+
 
     }
 }

@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserSkillRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserSkillResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes
@@ -51,6 +53,13 @@ namespace Business.Concretes
             data.UpdatedDate = DateTime.Now;
             await _userSkillDal.UpdateAsync(data);
             var result = _mapper.Map<UpdatedUserSkillResponse>(data);
+            return result;
+        }
+
+        public async Task<CreatedUserSkillResponse> GetById(int id)
+        {
+            var data = await _userSkillDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedUserSkillResponse>(data);
             return result;
         }
     }

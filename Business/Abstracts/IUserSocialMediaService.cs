@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.UserSocialMediaRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -16,5 +17,6 @@ namespace Business.Abstracts
         Task<UpdatedUserSocialMediaResponse> UpdateAsync(UpdateUserSocialMediaRequest updateUserSocialMediaRequest);
         Task<UserSocialMedia> DeleteAsync(int id);
         Task<IPaginate<GetListUserSocialMediaResponse>> GetAllAsync(PageRequest pageRequest);
+        Task<CreatedUserSocialMediaResponse> GetById(int id);
     }
 }

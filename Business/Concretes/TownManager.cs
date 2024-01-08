@@ -2,9 +2,11 @@
 using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.TownRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.TownResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes;
@@ -43,9 +45,16 @@ namespace Business.Concretes;
                );
             var result = _mapper.Map<Paginate<GetListTownResponse>>(data);
             return result;
-        }
+    }
 
-        public async Task<UpdatedTownResponse> UpdateAsync(UpdateTownRequest updateTownRequest)
+    public async Task<CreatedTownResponse> GetById(int id)
+    {
+        var data = await _townDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedTownResponse>(data);
+        return result;
+    }
+
+    public async Task<UpdatedTownResponse> UpdateAsync(UpdateTownRequest updateTownRequest)
         {
             var data = await _townDal.GetAsync(i => i.Id == updateTownRequest.Id);
             _mapper.Map(updateTownRequest, data);

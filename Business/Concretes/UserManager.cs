@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserResponses;
 using Business.Rules;
 using Business.ValidationRules.FluentValidation;
 using Core.CrossCutingConcerns.Validations.FluentValidation;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -75,6 +77,13 @@ public class UserManager : IUserService
         data.UpdatedDate = DateTime.Now;
         await _userDal.UpdateAsync(data);
         var result = _mapper.Map<UpdatedUserResponse>(data);
+        return result;
+    }
+
+    public async Task<CreatedUserResponse> GetById(int id)
+    {
+        var data = await _userDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedUserResponse>(data);
         return result;
     }
 }

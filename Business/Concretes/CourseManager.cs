@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.CourseRequests;
+using Business.Dtos.Responses.ClassroomInstructorResponses;
 using Business.Dtos.Responses.CourseResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,6 +48,13 @@ namespace Business.Concretes
             return result;
         }
 
+        public async Task<CreatedCourseResponse> GetById(int id)
+        {
+            var data = await _courseDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedCourseResponse>(data);
+            return result;
+        }
+
         public async Task<UpdatedCourseResponse> UpdateAsync(UpdateCourseRequest updateCourseRequest)
         {
             var data = await _courseDal.GetAsync(i => i.Id == updateCourseRequest.Id);
@@ -55,5 +64,6 @@ namespace Business.Concretes
             var result = _mapper.Map<UpdatedCourseResponse>(data);
             return result;
         }
+
     }
 }

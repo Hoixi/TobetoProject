@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.CountryRequests;
 using Business.Dtos.Requests.CourseSubTypeRequests;
 using Business.Dtos.Responses.CountryResponses;
+using Business.Dtos.Responses.CourseResponses;
 using Business.Dtos.Responses.CourseSubTypeResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -49,6 +50,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListCourseSubTypeResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedCourseSubTypeResponse> GetById(int id)
+        {
+            var data = await _courseSubTypeDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedCourseSubTypeResponse>(data);
             return result;
         }
 

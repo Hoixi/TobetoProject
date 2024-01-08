@@ -2,6 +2,7 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.SkillRequests;
 using Business.Dtos.Requests.SocialMediaRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.SkillResponses;
 using Business.Dtos.Responses.SocialMediaResponses;
 using Core.DataAccess.Paging;
@@ -44,6 +45,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListSocialMediaResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedSocialMediaResponse> GetById(int id)
+        {
+            var data = await _socialMediaDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedSocialMediaResponse>(data);
             return result;
         }
 
