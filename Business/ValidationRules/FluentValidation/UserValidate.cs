@@ -14,5 +14,6 @@ public class UserValidate : AbstractValidator<CreateUserRequest>
     {
         RuleFor(u => u.NationalIdentity).Length(11);
         RuleFor(u => u.Email).EmailAddress();
+        RuleFor(u => u.PhoneNumber).Length(11);
     }
 }
