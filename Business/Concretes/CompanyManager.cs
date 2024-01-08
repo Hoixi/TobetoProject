@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.CompanyRequests;
+using Business.Dtos.Responses.ClassroomStudentResponses;
 using Business.Dtos.Responses.CompanyResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes;
@@ -41,6 +43,13 @@ public class CompanyManager : ICompanyService
             size: pageRequest.PageSize
             );
         var result = _mapper.Map<Paginate<GetListCompanyResponse>>(data);
+        return result;
+    }
+
+    public async Task<CreatedCompanyResponse> GetById(int id)
+    {
+        var data = await _companyDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedCompanyResponse>(data);
         return result;
     }
 

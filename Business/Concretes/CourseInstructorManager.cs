@@ -2,8 +2,10 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomInstructorRequests;
 using Business.Dtos.Responses.ClassroomInstructorResponses;
+using Business.Dtos.Responses.CourseCompanyResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -43,6 +45,13 @@ public class CourseInstructorManager : ICourseInstructorService
             size: pageRequest.PageSize
             );
         var result = _mapper.Map<Paginate<GetListCourseInstructorResponse>>(data);
+        return result;
+    }
+
+    public async Task<CreatedCourseInstructorResponse> GetById(int id)
+    {
+        var data = await _courseInstructorDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedCourseInstructorResponse>(data);
         return result;
     }
 

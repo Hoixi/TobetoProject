@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.CompanyRequests;
+using Business.Dtos.Responses.ClassroomStudentResponses;
 using Business.Dtos.Responses.CompanyResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -11,4 +12,6 @@ public interface ICompanyService
     Task<UpdatedCompanyResponse> UpdateAsync(UpdateCompanyRequest updateCompanyRequest);
     Task<Company> DeleteAsync(int id);
     Task<IPaginate<GetListCompanyResponse>> GetAllAsync(PageRequest pageRequest);
+    Task<CreatedCompanyResponse> GetById(int id);
+
 }

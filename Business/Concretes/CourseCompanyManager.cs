@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.CourseCompanyRequests;
+using Business.Dtos.Responses.CourseCategoryResponses;
 using Business.Dtos.Responses.CourseCompanyResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -42,6 +43,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListCourseCompanyResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedCourseCompanyResponse> GetById(int id)
+        {
+            var data = await _courseCompanyDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedCourseCompanyResponse>(data);
             return result;
         }
 
