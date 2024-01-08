@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.UserSocialMediaRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes
@@ -51,6 +53,13 @@ namespace Business.Concretes
             data.UpdatedDate = DateTime.Now;
             await _userSocialMediaDal.UpdateAsync(data);
             var result = _mapper.Map<UpdatedUserSocialMediaResponse>(data);
+            return result;
+        }
+
+        public async Task<CreatedUserSocialMediaResponse> GetById(int id)
+        {
+            var data = await _userSocialMediaDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedUserSocialMediaResponse>(data);
             return result;
         }
     }
