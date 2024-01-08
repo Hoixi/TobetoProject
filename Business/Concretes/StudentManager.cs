@@ -1,19 +1,13 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests.SkillRequests;
 using Business.Dtos.Requests.StudentRequests;
-using Business.Dtos.Responses.SkillResponses;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.StudentResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concretes
 {
@@ -52,6 +46,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListStudentResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedStudentResponse> GetById(int id)
+        {
+            var data = await _studentDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedStudentResponse>(data);
             return result;
         }
 

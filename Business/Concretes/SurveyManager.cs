@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.SurveyRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.SurveyResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes;
@@ -41,6 +43,13 @@ public class SurveyManager : ISurveyService
             size: pageRequest.PageSize
             );
         var result = _mapper.Map<Paginate<GetListSurveyResponse>>(data);
+        return result;
+    }
+
+    public async Task<CreatedSurveyResponse> GetById(int id)
+    {
+        var data = await _surveyDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedSurveyResponse>(data);
         return result;
     }
 
