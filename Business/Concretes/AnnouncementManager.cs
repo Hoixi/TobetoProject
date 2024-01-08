@@ -2,8 +2,10 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.AnnouncementRequests;
 using Business.Dtos.Responses.AnnouncementResponses;
+using Business.Dtos.Responses.CategoryResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes
@@ -41,6 +43,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListAnnouncementResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedAnnouncementResponse> GetById(int id)
+        {
+            var data = await _announcementDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedAnnouncementResponse>(data);
             return result;
         }
 

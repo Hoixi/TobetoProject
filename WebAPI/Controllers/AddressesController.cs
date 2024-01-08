@@ -1,5 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.AddressRequests;
+using Business.Dtos.Responses.AddressResponses;
+using Business.Dtos.Responses.CategoryResponses;
 using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +43,13 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> Delete([FromQuery] int id)
         {
             var result = await _addressService.DeleteAsync(id);
+            return Ok(result);
+        }
+
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            var result = await _addressService.GetById(id);
             return Ok(result);
         }
 

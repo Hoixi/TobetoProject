@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.CertificateRequests;
+using Business.Dtos.Responses.CategoryResponses;
 using Business.Dtos.Responses.CertificateResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -11,5 +12,6 @@ public interface ICertificateService
     Task<UpdatedCertificateResponse> UpdateAsync(UpdateCertificateRequest updateCertificateRequest);
     Task<Certificate> DeleteAsync(int id);
     Task<IPaginate<GetListCertificateResponse>> GetAllAsync(PageRequest pageRequest);
+    Task<CreatedCertificateResponse> GetById(int id);
 }
 

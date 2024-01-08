@@ -31,6 +31,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            var result = await _certificateService.GetById(id);
+            return Ok(result);
+        }
+
         [HttpPut("Update")]
         public async Task<IActionResult> Update([FromQuery] UpdateCertificateRequest updateCertificateRequest)
         {

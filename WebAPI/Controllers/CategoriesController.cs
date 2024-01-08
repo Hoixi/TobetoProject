@@ -44,5 +44,12 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            var result = await _categoryService.GetById(id);
+            return Ok(result);
+        }
+
     }
 }

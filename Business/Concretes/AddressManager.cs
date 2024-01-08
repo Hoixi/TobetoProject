@@ -2,8 +2,10 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.AddressRequests;
 using Business.Dtos.Responses.AddressResponses;
+using Business.Dtos.Responses.CategoryResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -56,6 +58,12 @@ namespace Business.Concretes
             data.UpdatedDate = DateTime.Now;
             await _addressDal.UpdateAsync(data);
             var result = _mapper.Map<UpdatedAddressResponse>(data);
+            return result;
+        }
+        public async Task<CreatedAddressResponse> GetById(int id)
+        {
+            var data = await _addressDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedAddressResponse>(data);
             return result;
         }
     }

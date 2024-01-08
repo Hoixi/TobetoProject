@@ -11,4 +11,5 @@ public interface ICategoryService
     Task<UpdatedCategoryResponse> UpdateAsync(UpdateCategoryRequest updateCategoryRequest);
     Task<Category> DeleteAsync(int id);
     Task<IPaginate<GetListCategoryResponse>> GetAllAsync(PageRequest pageRequest);
+    Task<CreatedCategoryResponse> GetById(int id);
 }
