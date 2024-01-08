@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.AddressRequests;
 using Business.Dtos.Requests.SchoolNameRequests;
 using Business.Dtos.Responses.AddressResponses;
+using Business.Dtos.Responses.ProgrammingLanguageResponses;
 using Business.Dtos.Responses.SchoolNameResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -45,6 +46,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListSchoolNameResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedSchoolNameResponse> GetById(int id)
+        {
+            var data = await _schoolNameDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedSchoolNameResponse>(data);
             return result;
         }
 

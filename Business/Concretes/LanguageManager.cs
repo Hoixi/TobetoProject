@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.GroupRequests;
 using Business.Dtos.Requests.LanguageRequests;
 using Business.Dtos.Responses.GroupResponses;
+using Business.Dtos.Responses.InstructorResponses;
 using Business.Dtos.Responses.LanguageResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -48,6 +49,13 @@ public class LanguageManager : ILanguageService
                size: pageRequest.PageSize
                );
         var result = _mapper.Map<Paginate<GetListLanguageResponse>>(data);
+        return result;
+    }
+
+    public async Task<CreatedLanguageResponse> GetById(int id)
+    {
+        var data = await _languageDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedLanguageResponse>(data);
         return result;
     }
 

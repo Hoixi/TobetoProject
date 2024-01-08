@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.GroupRequests;
 using Business.Dtos.Requests.InstructorRequests;
 using Business.Dtos.Responses.GroupResponses;
+using Business.Dtos.Responses.ImageResponses;
 using Business.Dtos.Responses.InstructorResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -53,6 +54,13 @@ public class InstructorManager : IInstructorService
                size: pageRequest.PageSize
                );
         var result = _mapper.Map<Paginate<GetListInstructorResponse>>(data);
+        return result;
+    }
+
+    public async  Task<CreatedInstructorResponse> GetById(int id)
+    {
+        var data = await _instructorDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedInstructorResponse>(data);
         return result;
     }
 

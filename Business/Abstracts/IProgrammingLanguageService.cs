@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.ProgrammingLanguageRequests;
+using Business.Dtos.Responses.LanguageResponses;
 using Business.Dtos.Responses.ProgrammingLanguageResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -16,5 +17,7 @@ namespace Business.Abstracts
         Task<UpdatedProgrammingLanguageResponse> UpdateAsync(UpdateProgrammingLanguageRequest updateProgrammingLanguageRequest);
         Task<ProgrammingLanguage> DeleteAsync(int id);
         Task<IPaginate<GetListProgrammingLanguageResponse>> GetAllAsync(PageRequest pageRequest);
+        Task<CreatedProgrammingLanguageResponse> GetById(int id);
+
     }
 }

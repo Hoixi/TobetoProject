@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.AddressRequests;
 using Business.Dtos.Requests.LanguageLevelRequests;
 using Business.Dtos.Responses.AddressResponses;
+using Business.Dtos.Responses.InstructorResponses;
 using Business.Dtos.Responses.LanguageLevelResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -49,6 +50,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListLanguageLevelResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedLanguageLevelResponse> GetById(int id)
+        {
+            var data = await _languageLevelDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedLanguageLevelResponse>(data);
             return result;
         }
 

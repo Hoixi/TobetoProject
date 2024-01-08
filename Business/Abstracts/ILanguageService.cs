@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.LanguageRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.LanguageResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -11,5 +12,7 @@ public interface ILanguageService
     Task<UpdatedLanguageResponse> UpdateAsync(UpdateLanguageRequest updateLanguageRequest);
     Task<Language> DeleteAsync(int id);
     Task<IPaginate<GetListLanguageResponse>> GetAllAsync(PageRequest pageRequest);
+    Task<CreatedLanguageResponse> GetById(int id);
+
 }
 

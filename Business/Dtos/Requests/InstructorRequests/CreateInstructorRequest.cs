@@ -10,7 +10,6 @@ namespace Business.Dtos.Requests.InstructorRequests
     public class CreateInstructorRequest
     {
         public int UserId { get; set; }
-        public User User { get; set; }
-        public Course Course { get; set; }
+       
     }
 }

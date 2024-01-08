@@ -27,8 +27,7 @@ public class ImageManager : IImageService
         _imageDal = imageDal;
         _mapper = mapper;
     }
-
-    
+       
 
     public async Task<CreatedImageResponse> AddAsync(CreateImageRequest createImageRequest)
     {
@@ -52,6 +51,13 @@ public class ImageManager : IImageService
              size: pageRequest.PageSize
              );
         var result = _mapper.Map<Paginate<GetListImageResponse>>(data);
+        return result;
+    }
+
+    public async Task<CreatedImageResponse> GetById(int id)
+    {
+        var data = await _imageDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedImageResponse>(data);
         return result;
     }
 
