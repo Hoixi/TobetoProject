@@ -1,18 +1,12 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests.SchoolNameRequests;
 using Business.Dtos.Requests.SkillRequests;
-using Business.Dtos.Responses.SchoolNameResponses;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.SkillResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concretes
 {
@@ -49,6 +43,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListSkillResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedSkillResponse> GetById(int id)
+        {
+            var data = await _skillDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedSkillResponse>(data);
             return result;
         }
 

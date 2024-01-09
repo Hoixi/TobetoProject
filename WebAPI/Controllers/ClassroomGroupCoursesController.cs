@@ -41,4 +41,11 @@ public class ClassroomGroupCoursesController : ControllerBase
         var result = await _classroomGroupCourseService.DeleteAsync(id);
         return Ok(result);
     }
+
+    [HttpGet("getById")]
+    public async Task<IActionResult> GetById([FromQuery] int id)
+    {
+        var result = await _classroomGroupCourseService.GetById(id);
+        return Ok(result);
+    }
 }

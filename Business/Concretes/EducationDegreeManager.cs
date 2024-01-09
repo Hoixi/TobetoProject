@@ -2,6 +2,7 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.EducationDegreeRequests;
 using Business.Dtos.Requests.RoleRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.EducationDegreeResponses;
 using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
@@ -57,6 +58,13 @@ namespace Business.Concretes
            size: pageRequest.PageSize
            );
             var result = _mapper.Map<Paginate<GetListEducationDegreeResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedEducationDegreeResponse> GetById(int id)
+        {
+            var data = await _educationDegreeDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedEducationDegreeResponse>(data);
             return result;
         }
 

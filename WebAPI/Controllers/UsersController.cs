@@ -42,4 +42,10 @@ public class UsersController : ControllerBase
         var result = await _userService.DeleteAsync(id);
         return Ok(result);
     }
+    [HttpGet("getById")]
+    public async Task<IActionResult> GetById([FromQuery] int id)
+    {
+        var result = await _userService.GetById(id);
+        return Ok(result);
+    }
 }

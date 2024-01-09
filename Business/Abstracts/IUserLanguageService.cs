@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.UserLanguageRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserLanguageResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -16,5 +17,6 @@ namespace Business.Abstracts
         Task<UpdatedUserLanguageResponse> UpdateAsync(UpdateUserLanguageRequest updateUserLanguageRequest);
         Task<UserLanguage> DeleteAsync(int id);
         Task<IPaginate<GetListUserLanguageResponse>> GetAllAsync(PageRequest pageRequest);
+        Task<CreatedUserLanguageResponse> GetById(int id);
     }
 }

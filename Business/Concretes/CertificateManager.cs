@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.CertificateRequests;
+using Business.Dtos.Responses.CategoryResponses;
 using Business.Dtos.Responses.CertificateResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 
 namespace Business.Concretes
@@ -41,6 +43,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListCertificateResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedCertificateResponse> GetById(int id)
+        {
+            var data = await _certificateDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedCertificateResponse>(data);
             return result;
         }
 

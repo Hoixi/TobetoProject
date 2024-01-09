@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomGroupCourseRequests;
+using Business.Dtos.Responses.CategoryResponses;
 using Business.Dtos.Responses.ClassroomGroupCourseResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 
@@ -48,6 +50,13 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
             size: pageRequest.PageSize
             );
         var result = _mapper.Map<Paginate<GetListClassroomGroupCourseResponse>>(data);
+        return result;
+    }
+
+    public async Task<CreatedClassroomGroupCourseResponse> GetById(int id)
+    {
+        var data = await _classroomGroupCourseDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedClassroomGroupCourseResponse>(data);
         return result;
     }
 

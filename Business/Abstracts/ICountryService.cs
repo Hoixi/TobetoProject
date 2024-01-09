@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.CountryRequests;
+using Business.Dtos.Responses.CompanyResponses;
 using Business.Dtos.Responses.CountryResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -11,4 +12,6 @@ public interface ICountryService
     Task<UpdatedCountryResponse> UpdateAsync(UpdateCountryRequest updateCountryRequest);
     Task<Country> DeleteAsync(int id);
     Task<IPaginate<GetListCountryResponse>> GetAllAsync(PageRequest pageRequest);
+    Task<CreatedCountryResponse> GetById(int id);
+
 }

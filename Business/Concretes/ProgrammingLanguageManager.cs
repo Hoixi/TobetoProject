@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.AddressRequests;
 using Business.Dtos.Requests.ProgrammingLanguageRequests;
 using Business.Dtos.Responses.AddressResponses;
+using Business.Dtos.Responses.LanguageResponses;
 using Business.Dtos.Responses.ProgrammingLanguageResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -49,6 +50,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListProgrammingLanguageResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedProgrammingLanguageResponse> GetById(int id)
+        {
+            var data = await _programmingLanguageDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedProgrammingLanguageResponse>(data);
             return result;
         }
 

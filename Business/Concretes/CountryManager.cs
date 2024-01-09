@@ -2,6 +2,7 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.CountryRequests;
 using Business.Dtos.Responses.AddressResponses;
+using Business.Dtos.Responses.CompanyResponses;
 using Business.Dtos.Responses.CountryResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -43,6 +44,13 @@ namespace Business.Concretes
                 size: pageRequest.PageSize
                );
             var result = _mapper.Map<Paginate<GetListCountryResponse>>(data);
+            return result;
+        }
+
+        public async Task<CreatedCountryResponse> GetById(int id)
+        {
+            var data = await _countryDal.GetAsync(c => c.Id == id);
+            var result = _mapper.Map<CreatedCountryResponse>(data);
             return result;
         }
 

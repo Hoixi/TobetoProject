@@ -1,19 +1,12 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests.GroupRequests;
 using Business.Dtos.Requests.InstructorRequests;
 using Business.Dtos.Responses.GroupResponses;
 using Business.Dtos.Responses.InstructorResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concretes;
 
@@ -53,6 +46,13 @@ public class InstructorManager : IInstructorService
                size: pageRequest.PageSize
                );
         var result = _mapper.Map<Paginate<GetListInstructorResponse>>(data);
+        return result;
+    }
+
+    public async  Task<CreatedInstructorResponse> GetById(int id)
+    {
+        var data = await _instructorDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedInstructorResponse>(data);
         return result;
     }
 

@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.ClassroomStudentRequests;
+using Business.Dtos.Responses.ClassroomResponses;
 using Business.Dtos.Responses.ClassroomStudentResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -11,4 +12,5 @@ public interface IClassroomStudentService
     Task<UpdatedClassroomStudentResponse> UpdateAsync(UpdateClassroomStudentRequest updateClassroomStudentRequest);
     Task<ClassroomStudent> DeleteAsync(int id);
     Task<IPaginate<GetListClassroomStudentResponse>> GetAllAsync(PageRequest pageRequest);
+    Task<CreatedClassroomStudentResponse> GetById(int id);
 }

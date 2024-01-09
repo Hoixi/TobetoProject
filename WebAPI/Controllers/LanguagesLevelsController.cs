@@ -52,6 +52,14 @@ namespace WebAPI.Controllers
         }
 
 
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            var result = await _languageLevelService.GetById(id);
+            return Ok(result);
+        }
+
+
     }
 }
 

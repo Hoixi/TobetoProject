@@ -45,5 +45,11 @@ namespace WebAPI.Controllers
             var result = await _userSurveyService.DeleteAsync(id);
             return Ok(result);
         }
+        [HttpGet("getById")]
+        public async Task<IActionResult> GetById([FromQuery] int id)
+        {
+            var result = await _userSurveyService.GetById(id);
+            return Ok(result);
+        }
     }
 }

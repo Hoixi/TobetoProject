@@ -1,4 +1,5 @@
 ﻿using Business.Dtos.Requests.StudentRequests;
+using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.StudentResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -16,5 +17,6 @@ namespace Business.Abstracts
         Task<UpdatedStudentResponse> UpdateAsync(UpdateStudentRequest updateStudentRequest);
         Task<Student> DeleteAsync(int id);
         Task<IPaginate<GetListStudentResponse>> GetAllAsync(PageRequest pageRequest);
+        Task<CreatedStudentResponse> GetById(int id);
     }
 }

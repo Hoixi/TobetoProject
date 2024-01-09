@@ -2,10 +2,12 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.ExperienceRequests;
 using Business.Dtos.Requests.RoleRequests;
+using Business.Dtos.Responses.EducationResponses;
 using Business.Dtos.Responses.ExperienceResponses;
 using Business.Dtos.Responses.RoleResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
+using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -54,6 +56,13 @@ public class ExperienceManager : IExperienceService
                 size: pageRequest.PageSize
                 );
         var result = _mapper.Map<Paginate<GetListExperienceResponse>>(data);
+        return result;
+    }
+
+    public async Task<CreatedExperienceResponse> GetById(int id)
+    {
+        var data = await _experienceDal.GetAsync(c => c.Id == id);
+        var result = _mapper.Map<CreatedExperienceResponse>(data);
         return result;
     }
 
