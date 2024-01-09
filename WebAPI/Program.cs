@@ -1,8 +1,8 @@
 using Business;
 using Core.CrossCutingConcerns.Exceptions.Extensions;
 using DataAccess;
-
-
+using WebAPI.Utilities;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["action"]}");
+    c.AddServer(new OpenApiServer()
+    {
+        Url= "http://localhost:5062",
+        
+    }); 
 });
 
 
