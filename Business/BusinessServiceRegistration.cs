@@ -1,10 +1,14 @@
 ﻿using Business.Abstracts;
 using Business.Concretes;
+using Castle.DynamicProxy;
 using Core.Business.Rules;
+using Core.Utilities.Interceptors;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Autofac;
+using Autofac.Extras.DynamicProxy;
 
 namespace Business;
 
@@ -49,8 +53,7 @@ public static class BusinessServiceRegistration
         services.AddScoped<IUserSkillService, UserSkillManager>();
         services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
         services.AddScoped<IUserSurveyService, UserSurveyManager>();
-
-
+      
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
 
 

@@ -5,6 +5,7 @@ using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserResponses;
 using Business.Rules;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 using Core.CrossCutingConcerns.Validations.FluentValidation;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
@@ -26,10 +27,10 @@ public class UserManager : IUserService
         _mapper = mapper;
         _userBusinessRules = userBusinessRules;
     }
-    
+
+    [ValidationAspect(typeof(UserValidate))]
     public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
     {
-        ValidationTool.Validate(new UserValidate(), createUserRequest);
         _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
         _userBusinessRules.PasswordValidate(createUserRequest);
         _userBusinessRules.PhoneNumberValidate(createUserRequest);

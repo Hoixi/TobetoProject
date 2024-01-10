@@ -3,13 +3,21 @@ using Core.CrossCutingConcerns.Exceptions.Extensions;
 using DataAccess;
 using WebAPI.Utilities;
 using Microsoft.OpenApi.Models;
+using Autofac.Core;
+using Castle.DynamicProxy;
+using Core.Utilities.Interceptors;
+using Business.Autofac;
+using Autofac.Extensions.DependencyInjection;
+using Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
 // Add services to the container.
 builder.Services.AddBusinessServices();
 builder.Services.AddDataAccessServices(builder.Configuration);
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
