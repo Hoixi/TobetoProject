@@ -53,12 +53,9 @@ public static class BusinessServiceRegistration
         services.AddScoped<IUserSkillService, UserSkillManager>();
         services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
         services.AddScoped<IUserSurveyService, UserSurveyManager>();
-      
-        
+              
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
-
-        services.AddTransient(typeof(IService<>), typeof(ServiceProxy<>));
-
+      
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;
     }
