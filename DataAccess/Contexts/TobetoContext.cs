@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Core.Entities.Concretes;
+using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -51,8 +52,8 @@ public class TobetoContext : DbContext
     public DbSet<UserSurvey> UserSurveys { get; set; }
     public DbSet<Image> Images { get; set; }
     public DbSet<Survey> Surveys { get; set; }
-
-
+    public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+    public DbSet<OperationClaim> OperationClaims { get; set; }
 
 
     public TobetoContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)

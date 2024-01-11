@@ -8,6 +8,8 @@ using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCutingConcerns.Validations.FluentValidation;
 using Core.DataAccess.Paging;
+using Core.Entities.Concretes;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
@@ -28,17 +30,34 @@ public class UserManager : IUserService
         _userBusinessRules = userBusinessRules;
     }
 
-    [ValidationAspect(typeof(UserValidate))]
-    public async Task<CreatedUserResponse> AddAsync(CreateUserRequest createUserRequest)
+    public UserManager(IUserDal userDal)
     {
-        _userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
-        _userBusinessRules.PasswordValidate(createUserRequest);
-        _userBusinessRules.PhoneNumberValidate(createUserRequest);
+        _userDal = userDal;
+    }
 
-        User user = _mapper.Map<User>(createUserRequest);
+    public List<OperationClaim> GetClaims(User user)
+    {
+        return _userDal.GetClaims(user);
+    }
+
+    
+
+    public User GetByMail(string email)
+    {
+        return _userDal.Get(u => u.Email == email);
+    }
+    
+
+    /*[ValidationAspect(typeof(UserValidate))]*/
+    public async Task<UserBase> AddAsync(User user)
+    {
+        /*_userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
+        _userBusinessRules.PasswordValidate(createUserRequest);
+        _userBusinessRules.PhoneNumberValidate(createUserRequest);*/ 
+        
         User createdUser = await _userDal.AddAsync(user);
         CreatedUserResponse createdUserResponse = _mapper.Map<CreatedUserResponse>(createdUser);
-        return createdUserResponse;
+        return createdUser;
     }
 
     public async Task<User> DeleteAsync(int id)

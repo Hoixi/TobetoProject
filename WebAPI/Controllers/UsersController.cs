@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
 using Core.DataAccess.Paging;
+using Entities.Concretes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +19,9 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("Add")]
-    public async Task<IActionResult> Add([FromQuery] CreateUserRequest createUserRequest)
+    public async Task<IActionResult> Add([FromQuery] User user)
     {
-        var result = await _userService.AddAsync(createUserRequest);
+        var result = await _userService.AddAsync(user);
         return Ok(result);
     }
 

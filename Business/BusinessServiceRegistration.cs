@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using Autofac;
 using Autofac.Extras.DynamicProxy;
+using Core.Utilities.Security.Jwt;
 
 namespace Business;
 
@@ -53,6 +54,8 @@ public static class BusinessServiceRegistration
         services.AddScoped<IUserSkillService, UserSkillManager>();
         services.AddScoped<IUserSocialMediaService, UserSocialMediaManager>();
         services.AddScoped<IUserSurveyService, UserSurveyManager>();
+        services.AddScoped<IAuthService, AuthManager>();
+        services.AddScoped<ITokenHelper, JwtHelper>();
               
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
       

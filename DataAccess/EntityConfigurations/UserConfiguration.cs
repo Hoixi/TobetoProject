@@ -17,7 +17,8 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         builder.Property(b => b.PhoneNumber).HasColumnName("PhoneNumber");
         builder.Property(b => b.Email).HasColumnName("Email");
         builder.Property(b => b.BirthDate).HasColumnName("BirthDate");
-        builder.Property(b => b.Password).HasColumnName("Password");
+        builder.Property(b => b.PasswordHash).HasColumnName("PasswordHash");
+        builder.Property(b => b.PasswordSalt).HasColumnName("PasswordSalt");
         
         builder.HasMany(b => b.UserSocialMedias)
         .WithOne(usm => usm.User) // UserSocialMedia sınıfındaki User ilişkisi
