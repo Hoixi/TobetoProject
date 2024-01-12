@@ -4,7 +4,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using Azure.Core;
 using Core.Entities.Concretes;
 using Core.Extensions;
 using Core.Utilities.Security.Security;

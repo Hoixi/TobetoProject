@@ -35,9 +35,10 @@ public class UserManager : IUserService
         _userDal = userDal;
     }
 
-    public List<OperationClaim> GetClaims(User user)
+    public List<OperationClaim> GetClaims(UserBase user)
     {
-        return _userDal.GetClaims(user);
+        User userBase = _mapper.Map<User>(user);    
+        return _userDal.GetClaims(userBase);
     }
 
     
@@ -49,15 +50,16 @@ public class UserManager : IUserService
     
 
     /*[ValidationAspect(typeof(UserValidate))]*/
-    public async Task<UserBase> AddAsync(User user)
+    public async Task<UserBase> AddAsync(UserBase user)
     {
         /*_userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
         _userBusinessRules.PasswordValidate(createUserRequest);
         _userBusinessRules.PhoneNumberValidate(createUserRequest);*/ 
         
-        User createdUser = await _userDal.AddAsync(user);
+        User userBase = _mapper.Map<User>(user);
+        User createdUser = await _userDal.AddAsync(userBase);
         CreatedUserResponse createdUserResponse = _mapper.Map<CreatedUserResponse>(createdUser);
-        return createdUser;
+        return user;
     }
 
     public async Task<User> DeleteAsync(int id)
@@ -105,6 +107,14 @@ public class UserManager : IUserService
         var data = await _userDal.GetAsync(c => c.Id == id);
         var result = _mapper.Map<CreatedUserResponse>(data);
         return result;
+    }
+
+    public void Add(UserBase user)
+    {
+        User userBase = _mapper.Map<User>(user);
+        userBase.CreatedDate = DateTime.Now;
+        userBase.BirthDate = DateTime.Now;
+        _userDal.Add(userBase);
     }
 }
 

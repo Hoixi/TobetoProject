@@ -3,8 +3,13 @@ using Core.Entities.Concretes;
 
 namespace Entities.Concretes;
 
-public class User : UserBase
+public class User : Entity<int>
 {
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string Email { get; set; }
+    public byte[] PasswordSalt { get; set; }
+    public byte[] PasswordHash { get; set; }
     public string NationalIdentity { get; set; }   
     public string PhoneNumber { get; set; }    
     public int ImageId { get; set; }

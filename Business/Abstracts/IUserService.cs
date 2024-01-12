@@ -14,13 +14,14 @@ namespace Business.Abstracts
 {
     public interface IUserService
     {
-        Task<UserBase> AddAsync(User user);
+        Task<UserBase> AddAsync(UserBase user);
         Task<UpdatedUserResponse> UpdateAsync(UpdateUserRequest updateUserRequest);
         Task<User> DeleteAsync(int id);
         Task<IPaginate<GetListUserResponse>> GetAllAsync(PageRequest pageRequest);
         Task<CreatedUserResponse> GetById(int id);
-        List<OperationClaim> GetClaims(User user);
+        List<OperationClaim> GetClaims(UserBase user);
         User GetByMail(string email);
+        void Add(UserBase user);
 
     }
 }

@@ -26,7 +26,7 @@ namespace Business.Concretes
             _tokenHelper = tokenHelper;
         }
 
-        public IDataResult<AccessToken> CreateAccessToken(User user)
+        public IDataResult<AccessToken> CreateAccessToken(UserBase user)
         {
             var claims = _userService.GetClaims(user);
             var accessToken = _tokenHelper.CreateToken(user, claims);
@@ -53,7 +53,7 @@ namespace Business.Concretes
         {
             byte[] passwordHash, passwordSalt;
             HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            var user = new User
+            var user = new UserBase
             {
                 Email = userForRegisterDto.Email,
                 FirstName = userForRegisterDto.FirstName,
@@ -61,7 +61,7 @@ namespace Business.Concretes
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
             };
-            _userService.AddAsync(user);
+            _userService.Add(user);
             return new SuccessDataResult<UserBase>(user, "Tamam");
         }
 

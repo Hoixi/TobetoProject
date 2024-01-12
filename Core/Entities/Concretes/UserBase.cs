@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Core.Entities.Concretes
 {
-    public class UserBase : Entity<int>
+    public class UserBase
     {
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

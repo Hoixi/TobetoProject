@@ -9,6 +9,7 @@ using Business.Dtos.Responses.UserLanguageResponses;
 using Business.Dtos.Responses.UserResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
 using Core.DataAccess.Paging;
+using Core.Entities.Concretes;
 using Entities.Concretes;
 
 namespace Business.Profiles;
@@ -20,6 +21,7 @@ public class UserProfile : Profile
     {
         CreateMap<UserForLoginRequest, User>();
         CreateMap<User, CreatedUserResponse>();
+        CreateMap<UserBase, User>();
 
 
         CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>();
