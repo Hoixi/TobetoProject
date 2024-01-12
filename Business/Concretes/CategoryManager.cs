@@ -33,7 +33,7 @@ namespace Business.Concretes
             var result = await _categoryDal.DeleteAsync(data);
             return result;
         }
-
+        
         public async Task<IPaginate<GetListCategoryResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _categoryDal.GetListAsync(

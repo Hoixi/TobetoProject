@@ -10,6 +10,7 @@ using System.Reflection;
 using Autofac;
 using Autofac.Extras.DynamicProxy;
 using Core.Utilities.Security.Jwt;
+using Microsoft.AspNetCore.Http;
 
 namespace Business;
 
@@ -56,7 +57,7 @@ public static class BusinessServiceRegistration
         services.AddScoped<IUserSurveyService, UserSurveyManager>();
         services.AddScoped<IAuthService, AuthManager>();
         services.AddScoped<ITokenHelper, JwtHelper>();
-              
+        services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));
       
         services.AddAutoMapper(Assembly.GetExecutingAssembly());

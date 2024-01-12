@@ -14,8 +14,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Core.Utilities.Security.Jwt;
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -24,6 +22,7 @@ builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterMod
 builder.Services.AddBusinessServices();
 builder.Services.AddDataAccessServices(builder.Configuration);
 builder.Services.AddControllers();
+
 
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
