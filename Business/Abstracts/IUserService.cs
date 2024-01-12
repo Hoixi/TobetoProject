@@ -20,8 +20,8 @@ namespace Business.Abstracts
         Task<IPaginate<GetListUserResponse>> GetAllAsync(PageRequest pageRequest);
         Task<CreatedUserResponse> GetById(int id);
         List<OperationClaim> GetClaims(UserBase user);
-        User GetByMail(string email);
+        UserBase GetByMail(string email);
         void Add(UserBase user);
-
+        Task<UserBase> GetByEMail(string email);
     }
 }

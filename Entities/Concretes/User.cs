@@ -10,10 +10,10 @@ public class User : Entity<int>
     public string Email { get; set; }
     public byte[] PasswordSalt { get; set; }
     public byte[] PasswordHash { get; set; }
-    public string NationalIdentity { get; set; }   
-    public string PhoneNumber { get; set; }    
-    public int ImageId { get; set; }
-    public DateTime BirthDate { get; set; }
+    public string? NationalIdentity { get; set; }   
+    public string? PhoneNumber { get; set; }    
+    public int? ImageId { get; set; }
+    public DateTime? BirthDate { get; set; }
     public List<UserSocialMedia> UserSocialMedias { get; set; }
     public List<UserLanguage> UserLanguages { get; set; }
     public List<Certificate> Certificates { get; set; }

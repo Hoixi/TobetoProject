@@ -33,20 +33,20 @@ namespace Business.Concretes
             return new SuccessDataResult<AccessToken>(accessToken, "Oluşturuldu");
         }
 
-        public IDataResult<User> Login(UserForRegisterRequest userForLoginDto)
+        public IDataResult<UserBase> Login(UserForLoginRequest userForLoginDto)
         {
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
             {
-                return new ErrorDataResult<User>("Kullanıcı Yok");
+                return new ErrorDataResult<UserBase>("Kullanıcı Yok");
             }
 
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
-                return new ErrorDataResult<User>("Şifre Hatali");
+                return new ErrorDataResult<UserBase>("Şifre Hatali");
             }
 
-            return new SuccessDataResult<User>(userToCheck, "Tamam");
+            return new SuccessDataResult<UserBase>(userToCheck, "Tamam");
         }
 
         public IDataResult<UserBase> Register(UserForRegisterRequest userForRegisterDto, string password)

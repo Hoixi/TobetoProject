@@ -22,6 +22,7 @@ public class UserProfile : Profile
         CreateMap<UserForLoginRequest, User>();
         CreateMap<User, CreatedUserResponse>();
         CreateMap<UserBase, User>();
+        CreateMap<User, UserBase>();
 
 
         CreateMap<UserAnnouncement, GetListUserAnnouncementResponse>();

@@ -43,11 +43,19 @@ public class UserManager : IUserService
 
     
 
-    public User GetByMail(string email)
+    public UserBase GetByMail(string email)
     {
-        return _userDal.Get(u => u.Email == email);
+        var data = _userDal.Get(u => u.Email == email);
+        UserBase result = _mapper.Map<UserBase>(data);
+        return result;
     }
-    
+
+    public async Task<UserBase> GetByEMail(string email)
+    {
+        var data = await _userDal.GetAsync(u => u.Email == email);
+        UserBase result = _mapper.Map<UserBase>(data);
+        return result;
+    }
 
     /*[ValidationAspect(typeof(UserValidate))]*/
     public async Task<UserBase> AddAsync(UserBase user)

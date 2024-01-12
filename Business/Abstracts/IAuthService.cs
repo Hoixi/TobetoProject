@@ -15,7 +15,7 @@ namespace Business.Abstracts
     public interface IAuthService
     {
         IDataResult<UserBase> Register(UserForRegisterRequest userForRegisterDto, string password);
-        IDataResult<User> Login(UserForRegisterRequest userForLoginDto);
+        IDataResult<UserBase> Login(UserForLoginRequest userForLoginDto);
         IResult UserExists(string email);
         IDataResult<AccessToken> CreateAccessToken(UserBase user);
     }

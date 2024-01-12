@@ -50,4 +50,11 @@ public class UsersController : ControllerBase
         var result = await _userService.GetById(id);
         return Ok(result);
     }
+
+    [HttpGet("getByMail")]
+    public IActionResult GetByMail([FromQuery] string mail)
+    {
+        var result =  _userService.GetByMail(mail);
+        return Ok(result);
+    }
 }
