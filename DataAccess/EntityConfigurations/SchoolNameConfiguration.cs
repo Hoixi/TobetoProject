@@ -16,6 +16,11 @@ namespace DataAccess.EntityConfigurations
             builder.ToTable("SchoolNames").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.Name).HasColumnName("Name");
+
+            builder.HasMany(b => b.Educations)
+               .WithOne(usm => usm.SchoolName)
+               .HasForeignKey(usm => usm.SchoolNameId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

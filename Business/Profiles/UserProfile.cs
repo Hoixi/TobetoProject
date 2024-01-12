@@ -2,6 +2,7 @@
 using Business.Dtos.Requests.UserRequests;
 using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.CertificateResponses;
+using Business.Dtos.Responses.EducationResponses;
 using Business.Dtos.Responses.ExperienceResponses;
 using Business.Dtos.Responses.InstructorResponses;
 using Business.Dtos.Responses.UserAnnouncementResponses;
@@ -31,6 +32,7 @@ public class UserProfile : Profile
         CreateMap<UserSocialMedia, GetListUserSocialMediaResponse>();
         CreateMap<Experience, GetListExperienceResponse>();
         CreateMap<Address, GetListAddressResponse>();
+        CreateMap<Education, GetListEducationResponse>();
 
         CreateMap<User, GetListUserResponse>()
             .ForMember(dest => dest.Certificates, opt => opt.MapFrom(src => src.Certificates))
@@ -40,6 +42,7 @@ public class UserProfile : Profile
             .ForMember(dest => dest.UserAnnouncements, opt => opt.MapFrom(src => src.UserAnnouncements))
             .ForMember(dest => dest.UserSurveys, opt => opt.MapFrom(src => src.UserSurveys))
             .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses))
+            .ForMember(dest => dest.Educations, opt => opt.MapFrom(src => src.Educations))
             .ReverseMap();
             
 

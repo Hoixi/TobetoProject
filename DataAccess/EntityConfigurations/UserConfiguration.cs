@@ -52,6 +52,10 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         .WithOne(usm => usm.User)
         .HasForeignKey(usm => usm.UserId);
 
+        builder.HasMany(b => b.Educations)
+        .WithOne(usm => usm.User)
+        .HasForeignKey(usm => usm.UserId);
+
 
         builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
     }

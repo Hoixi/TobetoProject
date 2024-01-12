@@ -16,6 +16,11 @@ namespace DataAccess.EntityConfigurations
             builder.ToTable("EducationDegrees").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.Name).HasColumnName("Name");
+
+            builder.HasMany(b => b.Educations)
+               .WithOne(usm => usm.EducationDegree)
+               .HasForeignKey(usm => usm.EducationDegreeId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

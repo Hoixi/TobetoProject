@@ -10,6 +10,8 @@ namespace Entities.Concretes
         public string Department { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime ?EndDate { get; set; }
-
+        public User User { get; set; }
+        public EducationDegree EducationDegree { get; set; }
+        public SchoolName SchoolName { get; set; }
     }
 }

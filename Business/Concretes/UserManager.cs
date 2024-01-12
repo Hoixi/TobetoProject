@@ -91,7 +91,9 @@ public class UserManager : IUserService
         .Include(p => p.UserSurveys)
         .Include(p => p.Addresses).ThenInclude(cl=> cl.Country)
         .Include(p => p.Addresses).ThenInclude(cl=> cl.City)
-        .Include(p => p.Addresses).ThenInclude(cl=> cl.Town),
+        .Include(p => p.Addresses).ThenInclude(cl=> cl.Town)
+        .Include(p => p.Educations).ThenInclude(e=>e.EducationDegree)
+        .Include(p => p.Educations).ThenInclude(e => e.SchoolName),
 
            index: pageRequest.PageIndex,
            size: pageRequest.PageSize

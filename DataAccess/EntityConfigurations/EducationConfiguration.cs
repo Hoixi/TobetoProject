@@ -21,6 +21,19 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.Department).HasColumnName("Department");
             builder.Property(b => b.StartDate).HasColumnName("StartDate");
             builder.Property(b => b.EndDate).HasColumnName("EndDate");
+
+            builder.HasOne(usm => usm.User)
+           .WithMany(u => u.Educations)
+           .HasForeignKey(usm => usm.UserId);
+
+            builder.HasOne(b => b.EducationDegree)
+                .WithMany(b => b.Educations)
+                .HasForeignKey(b => b.EducationDegreeId);
+
+            builder.HasOne(b => b.SchoolName)
+                .WithMany(b => b.Educations)
+                .HasForeignKey(b => b.SchoolNameId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }
