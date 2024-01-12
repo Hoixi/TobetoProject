@@ -22,7 +22,7 @@ namespace Business.Profiles
 
             CreateMap<Education, GetListEducationResponse>()
                 .ForMember(dest => dest.EducationDegreeName, opt => opt.MapFrom(src => src.EducationDegree.Name))
-                .ForMember(dest => dest.School, opt => opt.MapFrom(src => src.SchoolName.Name))
+                .ForMember(dest => dest.SchoolNameName, opt => opt.MapFrom(src => src.EducationDegree.Name))
                 .ReverseMap(); 
             CreateMap<Paginate<Education>, Paginate<GetListEducationResponse>>();
 

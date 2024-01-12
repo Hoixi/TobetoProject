@@ -11,7 +11,7 @@ namespace Business.Dtos.Responses.EducationResponses
         public int Id { get; set; }
         public int UserId { get; set; }
         public string EducationDegreeName { get; set; }
-        public string School { get; set; }
+        public string SchoolNameName { get; set; }
         public string Department { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime? EndDate { get; set; }

@@ -47,8 +47,9 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListEducationResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _educationDal.GetListAsync(include: p=>p
+            .Include(p => p.EducationDegree)
             .Include(p => p.SchoolName)
-            .Include(p => p.EducationDegree),
+            ,
 
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
