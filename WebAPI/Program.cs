@@ -23,6 +23,13 @@ builder.Services.AddBusinessServices();
 builder.Services.AddDataAccessServices(builder.Configuration);
 builder.Services.AddControllers();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy", builder => builder
+    .AllowAnyOrigin()
+    .AllowAnyHeader()
+    .AllowAnyMethod());
+});
 
 var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<TokenOptions>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -69,6 +76,7 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
+app.UseCors("CorsPolicy");
 
 app.MapControllers();
 

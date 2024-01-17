@@ -34,7 +34,7 @@ namespace WebAPI.Controllers
 
             return BadRequest(result.Message);
         }
-
+        
         [HttpPost("login")]
         public ActionResult Login(UserForLoginRequest userForLoginDto)
         {
