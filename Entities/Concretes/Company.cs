@@ -7,6 +7,7 @@ namespace Entities.Concretes
 	{
 		public string Name { get; set; }
 		public string Url { get; set; }
-	}
+        public List<CourseCompany> CourseCompanies { get; set; }
+    }
 }
 
