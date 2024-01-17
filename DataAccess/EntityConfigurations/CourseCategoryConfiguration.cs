@@ -17,6 +17,11 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
             builder.Property(b => b.CourseId).HasColumnName("CourseId");
             builder.Property(b => b.CategoryId).HasColumnName("CategoryId");
+
+            builder.HasOne(b => b.Category)
+            .WithMany(usm => usm.CourseCategories)
+            .HasForeignKey(usm => usm.CategoryId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

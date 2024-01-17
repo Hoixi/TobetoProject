@@ -7,6 +7,8 @@ namespace Entities.Concretes
 	{
 		public int CourseId { get; set; }
 		public int CategoryId { get; set; }
-	}
+        public Category Category { get; set; }
+        public Course Course { get; set; }
+    }
 }
 
