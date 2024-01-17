@@ -20,7 +20,10 @@ namespace Business.Profiles
             CreateMap<CourseCategory, CreatedCourseCategoryResponse>();
 
 
-            CreateMap<CourseCategory, GetListCourseCategoryResponse>().ReverseMap();
+            CreateMap<CourseCategory, GetListCourseCategoryResponse>()
+                .ForMember(c => c.CourseName, opt => opt.MapFrom(src => src.Course.Name))
+                .ForMember(c => c.CategoryName, opt => opt.MapFrom(src => src.Category.Name))
+                .ReverseMap();
             CreateMap<Paginate<CourseCategory>, Paginate<GetListCourseCategoryResponse>>();
 
             CreateMap<UpdateCourseCategoryRequest, CourseCategory>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());

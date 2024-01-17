@@ -7,6 +7,9 @@ namespace Entities.Concretes
 	{
 		public int CourseId { get; set; }
 		public int CompanyId { get; set; }
-	}
+		public Company Company { get; set; }
+        public Course Course { get; set; }
+
+    }
 }
 
