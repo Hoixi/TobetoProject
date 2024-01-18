@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("Add")]
 
-        public async Task<IActionResult> Add([FromBody]CreateTownRequest createTownRequest)
+        public async Task<IActionResult> Add([FromQuery]CreateTownRequest createTownRequest)
         {
             var result = await _townService.AddAsync(createTownRequest);
             return Ok(result);

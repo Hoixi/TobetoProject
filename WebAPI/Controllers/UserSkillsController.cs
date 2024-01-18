@@ -23,7 +23,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("Add")]
 
-        public async Task<IActionResult> Add([FromBody] CreateUserSkillRequest createUserSkillRequest)
+        public async Task<IActionResult> Add([FromQuery] CreateUserSkillRequest createUserSkillRequest)
         {
             var result = await _userSkillService.AddAsync(createUserSkillRequest);
             return Ok(result);

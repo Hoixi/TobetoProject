@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("Add")]
 
-        public async Task<IActionResult> Add([FromBody] CreateUserSocialMediaRequest createUserSocialMediaRequest)
+        public async Task<IActionResult> Add([FromQuery] CreateUserSocialMediaRequest createUserSocialMediaRequest)
         {
             var result = await _userSocialMediaService.AddAsync(createUserSocialMediaRequest);
             return Ok(result);
