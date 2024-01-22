@@ -17,15 +17,15 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("register")]
-        public ActionResult Register(UserForRegisterRequest userForRegisterDto)
+        public async Task<ActionResult> Register(UserForRegisterRequest userForRegisterDto)
         {
-            var userExists = _authService.UserExists(userForRegisterDto.Email);
-            if (!userExists.Success)
-            {
-                return BadRequest(userExists);
-            }
+            //var userExists = _authService.UserExists(userForRegisterDto.Email);
+            //if (!userExists.Success)
+            //{
+            //    return BadRequest(userExists);
+            //}
 
-            var registerResult = _authService.Register(userForRegisterDto, userForRegisterDto.Password);        
+            var registerResult = await _authService.Register(userForRegisterDto, userForRegisterDto.Password);        
             var result = _authService.CreateAccessToken(registerResult.Data);
             if (result.Success)
             {

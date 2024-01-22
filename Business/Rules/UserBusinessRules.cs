@@ -4,6 +4,7 @@ using Business.Messages;
 using Core.Business.Rules;
 using Core.CrossCutingConcerns.Types;
 using DataAccess.Abstracts;
+using Entities.Concretes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,13 @@ namespace Business.Rules
             }
 
 
+        }
+
+        public async Task UserShouldNotExistsWithSameEmail(String email)
+        {
+            User? user = await _userDal.GetAsync(i => i.Email == email);
+            if (user != null)
+                throw new BusinessException("Bu e-posta ile bir kayıt zaten var.");
         }
 
         public void PasswordValidate(CreateUserRequest createUserRequest)
