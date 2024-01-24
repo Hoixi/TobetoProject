@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.CourseRequests;
 using Business.Dtos.Responses.ClassroomInstructorResponses;
 using Business.Dtos.Responses.CourseResponses;
+using Core.Aspects.Autofac.Caching;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
@@ -22,6 +23,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
+        [CacheRemoveAspect("ICourseService.Get")]
         public async Task<CreatedCourseResponse> AddAsync(CreateCourseRequest createCourseRequest)
         {
             Course course = _mapper.Map<Course>(createCourseRequest);
@@ -37,6 +39,7 @@ namespace Business.Concretes
             return result;
         }
 
+        [CacheAspect]
         public async Task<IPaginate<GetListCourseResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _courseDal.GetListAsync(
