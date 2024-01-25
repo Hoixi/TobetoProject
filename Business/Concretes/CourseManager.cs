@@ -4,6 +4,7 @@ using Business.Dtos.Requests.CourseRequests;
 using Business.Dtos.Responses.ClassroomInstructorResponses;
 using Business.Dtos.Responses.CourseResponses;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Perfromance;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
@@ -39,6 +40,7 @@ namespace Business.Concretes
             return result;
         }
 
+        //[PerformanceAspect(5)] AspectInterceptorSelector'de genel olarak aktif edebiliriz.
         [CacheAspect]
         public async Task<IPaginate<GetListCourseResponse>> GetAllAsync(PageRequest pageRequest)
         {
