@@ -81,7 +81,7 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseCors((cors) => { cors.WithOrigins("http://localhost:3000/").AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin(); });
+app.UseCors((cors) => { cors.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin(); });
 
 app.MapControllers();
 
