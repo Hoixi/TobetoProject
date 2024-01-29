@@ -5,8 +5,6 @@ using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserResponses;
 using Business.Rules;
 using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac.Validation;
-using Core.CrossCutingConcerns.Validations.FluentValidation;
 using Core.DataAccess.Paging;
 using Core.Entities.Concretes;
 using Core.Utilities.Results;
@@ -57,7 +55,7 @@ public class UserManager : IUserService
         return result;
     }
 
-    /*[ValidationAspect(typeof(UserValidate))]*/
+    
     public async Task<UserBase> AddAsync(UserBase user)
     {
         /*_userBusinessRules.EmailMustIncludeAtSign(createUserRequest);

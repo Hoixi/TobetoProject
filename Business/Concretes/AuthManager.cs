@@ -2,7 +2,7 @@
 using Business.Dtos.Requests.UserRequests;
 using Business.Rules;
 using Business.ValidationRules.FluentValidation;
-using Core.Aspects.Autofac.Validation;
+
 using Core.Entities.Concretes;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
@@ -54,7 +54,7 @@ namespace Business.Concretes
             return new SuccessDataResult<UserBase>(userToCheck, "Tamam");
         }
 
-        [ValidationAspect(typeof(RegisterValidator))]
+        
         public async Task<IDataResult<UserBase>> Register(UserForRegisterRequest userForRegisterDto, string password)
         {
             await _userBusinessRules.UserShouldNotExistsWithSameEmail(userForRegisterDto.Email);

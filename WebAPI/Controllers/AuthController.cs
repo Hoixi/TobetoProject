@@ -1,7 +1,11 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects;
+using Core.CrossCutingConcerns.Validations;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace WebAPI.Controllers
 {
@@ -16,6 +20,7 @@ namespace WebAPI.Controllers
             _authService = authService;
         }
 
+        [ValidationAttribute(typeof(RegisterValidator))]
         [HttpPost("register")]
         public async Task<ActionResult> Register(UserForRegisterRequest userForRegisterDto)
         {

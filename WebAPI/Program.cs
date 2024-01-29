@@ -6,7 +6,7 @@ using Microsoft.OpenApi.Models;
 using Autofac.Core;
 using Castle.DynamicProxy;
 using Core.Utilities.Interceptors;
-using Business.Autofac;
+
 using Autofac.Extensions.DependencyInjection;
 using Autofac;
 using Core.Utilities.Security.Security;
@@ -16,15 +16,18 @@ using Core.Utilities.Security.Jwt;
 using Core.DependencyResolvers;
 using Core.Utilities.IoC;
 using Core.Extensions;
+using Core.Aspects;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
+
+
 // Add services to the container.
 builder.Services.AddBusinessServices();
 builder.Services.AddDataAccessServices(builder.Configuration);
+builder.Services.AddValidationAspect();
 builder.Services.AddControllers();
+
 
 builder.Services.AddCors(options =>
 {

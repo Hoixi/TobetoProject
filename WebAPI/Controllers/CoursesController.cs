@@ -4,6 +4,7 @@ using Business.Dtos.Requests.CourseRequests;
 using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace WebAPI.Controllers
 {
@@ -25,6 +26,7 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        
         [HttpGet("GetAll")]
         public async Task<IActionResult> GetAll([FromQuery] PageRequest pageRequest)
         {
