@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.CrossCutingConcerns.Validations.FluentValidation;
+namespace Core.CrossCutingConcerns.Validations;
 
 public static class ValidationTool
 {
