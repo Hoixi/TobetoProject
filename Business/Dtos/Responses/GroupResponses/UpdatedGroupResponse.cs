@@ -9,6 +9,6 @@ namespace Business.Dtos.Responses.GroupResponses
     public class UpdatedGroupResponse
     {
         public int Id { get; set; }
-        public int Name { get; set; }
+        public string Name { get; set; }
     }
 }
