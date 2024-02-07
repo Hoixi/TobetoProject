@@ -16,13 +16,15 @@ public class Filter
 
     public Filter()
     {
-        Field = string.Empty;
-        Operator = string.Empty;
+
     }
 
-    public Filter(string field, string @operator)
+    public Filter(string field, string @operator, string? value, string? logic, IEnumerable<Filter>? filters) : this()
     {
         Field = field;
         Operator = @operator;
+        Value = value;
+        Logic = logic;
+        Filters = filters;
     }
 }
