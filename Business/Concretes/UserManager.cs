@@ -110,10 +110,24 @@ public class UserManager : IUserService
         return result;
     }
 
-    public async Task<CreatedUserResponse> GetById(int id)
+    public async Task<GetListUserResponse> GetById(int id)
     {
-        var data = await _userDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedUserResponse>(data);
+        var data = await _userDal.GetAsync(predicate: c => c.Id == id,
+            include: p => p
+
+        .Include(p => p.UserAnnouncements)
+        .Include(p => p.Experiences).ThenInclude(ul => ul.City)
+        .Include(p => p.Certificates)
+        .Include(p => p.UserSocialMedias).ThenInclude(ul => ul.SocialMedia)
+        .Include(p => p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)
+        .Include(p => p.UserLanguages).ThenInclude(ul => ul.Language)
+        .Include(p => p.UserSurveys)
+        .Include(p => p.Addresses).ThenInclude(cl => cl.Country)
+        .Include(p => p.Addresses).ThenInclude(cl => cl.City)
+        .Include(p => p.Addresses).ThenInclude(cl => cl.Town)
+        .Include(p => p.Educations).ThenInclude(e => e.EducationDegree)
+        .Include(p => p.Educations).ThenInclude(e => e.SchoolName));
+        var result = _mapper.Map<GetListUserResponse>(data);
         return result;
     }
 

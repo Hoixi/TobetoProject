@@ -18,7 +18,7 @@ namespace Business.Abstracts
         Task<UpdatedUserResponse> UpdateAsync(UpdateUserRequest updateUserRequest);
         Task<User> DeleteAsync(int id);
         Task<IPaginate<GetListUserResponse>> GetAllAsync(PageRequest pageRequest);
-        Task<CreatedUserResponse> GetById(int id);
+        Task<GetListUserResponse> GetById(int id);
         List<OperationClaim> GetClaims(UserBase user);
         UserBase GetByMail(string email);
         void Add(UserBase user);
