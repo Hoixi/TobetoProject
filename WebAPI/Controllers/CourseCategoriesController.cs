@@ -2,6 +2,7 @@
 using Business.Dtos.Requests.CountryRequests;
 using Business.Dtos.Requests.CourseCategoryRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "RequireAdminRole")]
     public class CourseCategoriesController : ControllerBase
     {
         ICourseCategoryService _courseCategoryService;

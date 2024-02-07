@@ -3,6 +3,7 @@ using Business.Dtos.Requests.UserRequests;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects;
 using Core.CrossCutingConcerns.Validations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class AuthController : ControllerBase
     {
         private IAuthService _authService;
