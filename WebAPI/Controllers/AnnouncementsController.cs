@@ -2,6 +2,7 @@
 using Business.Dtos.Requests.AddressRequests;
 using Business.Dtos.Requests.AnnouncementRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "RequireAdminRole")]
     public class AnnouncementsController : ControllerBase
     {
         IAnnouncementService _announcementService;
