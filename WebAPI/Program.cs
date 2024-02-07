@@ -78,14 +78,6 @@ builder.Services.AddSwaggerGen(opt =>
 });
 
 
-builder.Services.AddAuthorization(options =>
-{
-    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
-});
-
-
-
-
 builder.Services.AddDependencyResolvers(new ICoreModule[] { new CoreModule() });
 
 

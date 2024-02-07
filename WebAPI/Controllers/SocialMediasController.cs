@@ -9,7 +9,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "RequireAdminRole")]
+    [Authorize(Roles = "Admin")]
 
     public class SocialMediasController : ControllerBase
     {
