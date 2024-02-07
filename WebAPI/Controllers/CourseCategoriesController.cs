@@ -10,7 +10,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "RequireAdminRole")]
+    [Authorize(Roles = "Admin")]
     public class CourseCategoriesController : ControllerBase
     {
         ICourseCategoryService _courseCategoryService;
