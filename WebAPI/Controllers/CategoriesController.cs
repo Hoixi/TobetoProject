@@ -8,6 +8,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "RequireAdminRole")]
     public class CategoriesController : ControllerBase
     {
         ICategoryService _categoryService;

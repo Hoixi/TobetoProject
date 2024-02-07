@@ -3,12 +3,14 @@ using Business.Dtos.Requests.AddressRequests;
 using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.CategoryResponses;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "RequireAdminRole")]
     public class AddressesController : ControllerBase
     {
         IAddressService _addressService;

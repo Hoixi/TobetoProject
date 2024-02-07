@@ -1,12 +1,14 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomGroupRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Policy = "RequireAdminRole")]
 public class ClassroomGroupsController : ControllerBase
 {
     IClassroomGroupService _classroomGroupService;

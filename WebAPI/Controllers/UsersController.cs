@@ -3,6 +3,7 @@ using Business.Dtos.Requests.UserRequests;
 using Core.DataAccess.Paging;
 using Core.Entities.Concretes;
 using Entities.Concretes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,6 +11,8 @@ namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Policy = "RequireAdminRole")]
+
 public class UsersController : ControllerBase
 {
     IUserService _userService;

@@ -1,12 +1,14 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomInstructorRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize(Policy = "RequireAdminRole")]
 public class CourseInstructorsController : ControllerBase
 {
 

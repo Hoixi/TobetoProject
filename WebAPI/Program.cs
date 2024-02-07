@@ -78,7 +78,10 @@ builder.Services.AddSwaggerGen(opt =>
 });
 
 
-
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+});
 
 
 
@@ -114,6 +117,7 @@ app.ConfigureCustomExceptionMiddleware();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
 
 app.UseCors((cors) => { cors.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin(); });
 
