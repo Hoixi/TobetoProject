@@ -25,14 +25,13 @@ public class ValidationMiddleware
         var endpoint = httpContext.Features.Get<IEndpointFeature>()?.Endpoint;
         var attribute = endpoint?.Metadata.GetMetadata<ValidationAttribute>();
         
-        if (endpoint != null)
+        if (endpoint != null && attribute != null)
         {
             var validator = (IValidator)Activator.CreateInstance(attribute.ValidatorType);
             var entityType = attribute.ValidatorType.BaseType.GetGenericArguments()[0];
             var requestBody =  await GetRequestBody(httpContext.Request);
             var model = JsonConvert.DeserializeObject(requestBody, entityType);
             ValidationTool.Validate(validator, model);
-            
         }
 
         await _next(httpContext);

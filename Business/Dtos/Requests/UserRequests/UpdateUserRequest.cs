@@ -16,6 +16,5 @@ namespace Business.Dtos.Requests.UserRequests
         public string Email { get; set; }
         public int ImageId { get; set; }
         public DateTime BirthDate { get; set; }
-        public string Password { get; set; }
     }
 }
