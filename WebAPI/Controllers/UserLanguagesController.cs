@@ -1,12 +1,15 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.UserLanguageRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "RequireAdminRole")]
+
     public class UserLanguagesController : ControllerBase
     {
         IUserLanguageService _userLanguageService;

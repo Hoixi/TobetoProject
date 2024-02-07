@@ -2,6 +2,7 @@
 using Business.Dtos.Requests.TownRequests;
 using Business.Dtos.Requests.UserSurveyRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,8 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "RequireAdminRole")]
+
     public class UserSurveysController : ControllerBase
     {
 
