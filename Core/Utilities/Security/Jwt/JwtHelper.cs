@@ -60,7 +60,7 @@ namespace Core.Utilities.Security.Jwt
             claims.Add(new Claim("ID", user.Id.ToString()));
             claims.Add(new Claim("Email", user.Email));
             claims.Add(new Claim("Name", $"{user.FirstName} {user.LastName}"));
-            claims.Add(new Claim("Role", $"{operationClaims.Select(c => c.Name).ToArray()}"));
+            claims.AddRoles(operationClaims.Select(c => c.Name).ToArray());
 
 
             return claims;
