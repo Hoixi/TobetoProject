@@ -3,6 +3,7 @@ using Business.Dtos.Responses.UserResponses;
 using Business.Messages;
 using Core.Business.Rules;
 using Core.CrossCutingConcerns.Types;
+using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
@@ -22,48 +23,28 @@ namespace Business.Rules
         {
             _userDal = userDal;
         }
+              
+                        
 
-        public async Task IdentityNoMustBeSizeOfEleven(CreateUserRequest createUserRequest)
-        {
-
-
-            if (createUserRequest.NationalIdentity.Length != 11)
-            {
-                throw new BusinessException(BusinessMessages.NationalIdentityLenght);
-            }
-        }
-
-        public void EmailMustIncludeAtSign(CreateUserRequest createUserRequest)
-        {
-
-            string pattern = @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$";
-
-            if (!Regex.IsMatch(createUserRequest.Email, pattern))
-            {
-                throw new BusinessException(BusinessMessages.EmailIsInvalid);
-            }
-
-
-        }
 
         public async Task UserShouldNotExistsWithSameEmail(String email)
         {
             User? user = await _userDal.GetAsync(i => i.Email == email);
             if (user != null)
-                throw new BusinessException("Bu e-posta ile bir kayıt zaten var.");
+                throw new BusinessException("Bu E-posta ile bir kullanıcı mevcut");
         }
 
-        public void PasswordValidate(CreateUserRequest createUserRequest)
-        {
-            string pattern = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_]).{8,15}$";
+        //public void PasswordValidate(CreateUserRequest createUserRequest)
+        //{
+        //    string pattern = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_]).{8,15}$";
 
-            if (!Regex.IsMatch(createUserRequest.Password, pattern))
-            {
-                throw new BusinessException(BusinessMessages.PasswordIsInvalid);
+        //    if (!Regex.IsMatch(createUserRequest.Password, pattern))
+        //    {
+        //        throw new BusinessException(BusinessMessages.PasswordIsInvalid);
 
-            }
+        //    }
 
-        }
+        //}
 
         public void PhoneNumberValidate(CreateUserRequest createUserRequest)
         {
