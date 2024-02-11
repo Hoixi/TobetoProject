@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateExperienceRequest createExperienceRequest)
+        public async Task<IActionResult> Add([FromBody] CreateExperienceRequest createExperienceRequest)
         {
             var result = await _experienceService.AddAsync(createExperienceRequest);
             return Ok(result);
@@ -34,13 +34,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateExperienceRequest updateExperienceRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateExperienceRequest updateExperienceRequest)
         {
             var result = await _experienceService.UpdateAsync(updateExperienceRequest);
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _experienceService.DeleteAsync(id);
             return Ok(result);

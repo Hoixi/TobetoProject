@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("Add")]
 
-        public async Task<IActionResult> Add([FromQuery] CreateUserSkillRequest createUserSkillRequest)
+        public async Task<IActionResult> Add([FromBody] CreateUserSkillRequest createUserSkillRequest)
         {
             var result = await _userSkillService.AddAsync(createUserSkillRequest);
             return Ok(result);
@@ -39,13 +39,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateUserSkillRequest updateUserSkillRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateUserSkillRequest updateUserSkillRequest)
         {
             var result = await _userSkillService.UpdateAsync(updateUserSkillRequest);
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _userSkillService.DeleteAsync(id);
             return Ok(result);

@@ -20,7 +20,7 @@ public class CourseInstructorsController : ControllerBase
     }
 
     [HttpPost("Add")]
-    public async Task<IActionResult> Add([FromQuery] CreateCourseInstructorRequest createCourseInstructorRequest)
+    public async Task<IActionResult> Add([FromBody] CreateCourseInstructorRequest createCourseInstructorRequest)
     {
         var result = await _courseInstructorService.AddAsync(createCourseInstructorRequest);
         return Ok(result);
@@ -33,13 +33,13 @@ public class CourseInstructorsController : ControllerBase
         return Ok(result);
     }
     [HttpPut("Update")]
-    public async Task<IActionResult> Update([FromQuery] UpdateCourseInstructorRequest updateCourseInstructorRequest)
+    public async Task<IActionResult> Update([FromBody] UpdateCourseInstructorRequest updateCourseInstructorRequest)
     {
         var result = await _courseInstructorService.UpdateAsync(updateCourseInstructorRequest);
         return Ok(result);
     }
     [HttpDelete("Delete")]
-    public async Task<IActionResult> Delete([FromQuery] int id)
+    public async Task<IActionResult> Delete([FromBody] int id)
     {
         var result = await _courseInstructorService.DeleteAsync(id);
         return Ok(result);

@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateAddressRequest createAddressRequest)
+        public async Task<IActionResult> Add([FromBody] CreateAddressRequest createAddressRequest)
         {
             var result = await _addressService.AddAsync(createAddressRequest);
             return Ok(result);
@@ -35,14 +35,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateAddressRequest updateAddressRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateAddressRequest updateAddressRequest)
         {
             var result = await _addressService.UpdateAsync(updateAddressRequest);
             return Ok(result);
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _addressService.DeleteAsync(id);
             return Ok(result);

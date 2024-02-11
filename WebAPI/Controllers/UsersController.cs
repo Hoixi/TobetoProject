@@ -23,7 +23,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("Add")]
-    public async Task<IActionResult> Add([FromQuery] UserBase user)
+    public async Task<IActionResult> Add([FromBody] UserBase user)
     {
         var result = await _userService.AddAsync(user);
         return Ok(result);
@@ -36,13 +36,13 @@ public class UsersController : ControllerBase
         return Ok(result);
     }
     [HttpPut("Update")]
-    public async Task<IActionResult> Update([FromQuery] UpdateUserRequest updateUserRequest)
+    public async Task<IActionResult> Update([FromBody] UpdateUserRequest updateUserRequest)
     {
         var result = await _userService.UpdateAsync(updateUserRequest);
         return Ok(result);
     }
     [HttpDelete("Delete")]
-    public async Task<IActionResult> Delete([FromQuery] int id)
+    public async Task<IActionResult> Delete([FromBody] int id)
     {
         var result = await _userService.DeleteAsync(id);
         return Ok(result);

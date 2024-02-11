@@ -22,7 +22,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateGroupRequest createGroupRequest)
+        public async Task<IActionResult> Add([FromBody] CreateGroupRequest createGroupRequest)
         {
             var result = await _groupService.AddAsync(createGroupRequest);
             return Ok(result);
@@ -35,13 +35,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateGroupRequest updateGroupRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateGroupRequest updateGroupRequest)
         {
             var result = await _groupService.UpdateAsync(updateGroupRequest);
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _groupService.DeleteAsync(id);
             return Ok(result);

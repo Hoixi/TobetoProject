@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateCountryRequest createCountryRequest)
+        public async Task<IActionResult> Add([FromBody] CreateCountryRequest createCountryRequest)
         {
             var result = await _countryService.AddAsync(createCountryRequest);
             return Ok(result);
@@ -34,13 +34,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateCountryRequest updateCountryRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateCountryRequest updateCountryRequest)
         {
             var result = await _countryService.UpdateAsync(updateCountryRequest);
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _countryService.DeleteAsync(id);
             return Ok(result);

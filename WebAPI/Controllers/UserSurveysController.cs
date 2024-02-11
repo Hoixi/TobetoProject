@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
 
         [HttpPost("Add")]
 
-        public async Task<IActionResult> Add([FromQuery] CreateUserSurveyRequest createUserSurveyRequest)
+        public async Task<IActionResult> Add([FromBody] CreateUserSurveyRequest createUserSurveyRequest)
         {
             var result = await _userSurveyService.AddAsync(createUserSurveyRequest);
             return Ok(result);
@@ -37,13 +37,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateUserSurveyRequest updateUserSurveyRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateUserSurveyRequest updateUserSurveyRequest)
         {
             var result = await _userSurveyService.UpdateAsync(updateUserSurveyRequest);
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _userSurveyService.DeleteAsync(id);
             return Ok(result);

@@ -19,7 +19,7 @@ public class ClassroomsController : ControllerBase
     }
 
     [HttpPost("Add")]
-    public async Task<IActionResult> Add([FromQuery] CreateClassroomRequest createClassroomRequest)
+    public async Task<IActionResult> Add([FromBody] CreateClassroomRequest createClassroomRequest)
     {
         var result = await _classroomService.AddAsync(createClassroomRequest);
         return Ok(result);
@@ -32,13 +32,13 @@ public class ClassroomsController : ControllerBase
         return Ok(result);
     }
     [HttpPut("Update")]
-    public async Task<IActionResult> Update([FromQuery] UpdateClassroomRequest updateClassroomRequest)
+    public async Task<IActionResult> Update([FromBody] UpdateClassroomRequest updateClassroomRequest)
     {
         var result = await _classroomService.UpdateAsync(updateClassroomRequest);
         return Ok(result);
     }
     [HttpDelete("Delete")]
-    public async Task<IActionResult> Delete([FromQuery] int id)
+    public async Task<IActionResult> Delete([FromBody] int id)
     {
         var result = await _classroomService.DeleteAsync(id);
         return Ok(result);

@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateUserLanguageRequest createUserLanguageRequest)
+        public async Task<IActionResult> Add([FromBody] CreateUserLanguageRequest createUserLanguageRequest)
         {
             var result = await _userLanguageService.AddAsync(createUserLanguageRequest);
             return Ok(result);
@@ -33,13 +33,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateUserLanguageRequest updateUserLanguageRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateUserLanguageRequest updateUserLanguageRequest)
         {
             var result = await _userLanguageService.UpdateAsync(updateUserLanguageRequest);
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _userLanguageService.DeleteAsync(id);
             return Ok(result);

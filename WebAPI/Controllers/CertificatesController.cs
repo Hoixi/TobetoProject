@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateCertificateRequest createCertificateRequest)
+        public async Task<IActionResult> Add([FromBody] CreateCertificateRequest createCertificateRequest)
         {
             var result = await _certificateService.AddAsync(createCertificateRequest);
             return Ok(result);
@@ -41,14 +41,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateCertificateRequest updateCertificateRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateCertificateRequest updateCertificateRequest)
         {
             var result = await _certificateService.UpdateAsync(updateCertificateRequest);
             return Ok(result);
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _certificateService.DeleteAsync(id);
             return Ok(result);

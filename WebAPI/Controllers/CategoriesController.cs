@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateCategoryRequest createcategoryRequest)
+        public async Task<IActionResult> Add([FromBody] CreateCategoryRequest createcategoryRequest)
         {
             var result = await _categoryService.AddAsync(createcategoryRequest);
             return Ok(result);
@@ -34,14 +34,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateCategoryRequest updatecategoryRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateCategoryRequest updatecategoryRequest)
         {
             var result = await _categoryService.UpdateAsync(updatecategoryRequest);
             return Ok(result);
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _categoryService.DeleteAsync(id);
             return Ok(result);

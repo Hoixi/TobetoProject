@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateLanguageLevelRequest createLanguageLevelRequest)
+        public async Task<IActionResult> Add([FromBody] CreateLanguageLevelRequest createLanguageLevelRequest)
         {
             var result = await _languageLevelService.AddAsync(createLanguageLevelRequest);
             return Ok(result);
@@ -41,14 +41,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateLanguageLevelRequest updateLanguageLevelRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateLanguageLevelRequest updateLanguageLevelRequest)
         {
             var result = await _languageLevelService.UpdateAsync(updateLanguageLevelRequest);
             return Ok(result);
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _languageLevelService.DeleteAsync(id);
             return Ok(result);

@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateCityRequest createCityRequest)
+        public async Task<IActionResult> Add([FromBody] CreateCityRequest createCityRequest)
         {
             var result = await _cityService.AddAsync(createCityRequest);
             return Ok(result);
@@ -42,14 +42,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateCityRequest updateCityRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateCityRequest updateCityRequest)
         {
             var result = await _cityService.UpdateAsync(updateCityRequest);
             return Ok(result);
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _cityService.DeleteAsync(id);
             return Ok(result);

@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateSchoolNameRequest createSchoolNameRequest)
+        public async Task<IActionResult> Add([FromBody] CreateSchoolNameRequest createSchoolNameRequest)
         {
             var result = await _schoolNameService.AddAsync(createSchoolNameRequest);
             return Ok(result);
@@ -34,13 +34,13 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateSchoolNameRequest updateSchoolNameRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateSchoolNameRequest updateSchoolNameRequest)
         {
             var result = await _schoolNameService.UpdateAsync(updateSchoolNameRequest);
             return Ok(result);
         }
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _schoolNameService.DeleteAsync(id);
             return Ok(result);

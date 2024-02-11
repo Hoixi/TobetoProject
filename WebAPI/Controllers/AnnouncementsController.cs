@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Add")]
-        public async Task<IActionResult> Add([FromQuery] CreateAnnouncementRequest createAnnouncementRequest)
+        public async Task<IActionResult> Add([FromBody] CreateAnnouncementRequest createAnnouncementRequest)
         {
             var result = await _announcementService.AddAsync(createAnnouncementRequest);
             return Ok(result);
@@ -35,14 +35,14 @@ namespace WebAPI.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update([FromQuery] UpdateAnnouncementRequest updateAnnouncementRequest)
+        public async Task<IActionResult> Update([FromBody] UpdateAnnouncementRequest updateAnnouncementRequest)
         {
             var result = await _announcementService.UpdateAsync(updateAnnouncementRequest);
             return Ok(result);
         }
 
         [HttpDelete("Delete")]
-        public async Task<IActionResult> Delete([FromQuery] int id)
+        public async Task<IActionResult> Delete([FromBody] int id)
         {
             var result = await _announcementService.DeleteAsync(id);
             return Ok(result);
