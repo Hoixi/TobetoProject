@@ -48,7 +48,7 @@ namespace Business.Concretes
 
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
-                return new ErrorDataResult<UserBase>("Şifre Hatali");
+                return new ErrorDataResult<UserBase>("E-Posta veya Şifre Hatalı");
             }
 
             return new SuccessDataResult<UserBase>(userToCheck, "Tamam");

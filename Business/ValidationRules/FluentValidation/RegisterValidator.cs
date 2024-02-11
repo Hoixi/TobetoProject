@@ -14,6 +14,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(i => i.Email).EmailAddress().WithMessage("E-posta düzgün girilmedi.");
             RuleFor(i => i.Password).MinimumLength(5).WithMessage("Şifre en az 5 haneli olmalıdır.");
+            //RuleFor(i => i.Password).Matches(@"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_]).{8,15}$").WithMessage("Şifre en az 5 haneli olmalıdır.");
         }
     }
 }

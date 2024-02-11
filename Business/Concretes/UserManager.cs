@@ -57,11 +57,8 @@ public class UserManager : IUserService
 
     
     public async Task<UserBase> AddAsync(UserBase user)
-    {
-        /*_userBusinessRules.EmailMustIncludeAtSign(createUserRequest);
-        _userBusinessRules.PasswordValidate(createUserRequest);
-        _userBusinessRules.PhoneNumberValidate(createUserRequest);*/ 
-        
+    {       
+               
         User userBase = _mapper.Map<User>(user);
         User createdUser = await _userDal.AddAsync(userBase);
         CreatedUserResponse createdUserResponse = _mapper.Map<CreatedUserResponse>(createdUser);
