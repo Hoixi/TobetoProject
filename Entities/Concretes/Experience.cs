@@ -7,10 +7,11 @@ namespace Entities.Concretes
         public int UserId { get; set; }
         public int CityId { get; set; }
         public string CompanyName { get; set; }
-        public string Position { get; set;}
-        public  string Sector { get; set; }
-        public DateTime StartDate { get; set;}
-        public DateTime? EndDate { get; set;}
+        public string Position { get; set; }
+        public string Sector { get; set; }
+        public string? Description { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime? EndDate { get; set; }
         public User User { get; set; }
         public City City { get; set; }
     }
