@@ -53,5 +53,12 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getByUserId")]
+        public async Task<IActionResult> GetByUserId(int userId , [FromQuery] PageRequest pageRequest)
+        {
+            var result = await _experienceService.GetByUserId(pageRequest, userId);
+            return Ok(result);
+        }
+
     }
 }

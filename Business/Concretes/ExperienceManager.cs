@@ -66,6 +66,18 @@ public class ExperienceManager : IExperienceService
         return result;
     }
 
+    public async Task<IPaginate<GetListExperienceResponse>> GetByUserId(PageRequest pageRequest, int userId)
+    {
+        var data = await _experienceDal.GetListAsync(
+            include: e => e.Include(c => c.City),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize,
+                predicate: u => u.UserId == userId
+                );
+        var result = _mapper.Map<Paginate<GetListExperienceResponse>>(data);
+        return result;
+    }
+
     public async Task<UpdatedExperienceResponse> UpdateAsync(UpdateExperienceRequest updateExperienceRequest)
     {
         var data = await _experienceDal.GetAsync(i => i.Id == updateExperienceRequest.Id);
