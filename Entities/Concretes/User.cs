@@ -12,6 +12,7 @@ public class User : Entity<int>
     public byte[] PasswordHash { get; set; }
     public string? NationalIdentity { get; set; }   
     public string? PhoneNumber { get; set; }    
+    public string? Description { get; set; }    
     public int? ImageId { get; set; }
     public DateTime? BirthDate { get; set; }
     public List<UserSocialMedia> UserSocialMedias { get; set; }
