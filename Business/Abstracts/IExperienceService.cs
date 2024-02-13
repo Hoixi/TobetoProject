@@ -13,6 +13,6 @@ public interface IExperienceService
     Task<Experience> DeleteAsync(int id);
     Task<IPaginate<GetListExperienceResponse>> GetAllAsync(PageRequest pageRequest);
     Task<CreatedExperienceResponse> GetById(int id);
-
+    Task<IPaginate<GetListExperienceResponse>> GetByUserId(PageRequest pageRequest, int userId);
 }
 
