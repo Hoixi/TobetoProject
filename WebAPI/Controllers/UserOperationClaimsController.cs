@@ -2,6 +2,7 @@
 using Business.Dtos.Requests.LanguageRequests;
 using Business.Dtos.Requests.UserOperationClaimRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,6 +10,8 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
+
     public class UserOperationClaimsController : ControllerBase
     {
         IUserOperationClaimService _userOperationClaimService;
