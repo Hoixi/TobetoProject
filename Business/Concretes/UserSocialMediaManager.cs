@@ -7,6 +7,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -60,6 +61,18 @@ namespace Business.Concretes
         {
             var data = await _userSocialMediaDal.GetAsync(c => c.Id == id);
             var result = _mapper.Map<CreatedUserSocialMediaResponse>(data);
+            return result;
+        }
+
+        public async Task<IPaginate<GetListUserSocialMediaResponse>> GetByUserId(PageRequest pageRequest, int userId)
+        {
+            var data = await _userSocialMediaDal.GetListAsync(include: p => p
+        .Include(p => p.SocialMedia),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize,
+                predicate: u => userId == u.UserId
+               );
+            var result = _mapper.Map<Paginate<GetListUserSocialMediaResponse>>(data);
             return result;
         }
     }

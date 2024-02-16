@@ -1,4 +1,5 @@
-﻿using Entities.Concretes;
+﻿using Core.Entities.Concretes;
+using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -9,17 +10,15 @@ using System.Threading.Tasks;
 
 namespace DataAccess.EntityConfigurations
 {
-    public class SkillConfiguration : IEntityTypeConfiguration<Skill>
+    public class UserOperationClaimConfiguration
     {
-        public void Configure(EntityTypeBuilder<Skill> builder)
+        public void Configure(EntityTypeBuilder<UserOperationClaim> builder)
         {
-            builder.ToTable("Skills").HasKey(b => b.Id);
+            builder.ToTable("UserOperationClaims").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
-            builder.Property(b => b.Name).HasColumnName("Name");
+            builder.Property(b => b.UserId).HasColumnName("UserId");
+            builder.Property(b => b.OperationClaimId).HasColumnName("OperationClaimId");
 
-            builder.HasMany(b => b.UserSkills)
-                .WithOne(usm => usm.Skill)
-                .HasForeignKey(usm => usm.SkillId);
 
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }

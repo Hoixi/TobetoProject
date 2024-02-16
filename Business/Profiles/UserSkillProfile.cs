@@ -20,7 +20,9 @@ namespace Business.Profiles
             CreateMap<UserSkill, CreatedUserSkillResponse>();
 
 
-            CreateMap<UserSkill, GetListUserSkillResponse>().ReverseMap();
+            CreateMap<UserSkill, GetListUserSkillResponse>()
+                .ForMember(dest => dest.SkillName, opt => opt.MapFrom(src => src.Skill.Name))
+                .ReverseMap();
             CreateMap<Paginate<UserSkill>, Paginate<GetListUserSkillResponse>>();
 
             CreateMap<UpdateUserSkillRequest, UserSkill>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
