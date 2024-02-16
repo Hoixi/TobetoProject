@@ -15,6 +15,7 @@ namespace DataAccess.EntityConfigurations
         {
             builder.ToTable("Towns").HasKey(b => b.Id);
             builder.Property(b => b.Id).HasColumnName("Id").IsRequired();
+            builder.Property(b => b.CityId).HasColumnName("CityId");
             builder.Property(b => b.Name).HasColumnName("Name");
 
             builder.HasMany(b => b.Addresses)

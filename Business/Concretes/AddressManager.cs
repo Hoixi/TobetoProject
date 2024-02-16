@@ -60,10 +60,27 @@ namespace Business.Concretes
             var result = _mapper.Map<UpdatedAddressResponse>(data);
             return result;
         }
-        public async Task<CreatedAddressResponse> GetById(int id)
+        public async Task<GetListAddressResponse> GetById(int id)
         {
-            var data = await _addressDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedAddressResponse>(data);
+            var data = await _addressDal.GetAsync(
+                predicate:c => c.Id == id,
+                include: p => p
+                .Include(p => p.Town)
+                .Include(c => c.Country)
+                .Include(ct => ct.City));
+            var result = _mapper.Map<GetListAddressResponse>(data);
+            return result;
+        }
+
+        public async Task<GetListAddressResponse> GetByUserId(int userId)
+        {
+            var data = await _addressDal.GetAsync(
+                predicate:c => c.UserId == userId,
+                include: p => p
+                .Include(p => p.Town)
+                .Include(c => c.Country)
+                .Include(ct => ct.City));
+            var result = _mapper.Map<GetListAddressResponse>(data);
             return result;
         }
     }
