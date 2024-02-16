@@ -66,6 +66,19 @@ namespace Business.Concretes
             var result = _mapper.Map<CreatedUserLanguageResponse>(data);
             return result;
         }
+
+        public async Task<IPaginate<GetListUserLanguageResponse>> GetByUserId(PageRequest pageRequest, int userId)
+        {
+            var data = await _userLanguageDal.GetListAsync(include: p => p
+        .Include(p => p.Language)
+        .Include(p => p.LanguageLevel),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize,
+                predicate: u => userId == u.UserId
+               );
+            var result = _mapper.Map<Paginate<GetListUserLanguageResponse>>(data);
+            return result;
+        }
     }
 
 }

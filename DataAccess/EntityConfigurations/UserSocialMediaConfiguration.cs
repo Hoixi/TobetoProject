@@ -20,6 +20,10 @@ public class UserSocialMediaConfiguration : IEntityTypeConfiguration<UserSocialM
         builder.HasOne(usm => usm.User)
            .WithMany(u => u.UserSocialMedias) 
            .HasForeignKey(usm => usm.UserId);
+
+        builder.HasOne(usm => usm.SocialMedia)
+           .WithMany(u => u.userSocialMedias)
+           .HasForeignKey(usm => usm.SocialMediaId);
         builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
     }
 }

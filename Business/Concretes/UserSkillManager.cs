@@ -7,6 +7,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -60,6 +61,18 @@ namespace Business.Concretes
         {
             var data = await _userSkillDal.GetAsync(c => c.Id == id);
             var result = _mapper.Map<CreatedUserSkillResponse>(data);
+            return result;
+        }
+
+        public async Task<IPaginate<GetListUserSkillResponse>> GetByUserId(PageRequest pageRequest, int userId)
+        {
+            var data = await _userSkillDal.GetListAsync(include: p => p
+        .Include(p => p.Skill),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize,
+                predicate: u => userId == u.UserId
+               );
+            var result = _mapper.Map<Paginate<GetListUserSkillResponse>>(data);
             return result;
         }
     }
