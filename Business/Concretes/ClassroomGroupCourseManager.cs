@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.ClassroomGroupCourseRequests;
 using Business.Dtos.Responses.CategoryResponses;
 using Business.Dtos.Responses.ClassroomGroupCourseResponses;
+using Business.Dtos.Responses.UserSurveyResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
@@ -41,10 +42,10 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
     {
         var data = await _classroomGroupCourseDal.GetListAsync(
 
-            include: cgc=>cgc
-            .Include(cgc=>cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
-            .Include(cgc=>cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
-            .Include(cgc=>cgc.Courses),
+            include: cgc => cgc
+            .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
+            .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
+            .Include(cgc => cgc.Courses),
 
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
@@ -57,6 +58,36 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
     {
         var data = await _classroomGroupCourseDal.GetAsync(c => c.Id == id);
         var result = _mapper.Map<CreatedClassroomGroupCourseResponse>(data);
+        return result;
+    }
+
+    public async Task<IPaginate<GetListClassroomGroupCourseResponse>> GetListByClassroomGroupId(int classroomGroupId, PageRequest pageRequest)
+    {
+        var data = await _classroomGroupCourseDal.GetListAsync(
+                predicate: u => u.ClassroomGroupId == classroomGroupId,
+                include: cgc => cgc
+                .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
+                .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
+                .Include(cgc => cgc.Courses),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+               );
+        var result = _mapper.Map<Paginate<GetListClassroomGroupCourseResponse>>(data);
+        return result;
+    }
+
+    public async Task<IPaginate<GetListClassroomGroupCourseResponse>> GetListByCourseId(int courseId, PageRequest pageRequest)
+    {
+        var data = await _classroomGroupCourseDal.GetListAsync(
+                predicate: u => u.CourseId == courseId,
+                include: cgc => cgc
+                .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
+                .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
+                .Include(cgc => cgc.Courses),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+               );
+        var result = _mapper.Map<Paginate<GetListClassroomGroupCourseResponse>>(data);
         return result;
     }
 

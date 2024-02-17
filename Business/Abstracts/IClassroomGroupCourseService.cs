@@ -13,4 +13,6 @@ public interface IClassroomGroupCourseService
     Task<ClassroomGroupCourse> DeleteAsync(int id);
     Task<IPaginate<GetListClassroomGroupCourseResponse>> GetAllAsync(PageRequest pageRequest);
     Task<CreatedClassroomGroupCourseResponse> GetById(int id);
+    Task<IPaginate<GetListClassroomGroupCourseResponse>> GetListByClassroomGroupId(int classroomGroupId, PageRequest pageRequest);
+    Task<IPaginate<GetListClassroomGroupCourseResponse>> GetListByCourseId(int courseId, PageRequest pageRequest);
 }
