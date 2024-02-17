@@ -8,6 +8,7 @@ using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes;
 
@@ -56,13 +57,14 @@ namespace Business.Concretes;
 
     
 
-    public async Task<IPaginate<GetListTownResponse>> GetListByCityId(PageRequest pageRequest, int cityId)
+    public async Task<IPaginate<GetListByCityIdResponse>> GetListByCityId(PageRequest pageRequest, int cityId)
     {
         var data = await _townDal.GetListAsync(predicate: c => c.CityId == cityId,
+                 include: c => c.Include(t => t.City),
                  index: pageRequest.PageIndex,
                  size: pageRequest.PageSize
                 );
-        var result = _mapper.Map<Paginate<GetListTownResponse>>(data);
+        var result = _mapper.Map<Paginate<GetListByCityIdResponse>>(data);
         return result;
     }
 

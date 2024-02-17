@@ -18,6 +18,6 @@ namespace Business.Abstracts
         Task<Town> DeleteAsync(int id);
         Task<IPaginate<GetListTownResponse>> GetAllAsync(PageRequest pageRequest);
         Task<GetListTownResponse> GetById(int id);
-        Task<IPaginate<GetListTownResponse>> GetListByCityId(PageRequest pageRequest, int cityId);
+        Task<IPaginate<GetListByCityIdResponse>> GetListByCityId(PageRequest pageRequest, int cityId);
     }
 }

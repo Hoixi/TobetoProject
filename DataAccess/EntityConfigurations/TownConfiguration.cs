@@ -22,6 +22,10 @@ namespace DataAccess.EntityConfigurations
             .WithOne(usm => usm.Town)
             .HasForeignKey(usm => usm.TownId);
 
+            builder.HasOne(b => b.City)
+            .WithMany(usm => usm.Towns)
+            .HasForeignKey(usm => usm.CityId);
+
             builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
         }
     }

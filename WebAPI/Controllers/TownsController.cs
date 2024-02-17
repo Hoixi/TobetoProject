@@ -55,7 +55,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("getByCityId")]
-        public async Task<IActionResult> GetByCityId([FromQuery] PageRequest pageRequest,[FromQuery] int cityId)
+        public async Task<IActionResult> GetByCityId([FromQuery] PageRequest pageRequest, int cityId)
         {
             var result = await _townService.GetListByCityId(pageRequest, cityId);
             return Ok(result);

@@ -23,8 +23,15 @@ namespace Business.Profiles
             CreateMap<Town, GetListTownResponse>().ReverseMap();
             CreateMap<Paginate<Town>, Paginate<GetListTownResponse>>();
 
+            CreateMap<Town, GetListByCityIdResponse>()
+                .ForMember(dest => dest.CityName, opt => opt.MapFrom(src => src.City.Name))
+                .ReverseMap();
+            CreateMap<Paginate<Town>, Paginate<GetListByCityIdResponse>>();
+
             CreateMap<UpdateTownRequest, Town>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());
             CreateMap<Town, UpdatedTownResponse>();
+
+            
         }
     }
 }
