@@ -2,11 +2,13 @@
 using Business.Abstracts;
 using Business.Dtos.Requests.UserSurveyRequests;
 using Business.Dtos.Responses.AddressResponses;
+using Business.Dtos.Responses.UserSkillResponses;
 using Business.Dtos.Responses.UserSurveyResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
+using Microsoft.EntityFrameworkCore;
 
 namespace Business.Concretes
 {
@@ -60,6 +62,17 @@ namespace Business.Concretes
         {
             var data = await _userSurveyDal.GetAsync(c => c.Id == id);
             var result = _mapper.Map<CreatedUserSurveyResponse>(data);
+            return result;
+        }
+
+        public async Task<IPaginate<GetListUserSurveyResponse>> GetByUserId(PageRequest pageRequest, int userId)
+        {
+            var data = await _userSurveyDal.GetListAsync(
+                predicate: u => u.UserId == userId,
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+               );
+            var result = _mapper.Map<Paginate<GetListUserSurveyResponse>>(data);
             return result;
         }
     }
