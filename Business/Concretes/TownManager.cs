@@ -45,12 +45,24 @@ namespace Business.Concretes;
                );
             var result = _mapper.Map<Paginate<GetListTownResponse>>(data);
             return result;
-    }
+    }    
 
-    public async Task<CreatedTownResponse> GetById(int id)
+    public async Task<GetListTownResponse> GetById(int id)
     {
         var data = await _townDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedTownResponse>(data);
+        var result = _mapper.Map<GetListTownResponse>(data);
+        return result;
+    }
+
+    
+
+    public async Task<IPaginate<GetListTownResponse>> GetListByCityId(PageRequest pageRequest, int cityId)
+    {
+        var data = await _townDal.GetListAsync(predicate: c => c.CityId == cityId,
+                 index: pageRequest.PageIndex,
+                 size: pageRequest.PageSize
+                );
+        var result = _mapper.Map<Paginate<GetListTownResponse>>(data);
         return result;
     }
 
@@ -63,6 +75,8 @@ namespace Business.Concretes;
             var result = _mapper.Map<UpdatedTownResponse>(data);
             return result;
         }
-    }
+
+    
+}
 
 

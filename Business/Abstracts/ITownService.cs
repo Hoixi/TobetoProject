@@ -17,6 +17,7 @@ namespace Business.Abstracts
         Task<UpdatedTownResponse> UpdateAsync(UpdateTownRequest updateTownRequest);
         Task<Town> DeleteAsync(int id);
         Task<IPaginate<GetListTownResponse>> GetAllAsync(PageRequest pageRequest);
-        Task<CreatedTownResponse> GetById(int id);
+        Task<GetListTownResponse> GetById(int id);
+        Task<IPaginate<GetListTownResponse>> GetListByCityId(PageRequest pageRequest, int cityId);
     }
 }

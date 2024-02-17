@@ -54,5 +54,12 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getByCityId")]
+        public async Task<IActionResult> GetByCityId([FromQuery] PageRequest pageRequest,[FromQuery] int cityId)
+        {
+            var result = await _townService.GetListByCityId(pageRequest, cityId);
+            return Ok(result);
+        }
+
     }
 }
