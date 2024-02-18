@@ -48,12 +48,41 @@ public class CourseInstructorManager : ICourseInstructorService
         return result;
     }
 
+    public async Task<IPaginate<GetListCourseInstructorResponse>> GetListByCourseId(int courseId, PageRequest pageRequest)
+    {
+        var data = await _courseInstructorDal.GetListAsync(
+            include: ci => ci.Include(cl => cl.Instructor).ThenInclude(u => u.User).Include(i => i.Course),
+            predicate: ci => ci.CourseId == courseId,
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize
+            );
+        var result = _mapper.Map<Paginate<GetListCourseInstructorResponse>>(data);
+        return result;
+    }
+
+    public async Task<IPaginate<GetListCourseInstructorResponse>> GetListByInstructorId(int instructorId, PageRequest pageRequest)
+    {
+        var data = await _courseInstructorDal.GetListAsync(
+            include: ci => ci.Include(cl => cl.Instructor).ThenInclude(u => u.User).Include(i => i.Course),
+            predicate: ci => ci.InstructorId == instructorId,
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize
+            );
+        var result = _mapper.Map<Paginate<GetListCourseInstructorResponse>>(data);
+        return result;
+    }
+
+
+
+
     public async Task<CreatedCourseInstructorResponse> GetById(int id)
     {
         var data = await _courseInstructorDal.GetAsync(c => c.Id == id);
         var result = _mapper.Map<CreatedCourseInstructorResponse>(data);
         return result;
     }
+
+    
 
     public async Task<UpdatedCourseInstructorResponse> UpdateAsync(UpdateCourseInstructorRequest updateCourseInstructorRequest)
     {

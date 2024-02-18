@@ -8,6 +8,7 @@ using DataAccess.Abstracts;
 using DataAccess.Concretes;
 using Entities.Concretes;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.Design;
 
 namespace Business.Concretes
 {
@@ -50,12 +51,43 @@ namespace Business.Concretes
             return result;
         }
 
+        public async Task<IPaginate<GetListCourseCompanyResponse>> GetListByCompanyId(int companyId, PageRequest pageRequest)
+        {
+            var data = await _courseCompanyDal.GetListAsync(
+                predicate: cc => cc.CompanyId == companyId,
+                include: ci => ci
+                .Include(cl => cl.Course)
+                .Include(c => c.Company),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+               );
+            var result = _mapper.Map<Paginate<GetListCourseCompanyResponse>>(data);
+            return result;
+        }
+
+        public async Task<IPaginate<GetListCourseCompanyResponse>> GetListByCourseId(int courseId, PageRequest pageRequest)
+        {
+            var data = await _courseCompanyDal.GetListAsync(
+                predicate: cc => cc.CourseId == courseId,
+                include: ci => ci
+                .Include(cl => cl.Course)
+                .Include(c => c.Company),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+               );
+            var result = _mapper.Map<Paginate<GetListCourseCompanyResponse>>(data);
+            return result;
+        }
+
+
         public async Task<CreatedCourseCompanyResponse> GetById(int id)
         {
             var data = await _courseCompanyDal.GetAsync(c => c.Id == id);
             var result = _mapper.Map<CreatedCourseCompanyResponse>(data);
             return result;
         }
+
+        
 
         public async Task<UpdatedCourseCompanyResponse> UpdateAsync(UpdateCourseCompanyRequest updateCourseCompanyRequest)
         {

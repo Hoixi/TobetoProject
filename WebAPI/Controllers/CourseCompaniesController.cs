@@ -51,5 +51,19 @@ namespace WebAPI.Controllers
             var result = await _courseCompanyService.GetById(id);
             return Ok(result);
         }
+
+        [HttpGet("GetListByCourseId")]
+        public async Task<IActionResult> GetListByCourseId(int courseId, [FromQuery] PageRequest pageRequest)
+        {
+            var result = await _courseCompanyService.GetListByCourseId(courseId, pageRequest);
+            return Ok(result);
+        }
+
+        [HttpGet("GetListByCompanyId")]
+        public async Task<IActionResult> GetListByCompanyId(int companyId, [FromQuery] PageRequest pageRequest)
+        {
+            var result = await _courseCompanyService.GetListByCompanyId(companyId, pageRequest);
+            return Ok(result);
+        }
     }
 }

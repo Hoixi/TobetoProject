@@ -51,4 +51,20 @@ public class CourseInstructorsController : ControllerBase
         var result = await _courseInstructorService.GetById(id);
         return Ok(result);
     }
+
+    [HttpGet("getListByInstructorId")]
+    public async Task<IActionResult> GetListByInstructorId(int instructorId, [FromQuery] PageRequest pageRequest)
+    {
+        var result = await _courseInstructorService.GetListByInstructorId(instructorId, pageRequest);
+        return Ok(result);
+    }
+
+    [HttpGet("GetListByCourseId")]
+    public async Task<IActionResult> GetListByCourseId(int courseId, [FromQuery] PageRequest pageRequest)
+    {
+        var result = await _courseInstructorService.GetListByCourseId(courseId, pageRequest);
+        return Ok(result);
+    }
+
+
 }
