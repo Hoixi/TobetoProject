@@ -40,6 +40,9 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListUserSkillResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _userSkillDal.GetListAsync(
+
+                include: us => us
+                .Include(us => us.Skill),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );
@@ -57,10 +60,14 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedUserSkillResponse> GetById(int id)
+        public async Task<GetListUserSkillResponse> GetById(int id)
         {
-            var data = await _userSkillDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedUserSkillResponse>(data);
+            var data = await _userSkillDal.GetAsync(
+                c => c.Id == id,
+                include: us => us
+                .Include(us => us.Skill)
+                );
+            var result = _mapper.Map<GetListUserSkillResponse>(data);
             return result;
         }
 

@@ -87,20 +87,16 @@ public class ClassroomStudentManager : IClassroomStudentService
         return result;
     }
 
-    public async Task<IPaginate<GetListClassroomStudentResponse>> GetById(int id, PageRequest pageRequest)
+    public async Task<GetListClassroomStudentResponse> GetById(int id)
     {
         var data = await _classroomStudentDal.GetListAsync(
        predicate: cs => cs.Id == id,
        include: s => s
        .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Classroom)
        .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Group)
-
-       .Include(s => s.Student)
-       .ThenInclude(s => s.User),
-       index: pageRequest.PageIndex,
-       size: pageRequest.PageSize
+       .Include(s => s.Student).ThenInclude(s => s.User)       
        );
-        var result = _mapper.Map<Paginate<GetListClassroomStudentResponse>>(data);
+        var result = _mapper.Map<GetListClassroomStudentResponse>(data);
         return result;
     }
 

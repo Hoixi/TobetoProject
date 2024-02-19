@@ -46,10 +46,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedCertificateResponse> GetById(int id)
+        public async Task<GetListCertificateResponse> GetById(int id)
         {
             var data = await _certificateDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedCertificateResponse>(data);
+            var result = _mapper.Map<GetListCertificateResponse>(data);
             return result;
         }
 

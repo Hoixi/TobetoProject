@@ -53,10 +53,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedLanguageLevelResponse> GetById(int id)
+        public async Task<GetListLanguageLevelResponse> GetById(int id)
         {
             var data = await _languageLevelDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedLanguageLevelResponse>(data);
+            var result = _mapper.Map<GetListLanguageLevelResponse>(data);
             return result;
         }
 

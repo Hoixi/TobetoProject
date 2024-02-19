@@ -49,10 +49,13 @@ public class InstructorManager : IInstructorService
         return result;
     }
 
-    public async  Task<CreatedInstructorResponse> GetById(int id)
+    public async  Task<GetListInstructorResponse> GetById(int id)
     {
-        var data = await _instructorDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedInstructorResponse>(data);
+        var data = await _instructorDal.GetAsync(c => c.Id == id,
+             include: p => p
+            .Include(p => p.User)
+            );
+        var result = _mapper.Map<GetListInstructorResponse>(data);
         return result;
     }
 

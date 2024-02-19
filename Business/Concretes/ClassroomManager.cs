@@ -47,10 +47,10 @@ public class ClassroomManager : IClassroomService
             return result;
     }
 
-    public async Task<CreatedClassroomResponse> GetById(int id)
+    public async Task<GetListClassroomResponse> GetById(int id)
     {
         var data = await _classroomDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedClassroomResponse>(data);
+        var result = _mapper.Map<GetListClassroomResponse>(data);
         return result;
     }
 

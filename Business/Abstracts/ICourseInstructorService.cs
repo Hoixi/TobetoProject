@@ -1,7 +1,5 @@
 ﻿using Business.Dtos.Requests.ClassroomInstructorRequests;
-using Business.Dtos.Responses.ClassroomGroupCourseResponses;
 using Business.Dtos.Responses.ClassroomInstructorResponses;
-using Business.Dtos.Responses.CourseCompanyResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
 
@@ -13,7 +11,7 @@ public interface ICourseInstructorService
     Task<UpdatedCourseInstructorResponse> UpdateAsync(UpdateCourseInstructorRequest updateCourseInstructorRequest);
     Task<CourseInstructor> DeleteAsync(int id);
     Task<IPaginate<GetListCourseInstructorResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedCourseInstructorResponse> GetById(int id);
+    Task<GetListCourseInstructorResponse> GetById(int id);
     Task<IPaginate<GetListCourseInstructorResponse>> GetListByCourseId(int courseId, PageRequest pageRequest);
     Task<IPaginate<GetListCourseInstructorResponse>> GetListByInstructorId(int instructorId, PageRequest pageRequest);
 

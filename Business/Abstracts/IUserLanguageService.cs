@@ -2,11 +2,6 @@
 using Business.Dtos.Responses.UserLanguageResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
@@ -16,7 +11,7 @@ namespace Business.Abstracts
         Task<UpdatedUserLanguageResponse> UpdateAsync(UpdateUserLanguageRequest updateUserLanguageRequest);
         Task<UserLanguage> DeleteAsync(int id);
         Task<IPaginate<GetListUserLanguageResponse>> GetAllAsync(PageRequest pageRequest);
-        Task<CreatedUserLanguageResponse> GetById(int id);
+        Task<GetListUserLanguageResponse> GetById(int id);
         Task<IPaginate<GetListUserLanguageResponse>> GetByUserId(PageRequest pageRequest, int userId);
     }
 }

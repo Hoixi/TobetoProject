@@ -1,19 +1,10 @@
 ﻿using AutoMapper;
 using Business.Abstracts;
-using Business.Dtos.Requests.GroupRequests;
 using Business.Dtos.Requests.LanguageRequests;
-using Business.Dtos.Responses.GroupResponses;
-using Business.Dtos.Responses.InstructorResponses;
 using Business.Dtos.Responses.LanguageResponses;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
-using DataAccess.Concretes;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concretes;
 
@@ -52,10 +43,10 @@ public class LanguageManager : ILanguageService
         return result;
     }
 
-    public async Task<CreatedLanguageResponse> GetById(int id)
+    public async Task<GetListLanguageResponse> GetById(int id)
     {
         var data = await _languageDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedLanguageResponse>(data);
+        var result = _mapper.Map<GetListLanguageResponse>(data);
         return result;
     }
 

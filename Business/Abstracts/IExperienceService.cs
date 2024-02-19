@@ -1,5 +1,4 @@
 ﻿using Business.Dtos.Requests.ExperienceRequests;
-using Business.Dtos.Responses.EducationResponses;
 using Business.Dtos.Responses.ExperienceResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -12,7 +11,7 @@ public interface IExperienceService
     Task<UpdatedExperienceResponse> UpdateAsync(UpdateExperienceRequest updateExperienceRequest);
     Task<Experience> DeleteAsync(int id);
     Task<IPaginate<GetListExperienceResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedExperienceResponse> GetById(int id);
+    Task<GetListExperienceResponse> GetById(int id);
     Task<IPaginate<GetListExperienceResponse>> GetByUserId(PageRequest pageRequest, int userId);
 }
 

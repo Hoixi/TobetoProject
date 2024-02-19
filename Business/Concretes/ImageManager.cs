@@ -54,10 +54,10 @@ public class ImageManager : IImageService
         return result;
     }
 
-    public async Task<CreatedImageResponse> GetById(int id)
+    public async Task<GetListImageResponse> GetById(int id)
     {
         var data = await _imageDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedImageResponse>(data);
+        var result = _mapper.Map<GetListImageResponse>(data);
         return result;
     }
 

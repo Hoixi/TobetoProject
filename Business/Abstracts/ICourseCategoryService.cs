@@ -11,7 +11,7 @@ public interface ICourseCategoryService
     Task<UpdatedCourseCategoryResponse> UpdateAsync(UpdateCourseCategoryRequest updateCourseCategoryRequest);
     Task<CourseCategory> DeleteAsync(int id);
     Task<IPaginate<GetListCourseCategoryResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedCourseCategoryResponse> GetById(int id);
+    Task<GetListCourseCategoryResponse> GetById(int id);
     Task<IPaginate<GetListCourseCategoryResponse>> GetListByCourseId(int courseId, PageRequest pageRequest);
     Task<IPaginate<GetListCourseCategoryResponse>> GetListByCategoryId(int categoryId, PageRequest pageRequest);
 

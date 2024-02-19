@@ -58,10 +58,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedUserSurveyResponse> GetById(int id)
+        public async Task<GetListUserSurveyResponse> GetById(int id)
         {
             var data = await _userSurveyDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedUserSurveyResponse>(data);
+            var result = _mapper.Map<GetListUserSurveyResponse>(data);
             return result;
         }
 

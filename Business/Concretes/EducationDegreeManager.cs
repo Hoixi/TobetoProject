@@ -61,10 +61,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedEducationDegreeResponse> GetById(int id)
+        public async Task<GetListEducationDegreeResponse> GetById(int id)
         {
             var data = await _educationDegreeDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedEducationDegreeResponse>(data);
+            var result = _mapper.Map<GetListEducationDegreeResponse>(data);
             return result;
         }
 

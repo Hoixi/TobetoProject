@@ -45,9 +45,9 @@ public class ClassroomStudentsController : ControllerBase
     }
 
     [HttpGet("getById")]
-    public async Task<IActionResult> GetById([FromQuery] int id,[FromQuery] PageRequest pageRequest)
+    public async Task<IActionResult> GetById([FromQuery] int id)
     {
-        var result = await _classroomStudentService.GetById(id, pageRequest);
+        var result = await _classroomStudentService.GetById(id);
         return Ok(result);
     }
 
