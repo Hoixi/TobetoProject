@@ -53,12 +53,58 @@ public class ClassroomStudentManager : IClassroomStudentService
         return result;
     }
 
-    public async Task<CreatedClassroomStudentResponse> GetById(int id)
+    public async Task<IPaginate<GetListClassroomStudentResponse>> GetListByClassroomGroupId(int classroomGroupId, PageRequest pageRequest)
     {
-            var data = await _classroomStudentDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedClassroomStudentResponse>(data);
-            return result;
+        var data = await _classroomStudentDal.GetListAsync(
+            predicate: cs => cs.ClassroomGroupId == classroomGroupId,
+            include: s => s
+            .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Classroom)
+            .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Group)
+
+            .Include(s => s.Student)
+            .ThenInclude(s => s.User),
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize
+            );
+        var result = _mapper.Map<Paginate<GetListClassroomStudentResponse>>(data);
+        return result;
     }
+
+    public async Task<IPaginate<GetListClassroomStudentResponse>> GetListByStudentId(int studentId, PageRequest pageRequest)
+    {
+        var data = await _classroomStudentDal.GetListAsync(
+            predicate: cs => cs.StudentId == studentId,
+            include: s => s
+            .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Classroom)
+            .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Group)
+
+            .Include(s => s.Student)
+            .ThenInclude(s => s.User),
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize
+            );
+        var result = _mapper.Map<Paginate<GetListClassroomStudentResponse>>(data);
+        return result;
+    }
+
+    public async Task<IPaginate<GetListClassroomStudentResponse>> GetById(int id, PageRequest pageRequest)
+    {
+        var data = await _classroomStudentDal.GetListAsync(
+       predicate: cs => cs.Id == id,
+       include: s => s
+       .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Classroom)
+       .Include(cg => cg.ClassroomGroup).ThenInclude(c => c.Group)
+
+       .Include(s => s.Student)
+       .ThenInclude(s => s.User),
+       index: pageRequest.PageIndex,
+       size: pageRequest.PageSize
+       );
+        var result = _mapper.Map<Paginate<GetListClassroomStudentResponse>>(data);
+        return result;
+    }
+
+    
 
     public async Task<UpdatedClassroomStudentResponse> UpdateAsync(UpdateClassroomStudentRequest updateClassroomStudentRequest)
     {
@@ -71,6 +117,6 @@ public class ClassroomStudentManager : IClassroomStudentService
 
     }
 
-
+    
 }
 

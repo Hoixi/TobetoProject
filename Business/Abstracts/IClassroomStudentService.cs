@@ -12,5 +12,7 @@ public interface IClassroomStudentService
     Task<UpdatedClassroomStudentResponse> UpdateAsync(UpdateClassroomStudentRequest updateClassroomStudentRequest);
     Task<ClassroomStudent> DeleteAsync(int id);
     Task<IPaginate<GetListClassroomStudentResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedClassroomStudentResponse> GetById(int id);
+    Task<IPaginate<GetListClassroomStudentResponse>> GetById(int id, PageRequest pageRequest);
+    Task<IPaginate<GetListClassroomStudentResponse>> GetListByStudentId(int studentId,PageRequest pageRequest);
+    Task<IPaginate<GetListClassroomStudentResponse>> GetListByClassroomGroupId(int classroomGroupId, PageRequest pageRequest);
 }

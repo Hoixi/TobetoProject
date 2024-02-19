@@ -70,8 +70,8 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListUserLanguageResponse>> GetByUserId(PageRequest pageRequest, int userId)
         {
             var data = await _userLanguageDal.GetListAsync(include: p => p
-        .Include(p => p.Language)
-        .Include(p => p.LanguageLevel),
+            .Include(p => p.Language)
+            .Include(p => p.LanguageLevel),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize,
                 predicate: u => userId == u.UserId

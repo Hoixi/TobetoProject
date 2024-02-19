@@ -56,12 +56,54 @@ public class ClassroomGroupManager : IClassroomGroupService
         return result;
     }
 
+    public async Task<IPaginate<GetListClassroomGroupResponse>> GetListByClassroomId(int classroomId, PageRequest pageRequest)
+    {
+        var data = await _classroomGroupDal.GetListAsync(
+            predicate: cg => cg.ClassroomId == classroomId,
+            include:
+            cg => cg
+            .Include(cg => cg.Group)
+            .Include(cg => cg.Classroom)
+            .Include(cg => cg.ClassroomStudents)
+                .ThenInclude(cg => cg.Student)
+                .ThenInclude(cg => cg.User),
+
+
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize
+            );
+        var result = _mapper.Map<Paginate<GetListClassroomGroupResponse>>(data);
+        return result;
+    }
+
+    public async Task<IPaginate<GetListClassroomGroupResponse>> GetListByGroupId(int groupId, PageRequest pageRequest)
+    {
+        var data = await _classroomGroupDal.GetListAsync(
+            predicate: cg => cg.GroupId == groupId,
+            include:
+            cg => cg
+            .Include(cg => cg.Group)
+            .Include(cg => cg.Classroom)
+            .Include(cg => cg.ClassroomStudents)
+                .ThenInclude(cg => cg.Student)
+                .ThenInclude(cg => cg.User),
+
+
+            index: pageRequest.PageIndex,
+            size: pageRequest.PageSize
+            );
+        var result = _mapper.Map<Paginate<GetListClassroomGroupResponse>>(data);
+        return result;
+    }
+
     public async Task<CreatedClassroomGroupResponse> GetById(int id)
     {
         var data = await _classroomGroupDal.GetAsync(c => c.Id == id);
         var result = _mapper.Map<CreatedClassroomGroupResponse>(data);
         return result;
     }
+
+    
 
     public async Task<UpdatedClassroomGroupResponse> UpdateAsync(UpdateClassroomGroupRequest updateClassroomGroupRequest)
     {
