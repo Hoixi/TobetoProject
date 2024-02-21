@@ -4,6 +4,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.UserLanguageRequests;
 using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserLanguageResponses;
+using Business.Rules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
@@ -16,15 +17,18 @@ namespace Business.Concretes
     {
         IUserLanguageDal _userLanguageDal;
         IMapper _mapper;
-
-        public UserLanguageManager(IUserLanguageDal userLanguageDal, IMapper mapper)
+        UserLanguageBusinessRules _userLanguageBusinessRules;
+        public UserLanguageManager(IUserLanguageDal userLanguageDal, IMapper mapper, UserLanguageBusinessRules userLanguageBusinessRules)
         {
             _userLanguageDal = userLanguageDal;
             _mapper = mapper;
+            _userLanguageBusinessRules = userLanguageBusinessRules;
         }
 
         public async Task<CreatedUserLanguageResponse> AddAsync(CreateUserLanguageRequest createUserLanguageRequest)
         {
+
+            await _userLanguageBusinessRules.UserLanguageEnsureUnique(createUserLanguageRequest.UserId);
             UserLanguage userLanguage = _mapper.Map<UserLanguage>(createUserLanguageRequest);
             UserLanguage createdUserLanguage = await _userLanguageDal.AddAsync(userLanguage);
             CreatedUserLanguageResponse createdUserLanguageResponse = _mapper.Map<CreatedUserLanguageResponse>(createdUserLanguage);

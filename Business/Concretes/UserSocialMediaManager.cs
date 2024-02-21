@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.UserSocialMediaRequests;
 using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
+using Business.Rules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
@@ -15,15 +16,18 @@ namespace Business.Concretes
     {
         IUserSocialMediaDal _userSocialMediaDal;
         IMapper _mapper;
-
-        public UserSocialMediaManager(IUserSocialMediaDal userSocialMediaDal, IMapper mapper)
+        UserSocialMediaBusinessRules _userSocialMediaBusinessRules;
+        public UserSocialMediaManager(IUserSocialMediaDal userSocialMediaDal, IMapper mapper,UserSocialMediaBusinessRules userSocialMediaBusinessRules)
         {
             _userSocialMediaDal = userSocialMediaDal;
             _mapper = mapper;
+            _userSocialMediaBusinessRules = userSocialMediaBusinessRules;
         }
 
         public async Task<CreatedUserSocialMediaResponse> AddAsync(CreateUserSocialMediaRequest createUserSociaMediaRequest)
         {
+            await _userSocialMediaBusinessRules.SocialMediaLimitThree(createUserSociaMediaRequest.UserId);
+
             UserSocialMedia userSocialMedia = _mapper.Map<UserSocialMedia>(createUserSociaMediaRequest);
             UserSocialMedia createdUserSocialMedia = await _userSocialMediaDal.AddAsync(userSocialMedia);
             CreatedUserSocialMediaResponse createdUserSocialMediaResponse = _mapper.Map<CreatedUserSocialMediaResponse>(createdUserSocialMedia);
