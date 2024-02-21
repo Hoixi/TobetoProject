@@ -1,6 +1,5 @@
 ﻿using Business.Dtos.Requests.AddressRequests;
 using Business.Dtos.Responses.AddressResponses;
-using Business.Dtos.Responses.CategoryResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
 

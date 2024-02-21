@@ -53,10 +53,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedGroupResponse> GetById(int id)
+        public async Task<GetListGroupResponse> GetById(int id)
         {
             var data = await _groupDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedGroupResponse>(data);
+            var result = _mapper.Map<GetListGroupResponse>(data);
             return result;
         }
 

@@ -49,10 +49,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedSchoolNameResponse> GetById(int id)
+        public async Task<GetListSchoolNameResponse> GetById(int id)
         {
             var data = await _schoolNameDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedSchoolNameResponse>(data);
+            var result = _mapper.Map<GetListSchoolNameResponse>(data);
             return result;
         }
 

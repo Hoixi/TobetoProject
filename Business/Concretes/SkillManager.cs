@@ -46,10 +46,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedSkillResponse> GetById(int id)
+        public async Task<GetListSkillResponse> GetById(int id)
         {
             var data = await _skillDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedSkillResponse>(data);
+            var result = _mapper.Map<GetListSkillResponse>(data);
             return result;
         }
 

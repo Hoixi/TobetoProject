@@ -59,12 +59,47 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedCourseCategoryResponse> GetById(int id)
+        public async Task<IPaginate<GetListCourseCategoryResponse>> GetListByCategoryId(int categoryId, PageRequest pageRequest)
         {
-            var data = await _courseCategoryDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedCourseCategoryResponse>(data);
+            var data = await _courseCategoryDal.GetListAsync(
+                predicate: ca => ca.CategoryId == categoryId,
+                 include: ca => ca
+                .Include(c => c.Course)
+                .Include(cc => cc.Category),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+               );
+            var result = _mapper.Map<Paginate<GetListCourseCategoryResponse>>(data);
             return result;
         }
+
+        public async Task<IPaginate<GetListCourseCategoryResponse>> GetListByCourseId(int courseId, PageRequest pageRequest)
+        {
+            var data = await _courseCategoryDal.GetListAsync(
+                predicate: ca => ca.CourseId == courseId,
+                 include: ca => ca
+                .Include(c => c.Course)
+                .Include(cc => cc.Category),
+                index: pageRequest.PageIndex,
+                size: pageRequest.PageSize
+               );
+            var result = _mapper.Map<Paginate<GetListCourseCategoryResponse>>(data);
+            return result;
+        }
+
+        public async Task<GetListCourseCategoryResponse> GetById(int id)
+        {
+            var data = await _courseCategoryDal.GetAsync(
+                c => c.Id == id,
+                include: ca => ca
+                .Include(c => c.Course)
+                .Include(cc => cc.Category)
+                );
+            var result = _mapper.Map<GetListCourseCategoryResponse>(data);
+            return result;
+        }
+
+        
 
         public async Task<UpdatedCourseCategoryResponse> UpdateAsync(UpdateCourseCategoryRequest updateCourseCategoryRequest)
         {

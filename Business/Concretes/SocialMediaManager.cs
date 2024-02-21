@@ -48,10 +48,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedSocialMediaResponse> GetById(int id)
+        public async Task<GetListSocialMediaResponse> GetById(int id)
         {
             var data = await _socialMediaDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedSocialMediaResponse>(data);
+            var result = _mapper.Map<GetListSocialMediaResponse>(data);
             return result;
         }
 

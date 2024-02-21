@@ -1,13 +1,7 @@
 ﻿using Business.Dtos.Requests.SurveyRequests;
-using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.SurveyResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
@@ -17,6 +11,6 @@ namespace Business.Abstracts
         Task<UpdatedSurveyResponse> UpdateAsync(UpdateSurveyRequest updateSurveyRequest);
         Task<Survey> DeleteAsync(int id);
         Task<IPaginate<GetListSurveyResponse>> GetAllAsync(PageRequest pageRequest);
-        Task<CreatedSurveyResponse> GetById(int id);
+        Task<GetListSurveyResponse> GetById(int id);
     }
 }

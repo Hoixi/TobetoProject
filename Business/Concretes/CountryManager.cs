@@ -47,10 +47,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedCountryResponse> GetById(int id)
+        public async Task<GetListCountryResponse> GetById(int id)
         {
             var data = await _countryDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedCountryResponse>(data);
+            var result = _mapper.Map<GetListCountryResponse>(data);
             return result;
         }
 

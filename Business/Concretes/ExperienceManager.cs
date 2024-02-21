@@ -59,10 +59,12 @@ public class ExperienceManager : IExperienceService
         return result;
     }
 
-    public async Task<CreatedExperienceResponse> GetById(int id)
+    public async Task<GetListExperienceResponse> GetById(int id)
     {
-        var data = await _experienceDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedExperienceResponse>(data);
+        var data = await _experienceDal.GetAsync(c => c.Id == id,
+            include: e => e.Include(c => c.City)
+            );
+        var result = _mapper.Map<GetListExperienceResponse>(data);
         return result;
     }
 
