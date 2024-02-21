@@ -3,6 +3,7 @@ using Business.Abstracts;
 using Business.Dtos.Requests.UserSkillRequests;
 using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.UserSkillResponses;
+using Business.Rules;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
@@ -15,15 +16,19 @@ namespace Business.Concretes
     {
         IUserSkillDal _userSkillDal;
         IMapper _mapper;
+        UserSkillBusinessRules _businessRules;
 
-        public UserSkillManager(IUserSkillDal userSkillDal, IMapper mapper)
+
+        public UserSkillManager(IUserSkillDal userSkillDal, IMapper mapper, UserSkillBusinessRules businessRules)
         {
             _userSkillDal = userSkillDal;
             _mapper = mapper;
+            _businessRules = businessRules;
         }
 
         public async Task<CreatedUserSkillResponse> AddAsync(CreateUserSkillRequest createUserSkillRequest)
         {
+            await _businessRules.UserSkillShouldNotExistsWithSameSkill(createUserSkillRequest.SkillId);
             UserSkill userSkill = _mapper.Map<UserSkill>(createUserSkillRequest);
             UserSkill createdUserSkill = await _userSkillDal.AddAsync(userSkill);
             CreatedUserSkillResponse createdUserSkillResponse = _mapper.Map<CreatedUserSkillResponse>(createdUserSkill);
