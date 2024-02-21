@@ -58,10 +58,15 @@ namespace Business.Concretes
             return result;
         }
 
-        public async  Task<CreatedEducationResponse> GetById(int id)
+        public async  Task<GetListEducationResponse> GetById(int id)
         {
-            var data = await _educationDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedEducationResponse>(data);
+            var data = await _educationDal.GetAsync(
+                c => c.Id == id,
+                include: p => p
+            .Include(p => p.EducationDegree)
+            .Include(p => p.SchoolName)
+                );
+            var result = _mapper.Map<GetListEducationResponse>(data);
             return result;
         }
 

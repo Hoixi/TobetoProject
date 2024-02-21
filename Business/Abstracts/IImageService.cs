@@ -14,7 +14,7 @@ public interface IImageService
     Task<UpdatedImageResponse> UpdateAsync(UpdateImageRequest updateImageRequest);
     Task<Image> DeleteAsync(int id);
     Task<IPaginate<GetListImageResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedImageResponse> GetById(int id);
+    Task<GetListImageResponse> GetById(int id);
 
 }
 

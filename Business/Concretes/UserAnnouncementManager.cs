@@ -48,10 +48,12 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedUserAnnouncementResponse> GetById(int id)
+        public async Task<GetListUserAnnouncementResponse> GetById(int id)
         {
-            var data = await _userAnnouncementDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedUserAnnouncementResponse>(data);
+            var data = await _userAnnouncementDal.GetAsync(
+                c => c.Id == id,
+                 include: ua => ua.Include(a => a.Announcement));
+            var result = _mapper.Map<GetListUserAnnouncementResponse>(data);
             return result;
         }
 

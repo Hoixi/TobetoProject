@@ -46,10 +46,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedCityResponse> GetById(int id)
+        public async Task<GetListCityResponse> GetById(int id)
         {
             var data = await _cityDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedCityResponse>(data);
+            var result = _mapper.Map<GetListCityResponse>(data);
             return result;
         }
 

@@ -75,14 +75,17 @@ public class CourseInstructorManager : ICourseInstructorService
 
 
 
-    public async Task<CreatedCourseInstructorResponse> GetById(int id)
+    public async Task<GetListCourseInstructorResponse> GetById(int id)
     {
-        var data = await _courseInstructorDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedCourseInstructorResponse>(data);
+        var data = await _courseInstructorDal.GetAsync(
+            c => c.Id == id,
+            include: ci => ci.Include(cl => cl.Instructor).ThenInclude(u => u.User).Include(i => i.Course)
+            );
+        var result = _mapper.Map<GetListCourseInstructorResponse>(data);
         return result;
     }
 
-    
+
 
     public async Task<UpdatedCourseInstructorResponse> UpdateAsync(UpdateCourseInstructorRequest updateCourseInstructorRequest)
     {

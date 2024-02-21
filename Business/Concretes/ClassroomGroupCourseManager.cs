@@ -54,10 +54,16 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
         return result;
     }
 
-    public async Task<CreatedClassroomGroupCourseResponse> GetById(int id)
+    public async Task<GetListClassroomGroupCourseResponse> GetById(int id)
     {
-        var data = await _classroomGroupCourseDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedClassroomGroupCourseResponse>(data);
+        var data = await _classroomGroupCourseDal.GetAsync(
+            c => c.Id == id,
+            include: cgc => cgc
+            .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
+            .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
+            .Include(cgc => cgc.Courses)
+            );
+        var result = _mapper.Map<GetListClassroomGroupCourseResponse>(data);
         return result;
     }
 

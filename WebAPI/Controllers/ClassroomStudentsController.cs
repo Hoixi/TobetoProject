@@ -50,4 +50,18 @@ public class ClassroomStudentsController : ControllerBase
         var result = await _classroomStudentService.GetById(id);
         return Ok(result);
     }
+
+    [HttpGet("GetListByStudentId")]
+    public async Task<IActionResult> GetListByStudentId(int studentId,[FromQuery] PageRequest pageRequest)
+    {
+        var result = await _classroomStudentService.GetListByStudentId(studentId,pageRequest);
+        return Ok(result);
+    }
+
+    [HttpGet("GetListByClassroomGroupId")]
+    public async Task<IActionResult> GetListByClassroomGroupId(int classroomGroupId, [FromQuery] PageRequest pageRequest)
+    {
+        var result = await _classroomStudentService.GetListByClassroomGroupId(classroomGroupId, pageRequest);
+        return Ok(result);
+    }
 }

@@ -1,5 +1,4 @@
 ﻿using Business.Dtos.Requests.GroupRequests;
-using Business.Dtos.Responses.ExperienceResponses;
 using Business.Dtos.Responses.GroupResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -12,7 +11,7 @@ public interface IGroupService
     Task<UpdatedGroupResponse> UpdateAsync(UpdateGroupRequest updateGroupRequest);
     Task<Group> DeleteAsync(int id);
     Task<IPaginate<GetListGroupResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedGroupResponse> GetById(int id);
+    Task<GetListGroupResponse> GetById(int id);
 
 }
 

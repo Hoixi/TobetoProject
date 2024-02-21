@@ -2,11 +2,6 @@
 using Business.Dtos.Responses.UserSocialMediaResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
@@ -16,7 +11,7 @@ namespace Business.Abstracts
         Task<UpdatedUserSocialMediaResponse> UpdateAsync(UpdateUserSocialMediaRequest updateUserSocialMediaRequest);
         Task<UserSocialMedia> DeleteAsync(int id);
         Task<IPaginate<GetListUserSocialMediaResponse>> GetAllAsync(PageRequest pageRequest);
-        Task<CreatedUserSocialMediaResponse> GetById(int id);
+        Task<GetListUserSocialMediaResponse> GetById(int id);
         Task<IPaginate<GetListUserSocialMediaResponse>> GetByUserId(PageRequest pageRequest, int userId);
     }
 }

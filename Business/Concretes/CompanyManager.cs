@@ -46,10 +46,10 @@ public class CompanyManager : ICompanyService
         return result;
     }
 
-    public async Task<CreatedCompanyResponse> GetById(int id)
+    public async Task<GetListCompanyResponse> GetById(int id)
     {
         var data = await _companyDal.GetAsync(c => c.Id == id);
-        var result = _mapper.Map<CreatedCompanyResponse>(data);
+        var result = _mapper.Map<GetListCompanyResponse>(data);
         return result;
     }
 

@@ -1,5 +1,4 @@
 ﻿using Business.Dtos.Requests.CourseRequests;
-using Business.Dtos.Responses.ClassroomInstructorResponses;
 using Business.Dtos.Responses.CourseResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -12,7 +11,7 @@ public interface ICourseService
     Task<UpdatedCourseResponse> UpdateAsync(UpdateCourseRequest updateCourseRequest);
     Task<Course> DeleteAsync(int id);
     Task<IPaginate<GetListCourseResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedCourseResponse> GetById(int id);
+    Task<GetListCourseResponse> GetById(int id);
 
 }
 

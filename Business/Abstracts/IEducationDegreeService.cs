@@ -1,5 +1,4 @@
 ﻿using Business.Dtos.Requests.EducationDegreeRequests;
-using Business.Dtos.Responses.AddressResponses;
 using Business.Dtos.Responses.EducationDegreeResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -12,6 +11,6 @@ public interface IEducationDegreeService
     Task<UpdatedEducationDegreeResponse> UpdateAsync(UpdateEducationDegreeRequest updateEducationDegreeRequest);
     Task<EducationDegree> DeleteAsync(int id);
     Task<IPaginate<GetListEducationDegreeResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedEducationDegreeResponse> GetById(int id);
+    Task<GetListEducationDegreeResponse> GetById(int id);
 }
 

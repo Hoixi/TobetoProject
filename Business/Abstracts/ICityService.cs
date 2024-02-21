@@ -1,5 +1,4 @@
 ﻿using Business.Dtos.Requests.CityRequests;
-using Business.Dtos.Responses.CategoryResponses;
 using Business.Dtos.Responses.CityResponses;
 using Core.DataAccess.Paging;
 using Entities.Concretes;
@@ -12,5 +11,5 @@ public interface ICityService
     Task<UpdatedCityResponse> UpdateAsync(UpdateCityRequest updateCityRequest);
     Task<City> DeleteAsync(int id);
     Task<IPaginate<GetListCityResponse>> GetAllAsync(PageRequest pageRequest);
-    Task<CreatedCityResponse> GetById(int id);
+    Task<GetListCityResponse> GetById(int id);
 }

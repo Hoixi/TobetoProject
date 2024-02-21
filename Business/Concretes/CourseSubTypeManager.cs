@@ -53,10 +53,10 @@ namespace Business.Concretes
             return result;
         }
 
-        public async Task<CreatedCourseSubTypeResponse> GetById(int id)
+        public async Task<GetListCourseSubTypeResponse> GetById(int id)
         {
             var data = await _courseSubTypeDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedCourseSubTypeResponse>(data);
+            var result = _mapper.Map<GetListCourseSubTypeResponse>(data);
             return result;
         }
 

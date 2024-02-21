@@ -53,10 +53,10 @@ namespace Business.Concretes
             var result = _mapper.Map<UpdatedCategoryResponse>(data);
             return result;
         }
-        public async Task<CreatedCategoryResponse> GetById(int id)
+        public async Task<GetListCategoryResponse> GetById(int id)
         {
             var data = await _categoryDal.GetAsync(c => c.Id == id);
-            var result = _mapper.Map<CreatedCategoryResponse>(data);
+            var result = _mapper.Map<GetListCategoryResponse>(data);
             return result;
         }
     }
