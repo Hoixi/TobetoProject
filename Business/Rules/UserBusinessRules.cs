@@ -1,9 +1,12 @@
-﻿using Business.Dtos.Requests.UserRequests;
+﻿using Business.Abstracts;
+using Business.Dtos.Requests.UserRequests;
 using Business.Dtos.Responses.UserResponses;
 using Business.Messages;
 using Core.Business.Rules;
 using Core.CrossCutingConcerns.Types;
 using Core.DataAccess.Paging;
+using Core.Entities.Concretes;
+using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
@@ -23,8 +26,9 @@ namespace Business.Rules
         {
             _userDal = userDal;
         }
-              
-                        
+
+
+
 
 
         public async Task UserShouldNotExistsWithSameEmail(String email)

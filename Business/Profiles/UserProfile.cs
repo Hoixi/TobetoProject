@@ -43,6 +43,7 @@ public class UserProfile : Profile
             .ForMember(dest => dest.UserSurveys, opt => opt.MapFrom(src => src.UserSurveys))
             .ForMember(dest => dest.Addresses, opt => opt.MapFrom(src => src.Addresses))
             .ForMember(dest => dest.Educations, opt => opt.MapFrom(src => src.Educations))
+            .ForMember(dest => dest.ImagePath, opt => opt.MapFrom(src => src.Image.Path))
             .ReverseMap();
             
 

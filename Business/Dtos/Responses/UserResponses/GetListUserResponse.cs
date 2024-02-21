@@ -21,6 +21,7 @@ public class GetListUserResponse
     public string Email { get; set; }
     public string? Description { get; set; }
     public int ImageId { get; set; }
+    public string ImagePath { get; set; }
     public DateTime BirthDate { get; set; }
     public List<GetListUserSocialMediaResponse> UserSocialMedias { get; set; }
     public List<GetListUserLanguageResponse> UserLanguages { get; set; }

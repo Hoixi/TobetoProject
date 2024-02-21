@@ -31,15 +31,15 @@ public class HttpExceptionHandler : ExceptionHandler
     }
 
     protected override Task HandleException(BusinessException businessException)
-    {
-        Response.StatusCode = StatusCodes.Status400BadRequest;
+    {       
+        Response.StatusCode = StatusCodes.Status400BadRequest;     
         string details = new BusinessProblemDetails(businessException.Message).AsJson();
         return Response.WriteAsync(details);
     }
 
     protected override Task HandleException(ValidationCustomException validationException)
     {
-        Response.ContentType = "application/json";
+        Response.Headers.Add("Access-Control-Allow-Origin", "*");
         Response.StatusCode = StatusCodes.Status400BadRequest;
         string details = _validationProblem.Result(validationException).AsJson();
         return Response.WriteAsync(details);

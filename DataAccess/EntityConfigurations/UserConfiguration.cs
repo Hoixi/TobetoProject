@@ -57,6 +57,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         .WithOne(usm => usm.User)
         .HasForeignKey(usm => usm.UserId);
 
+        
 
         builder.HasQueryFilter(b => !b.DeletedDate.HasValue);
     }

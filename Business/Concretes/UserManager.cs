@@ -88,7 +88,8 @@ public class UserManager : IUserService
         .Include(p => p.Addresses).ThenInclude(cl=> cl.City)
         .Include(p => p.Addresses).ThenInclude(cl=> cl.Town)
         .Include(p => p.Educations).ThenInclude(e=>e.EducationDegree)
-        .Include(p => p.Educations).ThenInclude(e => e.SchoolName),
+        .Include(p => p.Educations).ThenInclude(e => e.SchoolName)
+        .Include(p => p.Image),
 
            index: pageRequest.PageIndex,
            size: pageRequest.PageSize
@@ -123,7 +124,10 @@ public class UserManager : IUserService
         .Include(p => p.Addresses).ThenInclude(cl => cl.City)
         .Include(p => p.Addresses).ThenInclude(cl => cl.Town)
         .Include(p => p.Educations).ThenInclude(e => e.EducationDegree)
-        .Include(p => p.Educations).ThenInclude(e => e.SchoolName));
+        .Include(p => p.Educations).ThenInclude(e => e.SchoolName)
+        .Include(p => p.Image));
+
+        
         var result = _mapper.Map<GetListUserResponse>(data);
         return result;
     }

@@ -2,7 +2,7 @@
 using Business.Dtos.Requests.UserRequests;
 using Business.Rules;
 using Business.ValidationRules.FluentValidation;
-
+using Core.CrossCutingConcerns.Types;
 using Core.Entities.Concretes;
 using Core.Utilities.Results;
 using Core.Utilities.Security.Hashing;
@@ -43,12 +43,12 @@ namespace Business.Concretes
             var userToCheck = _userService.GetByMail(userForLoginDto.Email);
             if (userToCheck == null)
             {
-                return new ErrorDataResult<UserBase>("Kullanıcı Yok");
+                throw new BusinessException("E-Posta veya Şifre Hatalı!");
             }
 
             if (!HashingHelper.VerifyPasswordHash(userForLoginDto.Password, userToCheck.PasswordHash, userToCheck.PasswordSalt))
             {
-                return new ErrorDataResult<UserBase>("E-Posta veya Şifre Hatalı");
+                throw new BusinessException("E-Posta veya Şifre Hatalı!");
             }
 
             return new SuccessDataResult<UserBase>(userToCheck, "Tamam");
