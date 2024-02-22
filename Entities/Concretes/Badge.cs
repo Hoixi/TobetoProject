@@ -13,6 +13,6 @@ namespace Entities.Concretes
         public string Name { get; set; }
         public Image Image { get; set; }
         public List<UserBadge> UserBadges { get; set;}
-        public List<User> Users { get; set;}
+        
     }
 }

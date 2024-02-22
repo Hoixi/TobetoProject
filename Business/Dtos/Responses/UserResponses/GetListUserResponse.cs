@@ -4,6 +4,7 @@ using Business.Dtos.Responses.EducationResponses;
 using Business.Dtos.Responses.ExperienceResponses;
 using Business.Dtos.Responses.InstructorResponses;
 using Business.Dtos.Responses.UserAnnouncementResponses;
+using Business.Dtos.Responses.UserBadgeResponses;
 using Business.Dtos.Responses.UserLanguageResponses;
 using Business.Dtos.Responses.UserSocialMediaResponses;
 using Business.Dtos.Responses.UserSurveyResponses;
@@ -31,6 +32,7 @@ public class GetListUserResponse
     public List<GetListUserSurveyResponse> UserSurveys { get; set; }
     public GetListAddressResponse Addresses { get; set; }
     public List<GetListEducationResponse> Educations { get; set; }
+    public List<GetListUserBadgeResponse> UserBadges { get; set; }
 
 }
 

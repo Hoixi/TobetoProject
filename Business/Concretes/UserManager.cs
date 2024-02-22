@@ -35,11 +35,11 @@ public class UserManager : IUserService
 
     public List<OperationClaim> GetClaims(UserBase user)
     {
-        User userBase = _mapper.Map<User>(user);    
+        User userBase = _mapper.Map<User>(user);
         return _userDal.GetClaims(userBase);
     }
 
-    
+
 
     public UserBase GetByMail(string email)
     {
@@ -55,10 +55,10 @@ public class UserManager : IUserService
         return result;
     }
 
-    
+
     public async Task<UserBase> AddAsync(UserBase user)
-    {       
-               
+    {
+
         User userBase = _mapper.Map<User>(user);
         User createdUser = await _userDal.AddAsync(userBase);
         CreatedUserResponse createdUserResponse = _mapper.Map<CreatedUserResponse>(createdUser);
@@ -76,24 +76,25 @@ public class UserManager : IUserService
     {
         var data = await _userDal.GetListAsync(
             include: p => p
-    
-        .Include(p => p.UserAnnouncements)  
-        .Include(p => p.Experiences).ThenInclude(ul=>ul.City)  
+
+        .Include(p => p.UserAnnouncements)
+        .Include(p => p.Experiences).ThenInclude(ul => ul.City)
         .Include(p => p.Certificates)
-        .Include(p => p.UserSocialMedias).ThenInclude(ul=>ul.SocialMedia)
+        .Include(p => p.UserSocialMedias).ThenInclude(ul => ul.SocialMedia)
         .Include(p => p.UserLanguages).ThenInclude(ul => ul.LanguageLevel)
         .Include(p => p.UserLanguages).ThenInclude(ul => ul.Language)
         .Include(p => p.UserSurveys)
-        .Include(p => p.Addresses).ThenInclude(cl=> cl.Country)
-        .Include(p => p.Addresses).ThenInclude(cl=> cl.City)
-        .Include(p => p.Addresses).ThenInclude(cl=> cl.Town)
-        .Include(p => p.Educations).ThenInclude(e=>e.EducationDegree)
+        .Include(p => p.Addresses).ThenInclude(cl => cl.Country)
+        .Include(p => p.Addresses).ThenInclude(cl => cl.City)
+        .Include(p => p.Addresses).ThenInclude(cl => cl.Town)
+        .Include(p => p.Educations).ThenInclude(e => e.EducationDegree)
         .Include(p => p.Educations).ThenInclude(e => e.SchoolName)
-        .Include(p => p.Image),
+        .Include(p => p.Image)
+        .Include(p => p.UserBadges).ThenInclude(e => e.Badge),
 
-           index: pageRequest.PageIndex,
-           size: pageRequest.PageSize
-           ) ;
+        index: pageRequest.PageIndex,
+        size: pageRequest.PageSize);
+
         var result = _mapper.Map<Paginate<GetListUserResponse>>(data);
         return result;
     }
@@ -125,9 +126,10 @@ public class UserManager : IUserService
         .Include(p => p.Addresses).ThenInclude(cl => cl.Town)
         .Include(p => p.Educations).ThenInclude(e => e.EducationDegree)
         .Include(p => p.Educations).ThenInclude(e => e.SchoolName)
-        .Include(p => p.Image));
+        .Include(p => p.Image)
+        .Include(p => p.UserBadges).ThenInclude(e => e.Badge));
 
-        
+
         var result = _mapper.Map<GetListUserResponse>(data);
         return result;
     }

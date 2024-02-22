@@ -19,8 +19,7 @@ namespace Business.Profiles
             CreateMap<UserBadge, CreatedUserBadgeResponse>();
 
 
-            CreateMap<UserBadge, GetListUserBadgeResponse>()
-                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => $"{src.User.FirstName} {src.User.LastName}"))
+            CreateMap<UserBadge, GetListUserBadgeResponse>()                
                 .ForMember(dest => dest.BadgeName, opt => opt.MapFrom(src => src.Badge.Name))
                 .ReverseMap();
             CreateMap<Paginate<UserBadge>, Paginate<GetListUserBadgeResponse>>();

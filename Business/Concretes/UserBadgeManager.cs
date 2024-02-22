@@ -43,8 +43,7 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListUserBadgeResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _userBadgeDal.GetListAsync(
-                include: b => b
-                .Include(b => b.User)
+                include: b => b                
                 .Include(b => b.Badge),
                index: pageRequest.PageIndex,
                size: pageRequest.PageSize
@@ -55,7 +54,11 @@ namespace Business.Concretes
 
         public async Task<GetListUserBadgeResponse> GetById(int id)
         {
-            var data = await _userBadgeDal.GetAsync(c => c.Id == id);
+            var data = await _userBadgeDal.GetAsync(
+                c => c.Id == id,
+                include: b => b                
+                .Include(b => b.Badge)
+                );
             var result = _mapper.Map<GetListUserBadgeResponse>(data);
             return result;
         }
