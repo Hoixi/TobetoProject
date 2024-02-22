@@ -25,5 +25,6 @@ public class User : Entity<int>
     public List<Instructor> Instructors { get; set; }
     public List<Education> Educations { get; set; }
     public Image Image { get; set; }
+    public List<UserBadge> UserBadges { get; set; }
 }
 

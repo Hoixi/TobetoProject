@@ -50,6 +50,8 @@ public static class DataAccessServiceRegistration
         services.AddScoped<IUserSocialMediaDal, EfUserSocialMediaDal>();    
         services.AddScoped<IUserSurveyDal, EfUserSurveyDal>();
         services.AddScoped<IUserOperationClaimDal, EfUserOperationClaimDal>();
+        services.AddScoped<IBadgeDal, EfBadgeDal>();
+        services.AddScoped<IUserBadgeDal, EfUserBadgeDal>();
 
 
 

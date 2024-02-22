@@ -58,6 +58,9 @@ public static class BusinessServiceRegistration
         services.AddScoped<IUserSurveyService, UserSurveyManager>();
         services.AddScoped<IAuthService, AuthManager>();  
         services.AddScoped<IUserOperationClaimService, UserOperationClaimManager>();
+        services.AddScoped<IBadgeService, BadgeManager>();
+        services.AddScoped<IUserBadgeService, UserBadgeManager>();
+
         services.AddSubClassesOfType(Assembly.GetExecutingAssembly(), typeof(BaseBusinessRules));     
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
         return services;

@@ -7,5 +7,6 @@ namespace Entities.Concretes
         public string Name { get; set; }
         public string Path { get; set; }
         public User User { get; set; }
+        public List<Badge> Badges { get; set; }
     }
 }

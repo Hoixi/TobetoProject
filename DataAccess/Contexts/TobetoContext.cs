@@ -52,6 +52,8 @@ public class TobetoContext : DbContext
     public DbSet<UserSurvey> UserSurveys { get; set; }
     public DbSet<Image> Images { get; set; }
     public DbSet<Survey> Surveys { get; set; }
+    public DbSet<Badge> Badges { get; set; }
+    public DbSet<UserBadge> UserBadges { get; set; }
     public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     public DbSet<OperationClaim> OperationClaims { get; set; }
 
