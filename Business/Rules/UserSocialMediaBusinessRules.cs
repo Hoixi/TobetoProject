@@ -26,7 +26,7 @@ namespace Business.Rules
         {
             var result = await _userSocialMediaDal.GetListAsync(i => i.UserId == UserId);
 
-            if (result.Count > 3)
+            if (result.Count >= 3)
             {
                 throw new BusinessException(BusinessMessages.SocialMediaLimit);
             }

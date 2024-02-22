@@ -19,15 +19,17 @@ namespace Business.Concretes
         IMapper _mapper;
         UserLanguageBusinessRules _userLanguageBusinessRules;
 
-        public UserLanguageManager(IUserLanguageDal userLanguageDal, IMapper mapper, UserLanguageBusinessRules userLanguageBusinessRules) : this(userLanguageDal, mapper)
+        public UserLanguageManager(IUserLanguageDal userLanguageDal, IMapper mapper, UserLanguageBusinessRules userLanguageBusinessRules) 
         {
+            _userLanguageDal = userLanguageDal;
+            _mapper = mapper;
             _userLanguageBusinessRules = userLanguageBusinessRules;
         }
 
        
 
         public async Task<CreatedUserLanguageResponse> AddAsync(CreateUserLanguageRequest createUserLanguageRequest)
-        {   await _userLanguageBusinessRules.UserLanguageEnsureUnique(createUserLanguageRequest.UserId);
+        {   await _userLanguageBusinessRules.UserLanguageEnsureUnique(createUserLanguageRequest.UserId, createUserLanguageRequest.LanguageId);
             UserLanguage userLanguage = _mapper.Map<UserLanguage>(createUserLanguageRequest);
             UserLanguage createdUserLanguage = await _userLanguageDal.AddAsync(userLanguage);
             CreatedUserLanguageResponse createdUserLanguageResponse = _mapper.Map<CreatedUserLanguageResponse>(createdUserLanguage);

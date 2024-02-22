@@ -18,8 +18,10 @@ namespace Business.Concretes
         IMapper _mapper;
         UserSocialMediaBusinessRules _userSocialMediaBusinessRules;
 
-        public UserSocialMediaManager(IUserSocialMediaDal userSocialMediaDal, IMapper mapper, UserSocialMediaBusinessRules userSocialMediaBusinessRules) : this(userSocialMediaDal, mapper)
+        public UserSocialMediaManager(IUserSocialMediaDal userSocialMediaDal, IMapper mapper, UserSocialMediaBusinessRules userSocialMediaBusinessRules) 
         {
+            _mapper = mapper;
+            _userSocialMediaDal = userSocialMediaDal;
             _userSocialMediaBusinessRules = userSocialMediaBusinessRules;
         }
 

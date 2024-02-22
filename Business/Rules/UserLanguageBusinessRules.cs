@@ -20,13 +20,16 @@ namespace Business.Rules
             _userLanguageDal = userLanguageDal;
         }
 
-        public async Task UserLanguageEnsureUnique(int UserId)
+        public async Task UserLanguageEnsureUnique(int UserId, int LanguageId)
         {
-            var result = await _userLanguageDal.GetAsync(i => i.UserId == UserId);
+            var result = await _userLanguageDal.GetListAsync(i => i.UserId == UserId);
 
-            if (result != null)
+            foreach (var item in result.Items)
             {
-                throw new BusinessException(BusinessMessages.LanguageUnique);
+                if(item.LanguageId == LanguageId)
+                {
+                    throw new BusinessException(BusinessMessages.LanguageUnique);
+                }
             }
 
         }

@@ -21,11 +21,16 @@ namespace Business.Rules
             _userSkillDal = userSkillDal;
         }
 
-        public async Task UserSkillShouldNotExistsWithSameSkill(int skillId)
+        public async Task UserSkillShouldNotExistsWithSameSkill(int skillId, int userId)
         {
-            var result = await _userSkillDal.GetAsync(i => i.SkillId == skillId);
-            if (result != null)
-                throw new BusinessException(BusinessMessages.SameSkill);
+            var user = await _userSkillDal.GetListAsync(u => u.UserId == userId);
+            foreach (var item in user.Items)
+            {
+                if(item.SkillId == skillId)
+                {
+                    throw new BusinessException(BusinessMessages.SameSkill);
+                }
+            }
         }
     }
 }

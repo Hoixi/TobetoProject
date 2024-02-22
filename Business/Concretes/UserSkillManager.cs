@@ -28,7 +28,7 @@ namespace Business.Concretes
 
         public async Task<CreatedUserSkillResponse> AddAsync(CreateUserSkillRequest createUserSkillRequest)
         {
-            await _businessRules.UserSkillShouldNotExistsWithSameSkill(createUserSkillRequest.SkillId);
+            await _businessRules.UserSkillShouldNotExistsWithSameSkill(createUserSkillRequest.SkillId, createUserSkillRequest.UserId);
             UserSkill userSkill = _mapper.Map<UserSkill>(createUserSkillRequest);
             UserSkill createdUserSkill = await _userSkillDal.AddAsync(userSkill);
             CreatedUserSkillResponse createdUserSkillResponse = _mapper.Map<CreatedUserSkillResponse>(createdUserSkill);
