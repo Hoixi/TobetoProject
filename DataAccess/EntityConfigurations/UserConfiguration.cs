@@ -45,9 +45,6 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
         .WithOne(usm => usm.User)
         .HasForeignKey(usm => usm.UserId);
 
-        builder.HasMany(b => b.Addresses)
-        .WithOne(usm => usm.User)
-        .HasForeignKey(usm => usm.UserId);
 
         builder.HasMany(b => b.Instructors)
         .WithOne(usm => usm.User)

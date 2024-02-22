@@ -21,9 +21,6 @@ namespace DataAccess.EntityConfigurations
             builder.Property(b => b.CountryId).HasColumnName("CountryId");
             builder.Property(b => b.Description).HasColumnName("Description");
 
-            builder.HasOne(a => a.User)
-            .WithMany(u => u.Addresses)
-            .HasForeignKey(u => u.UserId);
 
             builder.HasOne(a => a.City)
             .WithMany(u => u.Addresses)

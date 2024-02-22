@@ -29,7 +29,7 @@ public class GetListUserResponse
     public List<GetListUserAnnouncementResponse> UserAnnouncements { get; set; }
     public List<GetListExperienceResponse> Experiences { get; set; }
     public List<GetListUserSurveyResponse> UserSurveys { get; set; }
-    public List<GetListAddressResponse> Addresses { get; set; }
+    public GetListAddressResponse Addresses { get; set; }
     public List<GetListEducationResponse> Educations { get; set; }
 
 }

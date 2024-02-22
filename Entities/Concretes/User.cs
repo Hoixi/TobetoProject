@@ -21,7 +21,7 @@ public class User : Entity<int>
     public List<UserAnnouncement> UserAnnouncements { get; set; }
     public List<Experience> Experiences { get; set; }
     public List<UserSurvey> UserSurveys { get; set; }
-    public List<Address> Addresses { get; set; }
+    public Address Addresses { get; set; }
     public List<Instructor> Instructors { get; set; }
     public List<Education> Educations { get; set; }
     public Image Image { get; set; }
