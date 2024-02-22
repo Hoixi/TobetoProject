@@ -1,5 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.UserRequests;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCutingConcerns.Validations;
 using Core.DataAccess.Paging;
 using Core.Entities.Concretes;
 using Entities.Concretes;
@@ -35,6 +37,8 @@ public class UsersController : ControllerBase
         var result = await _userService.GetAllAsync(pageRequest);
         return Ok(result);
     }
+
+    [ValidationAttribute(typeof(UserUpdateValidator))]
     [HttpPut("Update")]
     public async Task<IActionResult> Update([FromBody] UpdateUserRequest updateUserRequest)
     {

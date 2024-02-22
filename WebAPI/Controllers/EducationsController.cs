@@ -1,6 +1,8 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.EducationRequests;
 using Business.Dtos.Requests.UserRequests;
+using Business.ValidationRules.FluentValidation;
+using Core.CrossCutingConcerns.Validations;
 using Core.DataAccess.Paging;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -20,6 +22,7 @@ namespace WebAPI.Controllers
             _educationService = educationService;
         }
 
+        [ValidationAttribute(typeof(EducationValidator))]
         [HttpPost("Add")]
         public async Task<IActionResult> Add([FromBody] CreateEducationRequest createEducationRequest)
         {
