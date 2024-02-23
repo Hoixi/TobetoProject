@@ -51,7 +51,10 @@ namespace Business.Concretes
 
         public async Task<GetListBadgeResponse> GetById(int id)
         {
-            var data = await _badgeDal.GetAsync(c => c.Id == id);
+            var data = await _badgeDal.GetAsync(
+                c => c.Id == id,
+                include: b => b.Include(b => b.Image)
+                );
             var result = _mapper.Map<GetListBadgeResponse>(data);
             return result;
         }
