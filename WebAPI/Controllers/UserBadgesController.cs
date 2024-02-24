@@ -8,6 +8,7 @@ namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class UserBadgesController : ControllerBase
     {
         IUserBadgeService _userBadgeService;
