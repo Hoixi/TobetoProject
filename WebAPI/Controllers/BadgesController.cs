@@ -1,6 +1,7 @@
 ﻿using Business.Abstracts;
 using Business.Dtos.Requests.BadgeRequests;
 using Core.DataAccess.Paging;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
