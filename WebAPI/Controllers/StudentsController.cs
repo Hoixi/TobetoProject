@@ -51,5 +51,12 @@ namespace WebAPI.Controllers
             var result = await _studentService.GetById(id);
             return Ok(result);
         }
+
+        [HttpGet("getByUserId")]
+        public async Task<IActionResult> GetByUserId([FromQuery] int id)
+        {
+            var result = await _studentService.GetByUserId(id);
+            return Ok(result);
+        }
     }
 }

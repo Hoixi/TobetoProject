@@ -56,6 +56,16 @@ namespace Business.Concretes
             return result;
         }
 
+        public async Task<GetListStudentResponse> GetByUserId(int id)
+        {
+            var data = await _studentDal.GetAsync(
+                predicate: c => c.UserId == id,
+                include: u => u
+                .Include(u => u.User));
+            var result = _mapper.Map<GetListStudentResponse>(data);
+            return result;
+        }
+
         public async Task<UpdatedStudentResponse> UpdateAsync(UpdateStudentRequest updateStudentRequest)
         {
             var data = await _studentDal.GetAsync(i => i.Id == updateStudentRequest.Id);

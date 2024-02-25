@@ -12,5 +12,6 @@ namespace Business.Abstracts
         Task<Student> DeleteAsync(int id);
         Task<IPaginate<GetListStudentResponse>> GetAllAsync(PageRequest pageRequest);
         Task<GetListStudentResponse> GetById(int id);
+        Task<GetListStudentResponse> GetByUserId(int id);
     }
 }
