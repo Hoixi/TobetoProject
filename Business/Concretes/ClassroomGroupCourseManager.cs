@@ -47,7 +47,8 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
             include: cgc => cgc
             .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
             .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
-            .Include(cgc => cgc.Courses),
+            .Include(cgc => cgc.Courses).ThenInclude(cgc => cgc.Image),
+            
 
             index: pageRequest.PageIndex,
             size: pageRequest.PageSize
@@ -63,7 +64,7 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
             include: cgc => cgc
             .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
             .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
-            .Include(cgc => cgc.Courses)
+            .Include(cgc => cgc.Courses).ThenInclude(cgc => cgc.Image)
             );
         var result = _mapper.Map<GetListClassroomGroupCourseResponse>(data);
         return result;
@@ -76,7 +77,7 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
                 include: cgc => cgc
                 .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Classroom)
                 .Include(cgc => cgc.ClassroomGroups).ThenInclude(cgc => cgc.Group)
-                .Include(cgc => cgc.Courses),
+                .Include(cgc => cgc.Courses).ThenInclude(cgc => cgc.Image),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );

@@ -13,4 +13,5 @@ public class Course : Entity<int>
     public CourseSubType CourseSubType { get; set; }
     public List<ClassroomGroupCourse> ClassroomGroupCourses { get; set; }
     public List<CourseInstructor> CourseInstructors { get; set; }
+    public Image Image { get; set; }
 }

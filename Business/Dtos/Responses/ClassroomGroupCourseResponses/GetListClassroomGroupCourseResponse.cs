@@ -13,5 +13,7 @@ namespace Business.Dtos.Responses.ClassroomGroupCourseResponses
         public int CourseId { get; set; }
         public string ClassroomGroupName { get; set; }
         public string CourseName { get; set; }
+        public int ImageId { get; set; }
+        public string ImagePath { get; set; }
     }
 }
