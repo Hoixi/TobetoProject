@@ -4,6 +4,7 @@ using Business.Dtos.Requests.ClassroomGroupCourseRequests;
 using Business.Dtos.Responses.CategoryResponses;
 using Business.Dtos.Responses.ClassroomGroupCourseResponses;
 using Business.Dtos.Responses.UserSurveyResponses;
+using Core.Aspects.Autofac.Caching;
 using Core.DataAccess.Paging;
 using DataAccess.Abstracts;
 using DataAccess.Concretes;
@@ -38,6 +39,7 @@ public class ClassroomGroupCourseManager : IClassroomGroupCourseService
         return result;
     }
 
+    [CacheAspect]
     public async Task<IPaginate<GetListClassroomGroupCourseResponse>> GetAllAsync(PageRequest pageRequest)
     {
         var data = await _classroomGroupCourseDal.GetListAsync(
