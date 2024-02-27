@@ -12,5 +12,6 @@ namespace Business.Abstracts
         Task<UserBadge> DeleteAsync(int id);
         Task<IPaginate<GetListUserBadgeResponse>> GetAllAsync(PageRequest pageRequest);
         Task<GetListUserBadgeResponse> GetById(int id);
+        Task<GetListUserBadgeResponse> GetByUserId(int userId);
     }
 }

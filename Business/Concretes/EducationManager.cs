@@ -70,6 +70,18 @@ namespace Business.Concretes
             return result;
         }
 
+        public async Task<GetListEducationResponse> GetByUserId(int userId)
+        {
+            var data = await _educationDal.GetAsync(
+                c => c.UserId == userId,
+                include: p => p
+            .Include(p => p.EducationDegree)
+            .Include(p => p.SchoolName)
+                );
+            var result = _mapper.Map<GetListEducationResponse>(data);
+            return result;
+        }
+
         public async Task<UpdatedEducationResponse> UpdateAsync(UpdateEducationRequest updateEducationRequest)
         {
             var data = await _educationDal.GetAsync(i => i.Id == updateEducationRequest.Id);

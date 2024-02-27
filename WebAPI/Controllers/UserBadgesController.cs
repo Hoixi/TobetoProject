@@ -54,6 +54,15 @@ namespace WebAPI.Controllers
             return Ok(result);
         }
 
+        [HttpGet("getByUserId")]
+        public async Task<IActionResult> GetByUserId([FromQuery] int userId)
+        {
+            var result = await _userBadgeService.GetByUserId(userId);
+            return Ok(result);
+
+
+        }
+
     }
 }
   

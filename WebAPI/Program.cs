@@ -17,10 +17,12 @@ using Core.DependencyResolvers;
 using Core.Utilities.IoC;
 using Core.Extensions;
 using Core.Aspects;
+using Business.Autofac;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
 
 // Add services to the container.
 builder.Services.AddBusinessServices();

@@ -63,6 +63,17 @@ namespace Business.Concretes
             return result;
         }
 
+        public async Task<GetListUserBadgeResponse> GetByUserId(int userId)
+        {
+            var data = await _userBadgeDal.GetAsync(
+                c => c.UserId == userId,
+                include: b => b
+                .Include(b => b.Badge)
+                );
+            var result = _mapper.Map<GetListUserBadgeResponse>(data);
+            return result;
+        }
+
         public async Task<UpdatedUserBadgeResponse> UpdateAsync(UpdateUserBadgeRequest updateUserBadgeRequest)
         {
             var data = await _userBadgeDal.GetAsync(i => i.Id == updateUserBadgeRequest.Id);
