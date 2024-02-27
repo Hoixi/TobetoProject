@@ -44,7 +44,7 @@ namespace Business.Concretes
         {
             var data = await _userBadgeDal.GetListAsync(
                 include: b => b                
-                .Include(b => b.Badge),
+                .Include(b => b.Badge).ThenInclude(a => a.Image),                
                index: pageRequest.PageIndex,
                size: pageRequest.PageSize
               );
@@ -56,8 +56,8 @@ namespace Business.Concretes
         {
             var data = await _userBadgeDal.GetAsync(
                 c => c.Id == id,
-                include: b => b                
-                .Include(b => b.Badge)
+                include: b => b
+                .Include(b => b.Badge).ThenInclude(a => a.Image)
                 );
             var result = _mapper.Map<GetListUserBadgeResponse>(data);
             return result;
@@ -68,7 +68,7 @@ namespace Business.Concretes
             var data = await _userBadgeDal.GetAsync(
                 c => c.UserId == userId,
                 include: b => b
-                .Include(b => b.Badge)
+                .Include(b => b.Badge).ThenInclude(a => a.Image)
                 );
             var result = _mapper.Map<GetListUserBadgeResponse>(data);
             return result;

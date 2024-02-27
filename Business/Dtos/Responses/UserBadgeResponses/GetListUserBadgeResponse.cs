@@ -12,5 +12,7 @@ namespace Business.Dtos.Responses.UserBadgeResponses
         public int UserId { get; set; }
         public int BadgeId { get; set; }        
         public string BadgeName { get; set; }
+        public string ImageName { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

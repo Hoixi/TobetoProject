@@ -21,6 +21,9 @@ namespace Business.Profiles
 
             CreateMap<UserBadge, GetListUserBadgeResponse>()                
                 .ForMember(dest => dest.BadgeName, opt => opt.MapFrom(src => src.Badge.Name))
+                .ForMember(dest => dest.ImageName, opt => opt.MapFrom(src => src.Badge.Image.Name))
+                .ForMember(dest => dest.ImageUrl, opt => opt.MapFrom(src => src.Badge.Image.Path))
+
                 .ReverseMap();
             CreateMap<Paginate<UserBadge>, Paginate<GetListUserBadgeResponse>>();
 
