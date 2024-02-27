@@ -24,7 +24,7 @@ namespace Business.Concretes
             _mapper = mapper;
         }
 
-        [CacheRemoveAspect("ICourseService.Get")]
+
         public async Task<CreatedCourseResponse> AddAsync(CreateCourseRequest createCourseRequest)
         {
             Course course = _mapper.Map<Course>(createCourseRequest);

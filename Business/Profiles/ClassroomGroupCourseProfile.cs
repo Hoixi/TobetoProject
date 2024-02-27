@@ -22,7 +22,6 @@ namespace Business.Profiles
 
             CreateMap<ClassroomGroupCourse, GetListClassroomGroupCourseResponse>()
                 .ForMember(dest => dest.ClassroomGroupName, opt => opt.MapFrom(src => src.ClassroomGroups.Classroom.Name + " - " + src.ClassroomGroups.Group.Name))
-                //.ForMember(dest => dest.ClassroomGroupName, opt => opt.MapFrom(src => $"{src.ClassroomGroups.Classroom.Name} {src.ClassroomGroups.Group.Name}"))
                 .ForMember(dest => dest.CourseName, opt => opt.MapFrom(src => src.Courses.Name))
                 .ForMember(dest => dest.ImageId, opt => opt.MapFrom(src => src.Courses.ImageId))
                 .ForMember(dest => dest.ImagePath, opt => opt.MapFrom(src => src.Courses.Image.Path))
