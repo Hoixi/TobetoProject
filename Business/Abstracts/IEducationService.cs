@@ -12,5 +12,7 @@ public interface IEducationService
     Task<Education> DeleteAsync(int id);
     Task<IPaginate<GetListEducationResponse>> GetAllAsync(PageRequest pageRequest);
     Task<GetListEducationResponse> GetById(int id);
+    Task<GetListEducationResponse> GetByUserId(int userId);
+  
 
 }
