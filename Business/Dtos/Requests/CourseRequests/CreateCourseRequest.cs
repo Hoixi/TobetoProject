@@ -10,5 +10,7 @@ namespace Business.Dtos.Requests.CourseRequests
     {
         public int ImageId { get; set; }
         public string Name { get; set; }
+        public string? Description { get; set; }
+        public int SubTypeId { get; set; }
     }
 }
