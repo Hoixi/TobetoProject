@@ -22,8 +22,9 @@ namespace Business.Profiles
 
 
             CreateMap<Course, GetListCourseResponse>()
-                .ForMember(c => c.SubTypeName, st => st.MapFrom(
-                src => src.CourseSubType.Name)).ReverseMap();
+                .ForMember(c => c.SubTypeName, st => st.MapFrom(src => src.CourseSubType.Name))
+                .ForMember(c => c.ImagePath, st => st.MapFrom(src => src.Image.Path))            
+                .ReverseMap();
             CreateMap<Paginate<Course>, Paginate<GetListCourseResponse>>();
 
             CreateMap<UpdateCourseRequest, Course>().ForMember(dest => dest.CreatedDate, opt => opt.Ignore());

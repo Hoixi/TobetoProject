@@ -45,7 +45,8 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListCourseResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _courseDal.GetListAsync(
-                include: p=> p.Include(st=> st.CourseSubType),
+                include: p=> p.Include(st=> st.CourseSubType)
+                .Include(st => st.Image),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );

@@ -38,28 +38,9 @@ namespace Business.Rules
                 throw new BusinessException("Bu E-posta ile bir kullanıcı mevcut");
         }
 
-        //public void PasswordValidate(CreateUserRequest createUserRequest)
-        //{
-        //    string pattern = @"^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-_]).{8,15}$";
-
-        //    if (!Regex.IsMatch(createUserRequest.Password, pattern))
-        //    {
-        //        throw new BusinessException(BusinessMessages.PasswordIsInvalid);
-
-        //    }
-
-        //}
 
         public void PhoneNumberValidate(CreateUserRequest createUserRequest)
         {
-            //string pattern = @"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$";
-
-            //if (!Regex.IsMatch(createUserRequest.PhoneNumber, pattern))
-            //{
-            //    throw new BusinessException(BusinessMessages.PhoneNumberIsValid);
-
-            //}
-
 
             if (createUserRequest.PhoneNumber.Length != 11)
             {

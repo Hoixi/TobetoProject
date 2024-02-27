@@ -14,6 +14,7 @@ namespace Business.Dtos.Responses.CourseResponses
         public int SubTypeId { get; set; }
         public string SubTypeName { get; set; }
         public string Name { get; set; }
+        public string ImagePath { get; set; }
 
     }
 }
