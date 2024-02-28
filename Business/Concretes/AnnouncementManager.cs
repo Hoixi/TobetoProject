@@ -39,9 +39,11 @@ namespace Business.Concretes
         public async Task<IPaginate<GetListAnnouncementResponse>> GetAllAsync(PageRequest pageRequest)
         {
             var data = await _announcementDal.GetListAsync(
+                orderBy: a => a.OrderByDescending(b => b.CreatedDate),
                 index: pageRequest.PageIndex,
                 size: pageRequest.PageSize
                );
+            
             var result = _mapper.Map<Paginate<GetListAnnouncementResponse>>(data);
             return result;
         }
